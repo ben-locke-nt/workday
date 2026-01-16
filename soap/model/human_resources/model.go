@@ -7,4 +7,4 @@
 
 package human_resources
 
-const HumanResourcesServiceVersion = "v45.2"
+const HumanResourcesServiceVersion = "v46.0"

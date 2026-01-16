@@ -16,6 +16,8 @@ import (
 	"net/url"
 	"os"
 
+	"github.com/google/uuid"
+	"github.com/hooklift/gowsdl/soap"
 	"github.com/samber/lo"
 
 	workday "github.com/nametaginc/nt/server/workday/client/.dev/client"
@@ -49,7 +51,14 @@ func (s *Client) call(servicePath string, request any, response any) *callRespon
 		return (&callResponse{}).WithError(fmt.Errorf("build service URL: %w", err))
 	}
 
-	soapClientImpl := NewSOAPClient(serviceURL, WithHTTPClient(s.credentialedClient))
+	// https://community-content.workday.com/content/workday-community/en-us/kits-and-tools/products/platform-and-product-extensions/integrations/workday-api-headers.html?lang=en-us#accordion-1ac3d0cbad-item-a028c583f1
+	headers := map[string]string{
+		"wd-external-request-id":     uuid.New().String(),
+		"wd-external-application-id": "Nametag",
+		"wd-external-originator-id":  "Nametag",
+	}
+
+	soapClientImpl := soap.NewClient(serviceURL, soap.WithHTTPClient(s.credentialedClient), soap.WithHTTPHeaders(headers))
 	if err := soapClientImpl.Call("''", request, response); err != nil {
 		return (&callResponse{}).WithError(fmt.Errorf("call SOAP service: %w", err))
 	}
@@ -102,11 +111,18 @@ func (s *Client) GetWorkerCoded(workdayID string) {
 	fmt.Printf("Request: %s\n", string(req))
 
 	var response human_resources.GetWorkersResponse
-	call := s.call("Human_Resources/v46.0", request, &response)
-	if !call.Success() {
+	if call := s.call("Human_Resources/v46.0", request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}
+
+	res, err := xml.MarshalIndent(response, "", "  ")
+	if err != nil {
+		fmt.Printf("Error marshalling response: %v\n", err)
+		return
+	}
+
+	fmt.Printf("Response: %s\n", string(res))
 }
 
 // Problems with gowsdl:

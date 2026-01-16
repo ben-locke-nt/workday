@@ -5,203 +5,204 @@ package human_resources
 import "encoding/xml"
 
 type BenefitPlanReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type CountryReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type EligibilityCriteriaData struct {
-	AsOfEffectiveDate string         `xml:"wd:As_Of_Effective_Date"`
-	AsOfEntryDateTime string         `xml:"wd:As_Of_Entry_DateTime"`
-	FieldReference    FieldReference `xml:"wd:Field_Reference"`
+	AsOfEffectiveDate string         `xml:"As_Of_Effective_Date"`
+	AsOfEntryDateTime string         `xml:"As_Of_Entry_DateTime"`
+	FieldReference    FieldReference `xml:"Field_Reference"`
 }
 
 type EventReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type FieldAndParameterCriteriaData struct {
-	ProviderReference ProviderReference `xml:"wd:Provider_Reference"`
+	ProviderReference ProviderReference `xml:"Provider_Reference"`
 }
 
 type FieldReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type GetWorkersRequest struct {
-	XMLName           xml.Name          `xml:"wd:Get_Workers_Request"`
-	XMLNamespace      string            `xml:"xmlns:wd,attr"`
-	RequestCriteria   RequestCriteria   `xml:"wd:Request_Criteria"`
-	RequestReferences RequestReferences `xml:"wd:Request_References"`
-	ResponseFilter    ResponseFilter    `xml:"wd:Response_Filter"`
-	ResponseGroup     ResponseGroup     `xml:"wd:Response_Group"`
+	XMLName           xml.Name          `xml:"Get_Workers_Request"`
+	Bsvc              string            `xml:"bsvc,attr"`
+	Version           string            `xml:"version,attr"`
+	RequestCriteria   RequestCriteria   `xml:"Request_Criteria"`
+	RequestReferences RequestReferences `xml:"Request_References"`
+	ResponseFilter    ResponseFilter    `xml:"Response_Filter"`
+	ResponseGroup     ResponseGroup     `xml:"Response_Group"`
 }
 
 type ID struct {
-	ParentID   *string `xml:"wd:parent_id,attr"`
-	ParentType *string `xml:"wd:parent_type,attr"`
-	Type       string  `xml:"wd:type,attr"`
-	CharData   string  `xml:"wd:,chardata"`
+	ParentID   *string `xml:"parent_id,attr"`
+	ParentType *string `xml:"parent_type,attr"`
+	Type       string  `xml:"type,attr"`
+	CharData   string  `xml:",chardata"`
 }
 
 type NationalIDCriteriaData struct {
-	CountryReference        CountryReference        `xml:"wd:Country_Reference"`
-	IdentifierID            string                  `xml:"wd:Identifier_ID"`
-	NationalIDTypeReference NationalIDTypeReference `xml:"wd:National_ID_Type_Reference"`
+	CountryReference        CountryReference        `xml:"Country_Reference"`
+	IdentifierID            string                  `xml:"Identifier_ID"`
+	NationalIDTypeReference NationalIDTypeReference `xml:"National_ID_Type_Reference"`
 }
 
 type NationalIDTypeReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type OrganizationReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type PositionReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type ProviderReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type RequestCriteria struct {
-	BenefitPlanReference            BenefitPlanReference          `xml:"wd:Benefit_Plan_Reference"`
-	CountryReference                CountryReference              `xml:"wd:Country_Reference"`
-	EligibilityCriteriaData         EligibilityCriteriaData       `xml:"wd:Eligibility_Criteria_Data"`
-	EventReference                  EventReference                `xml:"wd:Event_Reference"`
-	ExcludeContingentWorkers        bool                          `xml:"wd:Exclude_Contingent_Workers"`
-	ExcludeEmployees                bool                          `xml:"wd:Exclude_Employees"`
-	ExcludeInactiveWorkers          bool                          `xml:"wd:Exclude_Inactive_Workers"`
-	FieldAndParameterCriteriaData   FieldAndParameterCriteriaData `xml:"wd:Field_And_Parameter_Criteria_Data"`
-	IncludeSubordinateOrganizations bool                          `xml:"wd:Include_Subordinate_Organizations"`
-	NationalIDCriteriaData          NationalIDCriteriaData        `xml:"wd:National_ID_Criteria_Data"`
-	OrganizationReference           OrganizationReference         `xml:"wd:Organization_Reference"`
-	PositionReference               PositionReference             `xml:"wd:Position_Reference"`
-	TransactionLogCriteriaData      TransactionLogCriteriaData    `xml:"wd:Transaction_Log_Criteria_Data"`
-	UniversalIDReference            UniversalIDReference          `xml:"wd:Universal_ID_Reference"`
+	BenefitPlanReference            BenefitPlanReference          `xml:"Benefit_Plan_Reference"`
+	CountryReference                CountryReference              `xml:"Country_Reference"`
+	EligibilityCriteriaData         EligibilityCriteriaData       `xml:"Eligibility_Criteria_Data"`
+	EventReference                  EventReference                `xml:"Event_Reference"`
+	ExcludeContingentWorkers        bool                          `xml:"Exclude_Contingent_Workers"`
+	ExcludeEmployees                bool                          `xml:"Exclude_Employees"`
+	ExcludeInactiveWorkers          bool                          `xml:"Exclude_Inactive_Workers"`
+	FieldAndParameterCriteriaData   FieldAndParameterCriteriaData `xml:"Field_And_Parameter_Criteria_Data"`
+	IncludeSubordinateOrganizations bool                          `xml:"Include_Subordinate_Organizations"`
+	NationalIDCriteriaData          NationalIDCriteriaData        `xml:"National_ID_Criteria_Data"`
+	OrganizationReference           OrganizationReference         `xml:"Organization_Reference"`
+	PositionReference               PositionReference             `xml:"Position_Reference"`
+	TransactionLogCriteriaData      TransactionLogCriteriaData    `xml:"Transaction_Log_Criteria_Data"`
+	UniversalIDReference            UniversalIDReference          `xml:"Universal_ID_Reference"`
 }
 
 type RequestReferences struct {
-	IgnoreInvalidReferences  bool            `xml:"wd:Ignore_Invalid_References,attr"`
-	SkipNonExistingInstances bool            `xml:"wd:Skip_Non_Existing_Instances,attr"`
-	WorkerReference          WorkerReference `xml:"wd:Worker_Reference"`
+	IgnoreInvalidReferences  bool            `xml:"Ignore_Invalid_References,attr"`
+	SkipNonExistingInstances bool            `xml:"Skip_Non_Existing_Instances,attr"`
+	WorkerReference          WorkerReference `xml:"Worker_Reference"`
 }
 
 type ResponseFilter struct {
-	AsOfEffectiveDate string  `xml:"wd:As_Of_Effective_Date"`
-	AsOfEntryDateTime string  `xml:"wd:As_Of_Entry_DateTime"`
-	Count             float64 `xml:"wd:Count"`
-	Page              float64 `xml:"wd:Page"`
+	AsOfEffectiveDate string  `xml:"As_Of_Effective_Date"`
+	AsOfEntryDateTime string  `xml:"As_Of_Entry_DateTime"`
+	Count             float64 `xml:"Count"`
+	Page              float64 `xml:"Page"`
 }
 
 type ResponseGroup struct {
-	ExcludeBusinessUnitHierarchies                     bool `xml:"wd:Exclude_Business_Unit_Hierarchies"`
-	ExcludeBusinessUnits                               bool `xml:"wd:Exclude_Business_Units"`
-	ExcludeCompanies                                   bool `xml:"wd:Exclude_Companies"`
-	ExcludeCompanyHierarchies                          bool `xml:"wd:Exclude_Company_Hierarchies"`
-	ExcludeCostCenterHierarchies                       bool `xml:"wd:Exclude_Cost_Center_Hierarchies"`
-	ExcludeCostCenters                                 bool `xml:"wd:Exclude_Cost_Centers"`
-	ExcludeCustomOrganizations                         bool `xml:"wd:Exclude_Custom_Organizations"`
-	ExcludeFundHierarchies                             bool `xml:"wd:Exclude_Fund_Hierarchies"`
-	ExcludeFunds                                       bool `xml:"wd:Exclude_Funds"`
-	ExcludeGiftHierarchies                             bool `xml:"wd:Exclude_Gift_Hierarchies"`
-	ExcludeGifts                                       bool `xml:"wd:Exclude_Gifts"`
-	ExcludeGrantHierarchies                            bool `xml:"wd:Exclude_Grant_Hierarchies"`
-	ExcludeGrants                                      bool `xml:"wd:Exclude_Grants"`
-	ExcludeLocationHierarchies                         bool `xml:"wd:Exclude_Location_Hierarchies"`
-	ExcludeMatrixOrganizations                         bool `xml:"wd:Exclude_Matrix_Organizations"`
-	ExcludeOrganizationSupportRoleData                 bool `xml:"wd:Exclude_Organization_Support_Role_Data"`
-	ExcludePayGroups                                   bool `xml:"wd:Exclude_Pay_Groups"`
-	ExcludeProgramHierarchies                          bool `xml:"wd:Exclude_Program_Hierarchies"`
-	ExcludePrograms                                    bool `xml:"wd:Exclude_Programs"`
-	ExcludeRegionHierarchies                           bool `xml:"wd:Exclude_Region_Hierarchies"`
-	ExcludeRegions                                     bool `xml:"wd:Exclude_Regions"`
-	ExcludeRetireeOrganizations                        bool `xml:"wd:Exclude_Retiree_Organizations"`
-	ExcludeSupervisoryOrganizations                    bool `xml:"wd:Exclude_Supervisory_Organizations"`
-	ExcludeTeams                                       bool `xml:"wd:Exclude_Teams"`
-	IncludeAccountProvisioning                         bool `xml:"wd:Include_Account_Provisioning"`
-	IncludeAdditionalJobs                              bool `xml:"wd:Include_Additional_Jobs"`
-	IncludeBackgroundCheckData                         bool `xml:"wd:Include_Background_Check_Data"`
-	IncludeBenefitEligibility                          bool `xml:"wd:Include_Benefit_Eligibility"`
-	IncludeBenefitEnrollments                          bool `xml:"wd:Include_Benefit_Enrollments"`
-	IncludeCareer                                      bool `xml:"wd:Include_Career"`
-	IncludeCollectiveAgreementData                     bool `xml:"wd:Include_Collective_Agreement_Data"`
-	IncludeCompensation                                bool `xml:"wd:Include_Compensation"`
-	IncludeContingentWorkerTaxAuthorityFormInformation bool `xml:"wd:Include_Contingent_Worker_Tax_Authority_Form_Information"`
-	IncludeContractsForTerminatedWorkers               bool `xml:"wd:Include_Contracts_for_Terminated_Workers"`
-	IncludeDevelopmentItems                            bool `xml:"wd:Include_Development_Items"`
-	IncludeEmployeeContractData                        bool `xml:"wd:Include_Employee_Contract_Data"`
-	IncludeEmployeeReview                              bool `xml:"wd:Include_Employee_Review"`
-	IncludeEmploymentInformation                       bool `xml:"wd:Include_Employment_Information"`
-	IncludeExtendedEmployeeContractDetails             bool `xml:"wd:Include_Extended_Employee_Contract_Details"`
-	IncludeFeedbackReceived                            bool `xml:"wd:Include_Feedback_Received"`
-	IncludeGoals                                       bool `xml:"wd:Include_Goals"`
-	IncludeManagementChainData                         bool `xml:"wd:Include_Management_Chain_Data"`
-	IncludeMultipleManagersInManagementChainData       bool `xml:"wd:Include_Multiple_Managers_in_Management_Chain_Data"`
-	IncludeOrganizations                               bool `xml:"wd:Include_Organizations"`
-	IncludePersonalInformation                         bool `xml:"wd:Include_Personal_Information"`
-	IncludePhoto                                       bool `xml:"wd:Include_Photo"`
-	IncludeProbationPeriodData                         bool `xml:"wd:Include_Probation_Period_Data"`
-	IncludeQualifications                              bool `xml:"wd:Include_Qualifications"`
-	IncludeReference                                   bool `xml:"wd:Include_Reference"`
-	IncludeRelatedPersons                              bool `xml:"wd:Include_Related_Persons"`
-	IncludeRoles                                       bool `xml:"wd:Include_Roles"`
-	IncludeSkills                                      bool `xml:"wd:Include_Skills"`
-	IncludeSubeventsForCorrectedTransaction            bool `xml:"wd:Include_Subevents_for_Corrected_Transaction"`
-	IncludeSubeventsForRescindedTransaction            bool `xml:"wd:Include_Subevents_for_Rescinded_Transaction"`
-	IncludeSuccessionProfile                           bool `xml:"wd:Include_Succession_Profile"`
-	IncludeTalentAssessment                            bool `xml:"wd:Include_Talent_Assessment"`
-	IncludeTransactionLogData                          bool `xml:"wd:Include_Transaction_Log_Data"`
-	IncludeUserAccount                                 bool `xml:"wd:Include_User_Account"`
-	IncludeWorkerDocuments                             bool `xml:"wd:Include_Worker_Documents"`
-	ShowAllPersonalInformation                         bool `xml:"wd:Show_All_Personal_Information"`
+	ExcludeBusinessUnitHierarchies                     bool `xml:"Exclude_Business_Unit_Hierarchies"`
+	ExcludeBusinessUnits                               bool `xml:"Exclude_Business_Units"`
+	ExcludeCompanies                                   bool `xml:"Exclude_Companies"`
+	ExcludeCompanyHierarchies                          bool `xml:"Exclude_Company_Hierarchies"`
+	ExcludeCostCenterHierarchies                       bool `xml:"Exclude_Cost_Center_Hierarchies"`
+	ExcludeCostCenters                                 bool `xml:"Exclude_Cost_Centers"`
+	ExcludeCustomOrganizations                         bool `xml:"Exclude_Custom_Organizations"`
+	ExcludeFundHierarchies                             bool `xml:"Exclude_Fund_Hierarchies"`
+	ExcludeFunds                                       bool `xml:"Exclude_Funds"`
+	ExcludeGiftHierarchies                             bool `xml:"Exclude_Gift_Hierarchies"`
+	ExcludeGifts                                       bool `xml:"Exclude_Gifts"`
+	ExcludeGrantHierarchies                            bool `xml:"Exclude_Grant_Hierarchies"`
+	ExcludeGrants                                      bool `xml:"Exclude_Grants"`
+	ExcludeLocationHierarchies                         bool `xml:"Exclude_Location_Hierarchies"`
+	ExcludeMatrixOrganizations                         bool `xml:"Exclude_Matrix_Organizations"`
+	ExcludeOrganizationSupportRoleData                 bool `xml:"Exclude_Organization_Support_Role_Data"`
+	ExcludePayGroups                                   bool `xml:"Exclude_Pay_Groups"`
+	ExcludeProgramHierarchies                          bool `xml:"Exclude_Program_Hierarchies"`
+	ExcludePrograms                                    bool `xml:"Exclude_Programs"`
+	ExcludeRegionHierarchies                           bool `xml:"Exclude_Region_Hierarchies"`
+	ExcludeRegions                                     bool `xml:"Exclude_Regions"`
+	ExcludeRetireeOrganizations                        bool `xml:"Exclude_Retiree_Organizations"`
+	ExcludeSupervisoryOrganizations                    bool `xml:"Exclude_Supervisory_Organizations"`
+	ExcludeTeams                                       bool `xml:"Exclude_Teams"`
+	IncludeAccountProvisioning                         bool `xml:"Include_Account_Provisioning"`
+	IncludeAdditionalJobs                              bool `xml:"Include_Additional_Jobs"`
+	IncludeBackgroundCheckData                         bool `xml:"Include_Background_Check_Data"`
+	IncludeBenefitEligibility                          bool `xml:"Include_Benefit_Eligibility"`
+	IncludeBenefitEnrollments                          bool `xml:"Include_Benefit_Enrollments"`
+	IncludeCareer                                      bool `xml:"Include_Career"`
+	IncludeCollectiveAgreementData                     bool `xml:"Include_Collective_Agreement_Data"`
+	IncludeCompensation                                bool `xml:"Include_Compensation"`
+	IncludeContingentWorkerTaxAuthorityFormInformation bool `xml:"Include_Contingent_Worker_Tax_Authority_Form_Information"`
+	IncludeContractsForTerminatedWorkers               bool `xml:"Include_Contracts_for_Terminated_Workers"`
+	IncludeDevelopmentItems                            bool `xml:"Include_Development_Items"`
+	IncludeEmployeeContractData                        bool `xml:"Include_Employee_Contract_Data"`
+	IncludeEmployeeReview                              bool `xml:"Include_Employee_Review"`
+	IncludeEmploymentInformation                       bool `xml:"Include_Employment_Information"`
+	IncludeExtendedEmployeeContractDetails             bool `xml:"Include_Extended_Employee_Contract_Details"`
+	IncludeFeedbackReceived                            bool `xml:"Include_Feedback_Received"`
+	IncludeGoals                                       bool `xml:"Include_Goals"`
+	IncludeManagementChainData                         bool `xml:"Include_Management_Chain_Data"`
+	IncludeMultipleManagersInManagementChainData       bool `xml:"Include_Multiple_Managers_in_Management_Chain_Data"`
+	IncludeOrganizations                               bool `xml:"Include_Organizations"`
+	IncludePersonalInformation                         bool `xml:"Include_Personal_Information"`
+	IncludePhoto                                       bool `xml:"Include_Photo"`
+	IncludeProbationPeriodData                         bool `xml:"Include_Probation_Period_Data"`
+	IncludeQualifications                              bool `xml:"Include_Qualifications"`
+	IncludeReference                                   bool `xml:"Include_Reference"`
+	IncludeRelatedPersons                              bool `xml:"Include_Related_Persons"`
+	IncludeRoles                                       bool `xml:"Include_Roles"`
+	IncludeSkills                                      bool `xml:"Include_Skills"`
+	IncludeSubeventsForCorrectedTransaction            bool `xml:"Include_Subevents_for_Corrected_Transaction"`
+	IncludeSubeventsForRescindedTransaction            bool `xml:"Include_Subevents_for_Rescinded_Transaction"`
+	IncludeSuccessionProfile                           bool `xml:"Include_Succession_Profile"`
+	IncludeTalentAssessment                            bool `xml:"Include_Talent_Assessment"`
+	IncludeTransactionLogData                          bool `xml:"Include_Transaction_Log_Data"`
+	IncludeUserAccount                                 bool `xml:"Include_User_Account"`
+	IncludeWorkerDocuments                             bool `xml:"Include_Worker_Documents"`
+	ShowAllPersonalInformation                         bool `xml:"Show_All_Personal_Information"`
 }
 
 type SubscriberReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type TransactionDateRangeData struct {
-	EffectiveFrom    string `xml:"wd:Effective_From"`
-	EffectiveThrough string `xml:"wd:Effective_Through"`
-	UpdatedFrom      string `xml:"wd:Updated_From"`
-	UpdatedThrough   string `xml:"wd:Updated_Through"`
+	EffectiveFrom    string `xml:"Effective_From"`
+	EffectiveThrough string `xml:"Effective_Through"`
+	UpdatedFrom      string `xml:"Updated_From"`
+	UpdatedThrough   string `xml:"Updated_Through"`
 }
 
 type TransactionLogCriteriaData struct {
-	SubscriberReference       SubscriberReference       `xml:"wd:Subscriber_Reference"`
-	TransactionDateRangeData  TransactionDateRangeData  `xml:"wd:Transaction_Date_Range_Data"`
-	TransactionTypeReferences TransactionTypeReferences `xml:"wd:Transaction_Type_References"`
+	SubscriberReference       SubscriberReference       `xml:"Subscriber_Reference"`
+	TransactionDateRangeData  TransactionDateRangeData  `xml:"Transaction_Date_Range_Data"`
+	TransactionTypeReferences TransactionTypeReferences `xml:"Transaction_Type_References"`
 }
 
 type TransactionTypeReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type TransactionTypeReferences struct {
-	TransactionTypeReference TransactionTypeReference `xml:"wd:Transaction_Type_Reference"`
+	TransactionTypeReference TransactionTypeReference `xml:"Transaction_Type_Reference"`
 }
 
 type UniversalIDReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
 
 type WorkerReference struct {
-	Descriptor string `xml:"wd:Descriptor,attr"`
-	ID         ID     `xml:"wd:ID"`
+	Descriptor string `xml:"Descriptor,attr"`
+	ID         ID     `xml:"ID"`
 }
