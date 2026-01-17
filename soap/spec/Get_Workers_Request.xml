@@ -22,7 +22,6 @@
         <!--Optional:-->
         <bsvc:Effective_Through>2017-05-15T06:41:13</bsvc:Effective_Through>
       </bsvc:Transaction_Date_Range_Data>
-      <!--You have a CHOICE of the next 2 items at this level-->
       <!--Optional:-->
       <bsvc:Transaction_Type_References>
         <!--Zero or more repetitions:-->

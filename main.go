@@ -28,85 +28,27 @@ func main() {
 		log.Fatalf("Error creating SOAP client: %v", err)
 	}
 
-	//soapClient.Human_Resources__Get_Worker("b3c518ac84321001c1c8ed9c98790000")
+	// To get perms for the design doc:
+	// View Integration System Security Group (Unconstrained)
 
-	//soapClient.Recruiting__Get_Candidate("8828a84896248192f4886d9ad4556514")
-	//soapClient.Recruiting__Put_Candidate("8828a84896248192f4886d9ad4556514", "Gregg")
-	//soapClient.Recruiting__Get_Job_Application("8828a848962481631711499bd5558e14")
+	// To change scopes for api client:
+	// view api clients -> edit
 
+	// Get_Workers security:
+	// https://doc.workday.com/admin-guide/en-us/integrations/workday-web-services-and-integration-ids/workday-soap-api-guidelines-and-troubleshooting/get-workers-wws.html#:~:text=Title%3A%20Get%20Workers%20Product%20Area(s)%3A%20Integration%20Get%20Workers%20The%20Get_Workers%20web%20service%20is%20used%20to%20retrieve%20worker%20details%20from%20Workday%2C%20and%20supports%20granular%20transaction%20detection%20through%20the%20use%20of%20the%20%3Cwd%3ATransaction_Log_Criteria_Data%3E%20section.
 	soapClient.GetWorker("b3c518ac84321001c1c8ed9c98790000")
 
-	//soapClient.Recruiting_Get_Candidate("8828a84896248192f4886d9ad4556514")
-	//soapClient.Recruiting_Get_Candidate("8828a848962481e3ab0edd62f8549c57")
-	//soapClient.Human_Resources__Get_Workers()
-	//soapClient.Recruiting__Put_Applicant()
-
-	// restClient, err := rest.NewRESTClient()
-	// if err != nil {
-	// 	log.Fatalf("Error creating REST client: %v", err)
-	// }
-
-	//restClient.GetAWorker("b3c518ac84321001c1c8ed9c98790000")
-	//restClient.GetWorkerCustomObjects("b3c518ac84321001c1c8ed9c98790000")
-	//restClient.GetWorkerCustomObject("f5d0dde74ced30010bed10cec0a90000")
-	//restClient.CreateWorkerCustomObject("b3c518ac84321001c1c8ed9c98790000", time.Now().AddDate(0, 0, -3))
-	//restClient.CreateWorkerCustomObject("b3c518ac84321001c1c8ed9c98790000", time.Now().AddDate(0, 0, -2))
-	//restClient.CreateWorkerCustomObject("b3c518ac84321001c1c8ed9c98790000", time.Now().AddDate(0, 0, -1))
-
-	// restClient.CreateWorkerCustomObject(&workday.NametagWorkerIDVCustomObject{
-	// 	WorkerID: &workday.WorkdayID{ID: "b3c518ac84321001c1c8ed9c98790000"},
-	// 	NametagIDVCustomObject: workday.NametagIDVCustomObject{
-	// 		RequestedAt:                        lo.ToPtr(time.Now()),
-	// 		Status:                             lo.ToPtr("Pending"),
-	// 		AssertedName:                       lo.ToPtr("Ben Locke"),
-	// 		AssertedBirthdate:                  lo.ToPtr(time.Date(1987, time.December, 15, 0, 0, 0, 0, time.UTC)),
-	// 	},
-	// })
-
-	// restClient.CreateWorkerCustomObject(&workday.NametagWorkerIDVCustomObject{
-	// 	WorkerID: &workday.WorkdayID{ID: "b3c518ac84321001c1c8ed9c98790000"},
-	// 	NametagIDVCustomObject: workday.NametagIDVCustomObject{
-	// 		RequestedAt:                        lo.ToPtr(time.Now().AddDate(0, 0, -3)),
-	// 		VerifiedAt:                         lo.ToPtr(time.Now().AddDate(0, 0, -2)),
-	// 		Status:                             lo.ToPtr("Done"),
-	// 		AssertedName:                       lo.ToPtr("Ben Locke"),
-	// 		VerifiedName:                       lo.ToPtr("Judson Benton Locke"),
-	// 		AssertedBirthdate:                  lo.ToPtr(time.Date(1987, time.December, 15, 0, 0, 0, 0, time.UTC)),
-	// 		VerifiedBirthdate:                  lo.ToPtr(time.Date(1987, time.December, 15, 0, 0, 0, 0, time.UTC)),
-	// 		AssertedAndVerifiedNamesMatch:      lo.ToPtr(true),
-	// 		AssertedAndVerifiedBirthDatesMatch: lo.ToPtr(true),
-	// 	},
-	// })
-
-	// restClient.CreateWorkerCustomObject(&workday.NametagWorkerIDVCustomObject{
-	// 	WorkerID: &workday.WorkdayID{ID: "b3c518ac84321001c1c8ed9c98790000"},
-	// 	NametagIDVCustomObject: workday.NametagIDVCustomObject{
-	// 		RequestedAt:                        lo.ToPtr(time.Now().AddDate(0, 0, -5)),
-	// 		VerifiedAt:                         lo.ToPtr(time.Now().AddDate(0, 0, -4)),
-	// 		Status:                             lo.ToPtr("Done"),
-	// 		AssertedName:                       lo.ToPtr("Ben Locke"),
-	// 		VerifiedName:                       lo.ToPtr("Judson Benton Locke"),
-	// 		AssertedBirthdate:                  lo.ToPtr(time.Date(1987, time.December, 15, 0, 0, 0, 0, time.UTC)),
-	// 		VerifiedBirthdate:                  lo.ToPtr(time.Date(1987, time.December, 15, 0, 0, 0, 0, time.UTC)),
-	// 		AssertedAndVerifiedNamesMatch:      lo.ToPtr(true),
-	// 		AssertedAndVerifiedBirthDatesMatch: lo.ToPtr(true),
-	// 	},
-	// })
-
-	// restClient.CreateWorkerCustomObject(&workday.NametagWorkerIDVCustomObject{
-	// 	WorkerID: &workday.WorkdayID{ID: "b3c518ac84321001c1c8ed9c98790000"},
-	// 	NametagIDVCustomObject: workday.NametagIDVCustomObject{
-	// 		RequestedAt:       lo.ToPtr(time.Now()),
-	// 		Status:            lo.ToPtr("Pending"),
-	// 		AssertedName:      lo.ToPtr("Ben Locke"),
-	// 		AssertedBirthdate: lo.ToPtr(time.Date(1987, time.December, 15, 0, 0, 0, 0, time.UTC)),
-	// 	},
-	// })
-
-	//restClient.GetJobApplicationCustomObject("8828a84896248192f4886d9ad4556514")
+	// Get_Candidates security:
+	// https://doc.workday.com/admin-guide/en-us/integrations/workday-web-services-and-integration-ids/workday-soap-api-guidelines-and-troubleshooting/get-candidate-wws.html?toc=17.8.6
+	soapClient.GetCandidate("fd9e9f710bc881556faa7574ac0fd306")
+	
+	// Get_Applicants security:
+	// 
+	soapClient.GetApplicant("7687e33f159501842af83fedc4564407")
 }
 
 // Applicant == Pre-hire
+// Prospect == Candidate without application
 
 // Just an applicant
 // Candidate: Name=Amanda Lockhart; Workday ID=7687e33f15958135d3352f70be567c03; Candidate_ID=CAND-1318

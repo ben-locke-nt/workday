@@ -7,7 +7,7 @@
 // copyright law. Reproduction or distribution, in whole or in part, is
 // forbidden except by express written permission of Nametag, Inc.
 
-package human_resources
+package recruiting
 
 import (
 	"encoding/xml"
@@ -15,29 +15,29 @@ import (
 	"github.com/nametaginc/nt/server/workday/client/.dev/soap/model"
 )
 
-type GetWorkersRequest struct {
-	XMLName xml.Name `xml:"wd:Get_Workers_Request,omitempty"`
+type GetApplicantsRequest struct {
+	XMLName xml.Name `xml:"wd:Get_Applicants_Request,omitempty"`
 	*model.XMLTopLevel
 	References *model.WorkdayRequestReferencesList
 	Pagination *model.PaginationFilter
 }
 
-type WorkerReference struct {
-	XMLName   xml.Name `xml:"wd:Worker_Reference,omitempty"`
+type ApplicantReference struct {
+	XMLName   xml.Name `xml:"wd:Applicant_Reference,omitempty"`
 	Reference *model.WorkdayObjectID
 }
 
-func NewGetWorkersRequest() *GetWorkersRequest {
-	return &GetWorkersRequest{
-		XMLTopLevel: model.NewXMLTopLevel(HumanResourcesServiceVersion),
+func NewGetApplicantsRequest() *GetApplicantsRequest {
+	return &GetApplicantsRequest{
+		XMLTopLevel: model.NewXMLTopLevel(RecruitingServiceVersion),
 	}
 }
 
-func NewGetWorkerByWorkdayIDRequest(workdayID string) *GetWorkersRequest {
-	request := NewGetWorkersRequest()
+func NewGetApplicantByWorkdayIDRequest(workdayID string) *GetApplicantsRequest {
+	request := NewGetApplicantsRequest()
 	request.References = &model.WorkdayRequestReferencesList{
 		References: []any{
-			&WorkerReference{
+			&ApplicantReference{
 				Reference: model.NewWorkdayObjectID(workdayID),
 			},
 		},
@@ -48,6 +48,6 @@ func NewGetWorkerByWorkdayIDRequest(workdayID string) *GetWorkersRequest {
 	return request
 }
 
-type GetWorkersResponse struct {
+type GetApplicantsResponse struct {
 	Content []byte `xml:",innerxml"`
 }
