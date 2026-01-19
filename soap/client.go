@@ -17,6 +17,7 @@ import (
 	"os"
 	"time"
 	"workday/client"
+	"workday/soap/model"
 	"workday/soap/model/change_home_contact_information_request"
 	"workday/soap/model/change_legal_name_request"
 	"workday/soap/model/get_applicants_request"
@@ -114,7 +115,7 @@ type AnyXML struct {
 	Content string `xml:",innerxml"`
 }
 
-func (s *Client) GetCandidate(workdayID string) {
+func (s *Client) GetCandidate(permissionReport *model.PermissionCheck, workdayID string) {
 	request := get_candidates_request.GetCandidatesRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -127,9 +128,7 @@ func (s *Client) GetCandidate(workdayID string) {
 			},
 		},
 		ResponseFilter: &get_candidates_request.ResponseFilter{
-			Count: &get_candidates_request.Count{
-				Value: lo.ToPtr("1"),
-			},
+			Count: lo.ToPtr(1),
 		},
 	}
 
@@ -148,7 +147,7 @@ func (s *Client) GetCandidate(workdayID string) {
 	fmt.Printf("GetCandidate Response: %s\n", string(res))
 }
 
-func (s *Client) GetApplicant(workdayID string) *get_applicants_response.GetApplicantsResponse {
+func (s *Client) GetApplicant(permissionReport *model.PermissionCheck, workdayID string) *get_applicants_response.GetApplicantsResponse {
 	request := get_applicants_request.GetApplicantsRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -161,9 +160,7 @@ func (s *Client) GetApplicant(workdayID string) *get_applicants_response.GetAppl
 			},
 		},
 		ResponseFilter: &get_applicants_request.ResponseFilter{
-			Count: &get_applicants_request.Count{
-				Value: lo.ToPtr("1"),
-			},
+			Count: lo.ToPtr(1),
 		},
 	}
 
@@ -173,10 +170,18 @@ func (s *Client) GetApplicant(workdayID string) *get_applicants_response.GetAppl
 		return nil
 	}
 
+	res, error := xml.MarshalIndent(response, "", "  ")
+	if error != nil {
+		fmt.Printf("SOAP response marshal error: %v\n", error)
+		return nil
+	}
+	
+	fmt.Printf("GetApplicant Response: %s\n", string(res))
+
 	return &response
 }
 
-func (s *Client) GetWorker(workdayID string) {
+func (s *Client) GetWorker(permissionReport *model.PermissionCheck, workdayID string) {
 	request := get_workers_request.GetWorkersRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -189,9 +194,10 @@ func (s *Client) GetWorker(workdayID string) {
 			},
 		},
 		ResponseFilter: &get_workers_request.ResponseFilter{
-			Count: &get_workers_request.Count{
-				Value: lo.ToPtr("1"),
-			},
+			Count: lo.ToPtr(1),
+		},
+		RequestCriteria: &get_workers_request.RequestCriteria{
+
 		},
 	}
 
@@ -208,9 +214,16 @@ func (s *Client) GetWorker(workdayID string) {
 	}
 	
 	fmt.Printf("GetWorker Response: %s\n", string(res))
+
+	// permissionReport.CanGetWorkerLegalName = response.ResponseData.Worker.WorkerData.PersonalData.NameData.LegalNameData.NameDetailData.FirstName != nil
+	// 	&& response.ResponseData.Worker.WorkerData.PersonalData.NameData.LegalNameData.NameDetailData.LastName != nil
+	// permissionReport.CanGetWorkerHomeAddress = response.ResponseData.Worker.WorkerData.PersonalData.ContactData.LocationData.AddressLine1 != nil
+	// permissionReport.CanGetWorkerBirthDate = response.ResponseData.Worker.WorkerData.PersonalData.GlobalPersonalInformationData.DateOfBirth != nil
+	// permissionReport.CanGetWorkerEmail = response.ResponseData.Worker.WorkerData.PersonalData.ContactData.EmailAddresses != nil
+	// permissionReport.CanGetWorkerPhone = response.ResponseData.Worker.WorkerData.PersonalData.ContactData.PhoneNumbers != nil
 }
 
-func (s *Client) UpdateWorkerName(workdayID, firstName, middleName, lastName string) {
+func (s *Client) UpdateWorkerName(permissionReport *model.PermissionCheck, workdayID, firstName, middleName, lastName string) {
 	request := change_legal_name_request.ChangeLegalNameRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -222,19 +235,11 @@ func (s *Client) UpdateWorkerName(workdayID, firstName, middleName, lastName str
 				},
 			},
 			NameData: &change_legal_name_request.NameData{
-				FirstName: &change_legal_name_request.FirstName{
-					Value: lo.ToPtr(firstName),
-				},
-				MiddleName: &change_legal_name_request.MiddleName{
-					Value: lo.ToPtr(middleName),
-				},
-				LastName: &change_legal_name_request.LastName{
-					Value: lo.ToPtr(lastName),
-				},
+				FirstName: lo.ToPtr(firstName),
+				MiddleName: lo.ToPtr(middleName),
+				LastName: lo.ToPtr(lastName),
 			},
-			EffectiveDate: &change_legal_name_request.EffectiveDate{
-				Value: lo.ToPtr(time.Now().Format("2006-01-02")),
-			},
+			EffectiveDate: lo.ToPtr(time.Now().Format("2006-01-02")),
 		},
 	}
 
@@ -245,7 +250,7 @@ func (s *Client) UpdateWorkerName(workdayID, firstName, middleName, lastName str
 	}
 }
 
-func (s *Client) UpdateWorkerAddress(workdayID string) {
+func (s *Client) UpdateWorkerAddress(permissionReport *model.PermissionCheck, workdayID string) {
 	request := &change_home_contact_information_request.ChangeHomeContactInformationRequest{
 
 	}
@@ -257,7 +262,7 @@ func (s *Client) UpdateWorkerAddress(workdayID string) {
 	}
 }
 
-func (s *Client) UpdateCandidateName(workdayID, firstName, middleName, lastName string) {
+func (s *Client) UpdateCandidateName(permissionReport *model.PermissionCheck, workdayID, firstName, middleName, lastName string) {
 	request := put_candidate_request.PutCandidateRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -271,15 +276,9 @@ func (s *Client) UpdateCandidateName(workdayID, firstName, middleName, lastName 
 			NameData: &put_candidate_request.NameData{
 				LegalName: &put_candidate_request.LegalName{
 					NameDetailData: &put_candidate_request.NameDetailData{
-						FirstName: &put_candidate_request.FirstName{
-							Value: lo.ToPtr(firstName),
-						},
-						// MiddleName: &MiddleName{
-						// 	Value:lo.ToPtr(middleName),
+						FirstName: lo.ToPtr(firstName),
 						// They don;t accept middle names :shrug:....if configured
-						LastName: &put_candidate_request.LastName{
-							Value: lo.ToPtr(lastName),
-						},
+						LastName: lo.ToPtr(lastName),
 					},
 				},
 			},
@@ -310,15 +309,15 @@ func (s *Client) UpdateCandidateName(workdayID, firstName, middleName, lastName 
 	}
 }
 
-func (s *Client) UpdateApplicant(workdayID, firstName, middleName, lastName string) {
-	applicant := s.GetApplicant(workdayID)
+func (s *Client) UpdateApplicant(permissionReport *model.PermissionCheck, workdayID, firstName, middleName, lastName string) {
+	applicant := s.GetApplicant(permissionReport, workdayID)
 	if applicant == nil {
 		fmt.Printf("Could not find applicant with Workday ID: %s\n", workdayID)
 		return
 	}
 	
 	fmt.Println("got applicant: " +
-		lo.FromPtr(applicant.ResponseData.Applicant.ApplicantData.PersonalData.NameData.LegalNameData.NameDetailData.FirstName.Value))
+		lo.FromPtr(applicant.ResponseData.Applicant.ApplicantData.PersonalData.NameData.LegalNameData.NameDetailData.FirstName))
 
 	request := &put_applicant_request.PutApplicantRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
@@ -334,15 +333,9 @@ func (s *Client) UpdateApplicant(workdayID, firstName, middleName, lastName stri
 				NameData: &put_applicant_request.NameData{
 					LegalNameData: &put_applicant_request.LegalNameData{
 						NameDetailData: &put_applicant_request.NameDetailData{
-							FirstName: &put_applicant_request.FirstName{
-								Value: lo.ToPtr(firstName),
-							},
-							MiddleName: &put_applicant_request.MiddleName{
-								Value: lo.ToPtr(middleName),
-							},
-							LastName: &put_applicant_request.LastName{
-								Value: lo.ToPtr(lastName),
-							},
+							FirstName: lo.ToPtr(firstName),
+							MiddleName: lo.ToPtr(middleName),
+							LastName: lo.ToPtr(lastName),
 						},
 					},
 				},
