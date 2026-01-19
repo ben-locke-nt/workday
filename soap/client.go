@@ -17,6 +17,16 @@ import (
 	"os"
 	"time"
 	"workday/client"
+	"workday/soap/model/change_home_contact_information_request"
+	"workday/soap/model/change_legal_name_request"
+	"workday/soap/model/get_applicants_request"
+	"workday/soap/model/get_applicants_response"
+	"workday/soap/model/get_candidates_request"
+	"workday/soap/model/get_candidates_response"
+	"workday/soap/model/get_workers_request"
+	"workday/soap/model/get_workers_response"
+	"workday/soap/model/put_applicant_request"
+	"workday/soap/model/put_candidate_request"
 
 	"github.com/google/uuid"
 	"github.com/hooklift/gowsdl/soap"
@@ -105,51 +115,59 @@ type AnyXML struct {
 }
 
 func (s *Client) GetCandidate(workdayID string) {
-	request := GetCandidatesRequest{
+	request := get_candidates_request.GetCandidatesRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
-		RequestReferences: &RequestReferences{
-			CandidateReference: &CandidateReference{
-				Id: &Id{
+		RequestReferences: &get_candidates_request.RequestReferences{
+			CandidateReference: &get_candidates_request.CandidateReference{
+				Id: &get_candidates_request.Id{
 					Type:  lo.ToPtr("WID"),
 					Value: lo.ToPtr(workdayID),
 				},
 			},
 		},
-		ResponseFilter: &ResponseFilter{
-			Count: &Count{
+		ResponseFilter: &get_candidates_request.ResponseFilter{
+			Count: &get_candidates_request.Count{
 				Value: lo.ToPtr("1"),
 			},
 		},
 	}
 
-	var response AnyXML
+	var response get_candidates_response.GetCandidatesResponse
 	if call := s.call("Recruiting/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}
+
+	res, error := xml.MarshalIndent(response, "", "  ")
+	if error != nil {
+		fmt.Printf("SOAP response marshal error: %v\n", error)
+		return
+	}
+	
+	fmt.Printf("GetCandidate Response: %s\n", string(res))
 }
 
-func (s *Client) GetApplicant(workdayID string) *GetApplicantsResponse {
-	request := GetApplicantsRequest{
+func (s *Client) GetApplicant(workdayID string) *get_applicants_response.GetApplicantsResponse {
+	request := get_applicants_request.GetApplicantsRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
-		RequestReferences: &RequestReferences{
-			ApplicantReference: &ApplicantReference{
-				Id: &Id{
+		RequestReferences: &get_applicants_request.RequestReferences{
+			ApplicantReference: &get_applicants_request.ApplicantReference{
+				Id: &get_applicants_request.Id{
 					Type:  lo.ToPtr("WID"),
 					Value: lo.ToPtr(workdayID),
 				},
 			},
 		},
-		ResponseFilter: &ResponseFilter{
-			Count: &Count{
+		ResponseFilter: &get_applicants_request.ResponseFilter{
+			Count: &get_applicants_request.Count{
 				Value: lo.ToPtr("1"),
 			},
 		},
 	}
 
-	var response GetApplicantsResponse
+	var response get_applicants_response.GetApplicantsResponse
 	if call := s.call("Recruiting/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return nil
@@ -159,54 +177,62 @@ func (s *Client) GetApplicant(workdayID string) *GetApplicantsResponse {
 }
 
 func (s *Client) GetWorker(workdayID string) {
-	request := GetWorkersRequest{
+	request := get_workers_request.GetWorkersRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
-		RequestReferences: &RequestReferences{
-			WorkerReference: &WorkerReference{
-				Id: &Id{
+		RequestReferences: &get_workers_request.RequestReferences{
+			WorkerReference: &get_workers_request.WorkerReference{
+				Id: &get_workers_request.Id{
 					Type:  lo.ToPtr("WID"),
 					Value: lo.ToPtr(workdayID),
 				},
 			},
 		},
-		ResponseFilter: &ResponseFilter{
-			Count: &Count{
+		ResponseFilter: &get_workers_request.ResponseFilter{
+			Count: &get_workers_request.Count{
 				Value: lo.ToPtr("1"),
 			},
 		},
 	}
 
-	var response AnyXML
+	var response get_workers_response.GetWorkersResponse
 	if call := s.call("Human_Resources/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}
+
+	res, error := xml.MarshalIndent(response, "", "  ")
+	if error != nil {
+		fmt.Printf("SOAP response marshal error: %v\n", error)
+		return
+	}
+	
+	fmt.Printf("GetWorker Response: %s\n", string(res))
 }
 
 func (s *Client) UpdateWorkerName(workdayID, firstName, middleName, lastName string) {
-	request := ChangeLegalNameRequest{
+	request := change_legal_name_request.ChangeLegalNameRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
-		ChangeLegalNameData: &ChangeLegalNameData{
-			PersonReference: &PersonReference{
-				Id: &Id{
+		ChangeLegalNameData: &change_legal_name_request.ChangeLegalNameData{
+			PersonReference: &change_legal_name_request.PersonReference{
+				Id: &change_legal_name_request.Id{
 					Type: lo.ToPtr("WID"),
 					Value: lo.ToPtr(workdayID),
 				},
 			},
-			NameData: &NameData{
-				FirstName: &FirstName{
+			NameData: &change_legal_name_request.NameData{
+				FirstName: &change_legal_name_request.FirstName{
 					Value: lo.ToPtr(firstName),
 				},
-				MiddleName: &MiddleName{
+				MiddleName: &change_legal_name_request.MiddleName{
 					Value: lo.ToPtr(middleName),
 				},
-				LastName: &LastName{
+				LastName: &change_legal_name_request.LastName{
 					Value: lo.ToPtr(lastName),
 				},
 			},
-			EffectiveDate: &EffectiveDate{
+			EffectiveDate: &change_legal_name_request.EffectiveDate{
 				Value: lo.ToPtr(time.Now().Format("2006-01-02")),
 			},
 		},
@@ -220,7 +246,7 @@ func (s *Client) UpdateWorkerName(workdayID, firstName, middleName, lastName str
 }
 
 func (s *Client) UpdateWorkerAddress(workdayID string) {
-	request := &ChangeHomeContactInformationRequest{
+	request := &change_home_contact_information_request.ChangeHomeContactInformationRequest{
 
 	}
 
@@ -232,26 +258,26 @@ func (s *Client) UpdateWorkerAddress(workdayID string) {
 }
 
 func (s *Client) UpdateCandidateName(workdayID, firstName, middleName, lastName string) {
-	request := PutCandidateRequest{
+	request := put_candidate_request.PutCandidateRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
-		CandidateReference: &CandidateReference{
-			Id: &Id{
+		CandidateReference: &put_candidate_request.CandidateReference{
+			Id: &put_candidate_request.Id{
 				Type:  lo.ToPtr("WID"),
 				Value: lo.ToPtr(workdayID),
 			},
 		},
-		CandidateData: &CandidateData{
-			NameData: &NameData{
-				LegalName: &LegalName{
-					NameDetailData: &NameDetailData{
-						FirstName: &FirstName{
+		CandidateData: &put_candidate_request.CandidateData{
+			NameData: &put_candidate_request.NameData{
+				LegalName: &put_candidate_request.LegalName{
+					NameDetailData: &put_candidate_request.NameDetailData{
+						FirstName: &put_candidate_request.FirstName{
 							Value: lo.ToPtr(firstName),
 						},
 						// MiddleName: &MiddleName{
 						// 	Value:lo.ToPtr(middleName),
 						// They don;t accept middle names :shrug:....if configured
-						LastName: &LastName{
+						LastName: &put_candidate_request.LastName{
 							Value: lo.ToPtr(lastName),
 						},
 					},
@@ -294,27 +320,27 @@ func (s *Client) UpdateApplicant(workdayID, firstName, middleName, lastName stri
 	fmt.Println("got applicant: " +
 		lo.FromPtr(applicant.ResponseData.Applicant.ApplicantData.PersonalData.NameData.LegalNameData.NameDetailData.FirstName.Value))
 
-	request := &PutApplicantRequest{
+	request := &put_applicant_request.PutApplicantRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
-		ApplicantReference: &ApplicantReference{
-			Id: &Id{
+		ApplicantReference: &put_applicant_request.ApplicantReference{
+			Id: &put_applicant_request.Id{
 				Type: lo.ToPtr("WID"),
 				Value: lo.ToPtr(workdayID),
 			},
 		},
-		ApplicantData: &ApplicantData{
-			PersonalData: &PersonalData{
-				NameData: &NameData{
-					LegalNameData: &LegalNameData{
-						NameDetailData: &NameDetailData{
-							FirstName: &FirstName{
+		ApplicantData: &put_applicant_request.ApplicantData{
+			PersonalData: &put_applicant_request.PersonalData{
+				NameData: &put_applicant_request.NameData{
+					LegalNameData: &put_applicant_request.LegalNameData{
+						NameDetailData: &put_applicant_request.NameDetailData{
+							FirstName: &put_applicant_request.FirstName{
 								Value: lo.ToPtr(firstName),
 							},
-							MiddleName: &MiddleName{
+							MiddleName: &put_applicant_request.MiddleName{
 								Value: lo.ToPtr(middleName),
 							},
-							LastName: &LastName{
+							LastName: &put_applicant_request.LastName{
 								Value: lo.ToPtr(lastName),
 							},
 						},

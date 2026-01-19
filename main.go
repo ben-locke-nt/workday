@@ -45,11 +45,11 @@ func main() {
 	// 
 	//soapClient.GetApplicant("7687e33f159501842af83fedc4564407")
 
-	soapClient.UpdateWorkerName("b3c518ac84321001c1c8ed9c98790000", "Benjamin", "Billy", "Locke")
+	//soapClient.UpdateWorkerName("b3c518ac84321001c1c8ed9c98790000", "Benjamin", "Billy", "Locke")
 
 	//soapClient.UpdateCandidateName("fd9e9f710bc881556faa7574ac0fd306", "Sabriña", "Marie", "Valdez")
 
-	//soapClient.UpdateApplicant("7687e33f159501842af83fedc4564407", "Amanda", "Willy", "Lockehart")
+	soapClient.UpdateApplicant("7687e33f159501842af83fedc4564407", "Amanda", "Willy", "Lockehart")
 }
 
 // Applicant == Pre-hire

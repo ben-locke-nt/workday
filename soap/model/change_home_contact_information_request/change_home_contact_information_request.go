@@ -1,0 +1,402 @@
+// Generated from ../model/change_home_contact_information_request/change_home_contact_information_request.go
+package change_home_contact_information_request
+
+import "encoding/xml"
+
+type ChangeHomeContactInformationRequest struct {
+    XMLName xml.Name `xml:"wd:Change_Home_Contact_Information_Request"`
+    XMLNamespace *string `xml:"xmlns:wd,attr,omitempty"`
+    Version *string `xml:"wd:version,attr,omitempty"`
+    BusinessProcessParameters *BusinessProcessParameters `xml:"wd:Business_Process_Parameters,omitempty"`
+    ChangeHomeContactInformationData *ChangeHomeContactInformationData `xml:"wd:Change_Home_Contact_Information_Data,omitempty"`
+}
+
+type BusinessProcessParameters struct {
+    AutoComplete *AutoComplete `xml:"wd:Auto_Complete,omitempty"`
+    RunNow *RunNow `xml:"wd:Run_Now,omitempty"`
+    DiscardOnExitValidationError *DiscardOnExitValidationError `xml:"wd:Discard_On_Exit_Validation_Error,omitempty"`
+    CommentData *CommentData `xml:"wd:Comment_Data,omitempty"`
+    BusinessProcessAttachmentData *BusinessProcessAttachmentData `xml:"wd:Business_Process_Attachment_Data,omitempty"`
+}
+
+type AutoComplete struct {
+    Value *string `xml:",chardata"`
+}
+
+type RunNow struct {
+    Value *string `xml:",chardata"`
+}
+
+type DiscardOnExitValidationError struct {
+    Value *string `xml:",chardata"`
+}
+
+type CommentData struct {
+    Comment *Comment `xml:"wd:Comment,omitempty"`
+    WorkerReference *WorkerReference `xml:"wd:Worker_Reference,omitempty"`
+}
+
+type Comment struct {
+    Value *string `xml:",chardata"`
+}
+
+type WorkerReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type Id struct {
+    Value *string `xml:",chardata"`
+    Type *string `xml:"wd:type,attr,omitempty"`
+    ParentId *string `xml:"wd:parent_id,attr,omitempty"`
+    ParentType *string `xml:"wd:parent_type,attr,omitempty"`
+}
+
+type BusinessProcessAttachmentData struct {
+    FileName *FileName `xml:"wd:File_Name,omitempty"`
+    EventAttachmentDescription *EventAttachmentDescription `xml:"wd:Event_Attachment_Description,omitempty"`
+    EventAttachmentCategoryReference *EventAttachmentCategoryReference `xml:"wd:Event_Attachment_Category_Reference,omitempty"`
+    File *File `xml:"wd:File,omitempty"`
+    ContentType *ContentType `xml:"wd:Content_Type,omitempty"`
+}
+
+type FileName struct {
+    Value *string `xml:",chardata"`
+}
+
+type EventAttachmentDescription struct {
+    Value *string `xml:",chardata"`
+}
+
+type EventAttachmentCategoryReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type File struct {
+    Value *string `xml:",chardata"`
+}
+
+type ContentType struct {
+    Value *string `xml:",chardata"`
+}
+
+type ChangeHomeContactInformationData struct {
+    PersonReference *PersonReference `xml:"wd:Person_Reference,omitempty"`
+    UniversalIdReference *UniversalIdReference `xml:"wd:Universal_ID_Reference,omitempty"`
+    EventEffectiveDate *EventEffectiveDate `xml:"wd:Event_Effective_Date,omitempty"`
+    PersonContactInformationData *PersonContactInformationData `xml:"wd:Person_Contact_Information_Data,omitempty"`
+}
+
+type PersonReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type UniversalIdReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type EventEffectiveDate struct {
+    Value *string `xml:",chardata"`
+}
+
+type PersonContactInformationData struct {
+    PersonAddressInformationData *PersonAddressInformationData `xml:"wd:Person_Address_Information_Data,omitempty"`
+    PersonPhoneInformationData *PersonPhoneInformationData `xml:"wd:Person_Phone_Information_Data,omitempty"`
+    PersonEmailInformationData *PersonEmailInformationData `xml:"wd:Person_Email_Information_Data,omitempty"`
+    PersonInstantMessengerInformationData *PersonInstantMessengerInformationData `xml:"wd:Person_Instant_Messenger_Information_Data,omitempty"`
+    PersonWebAddressInformationData *PersonWebAddressInformationData `xml:"wd:Person_Web_Address_Information_Data,omitempty"`
+}
+
+type PersonAddressInformationData struct {
+    ReplaceAll *string `xml:"wd:Replace_All,attr,omitempty"`
+    AddressInformationData *AddressInformationData `xml:"wd:Address_Information_Data,omitempty"`
+}
+
+type AddressInformationData struct {
+    AddressFormatType *string `xml:"wd:Address_Format_Type,attr,omitempty"`
+    Delete *string `xml:"wd:Delete,attr,omitempty"`
+    EffectiveDate *string `xml:"wd:Effective_Date,attr,omitempty"`
+    AddressData *AddressData `xml:"wd:Address_Data,omitempty"`
+    UsageData *UsageData `xml:"wd:Usage_Data,omitempty"`
+    NumberOfDays *NumberOfDays `xml:"wd:Number_of_Days,omitempty"`
+    DaysOfTheWeekReference *DaysOfTheWeekReference `xml:"wd:Days_of_the_Week_Reference,omitempty"`
+    AddressReference *AddressReference `xml:"wd:Address_Reference,omitempty"`
+    AddressId *AddressId `xml:"wd:Address_ID,omitempty"`
+}
+
+type AddressData struct {
+    FormattedAddress *string `xml:"wd:Formatted_Address,attr,omitempty"`
+    DefaultAddress *string `xml:"wd:Default_Address,attr,omitempty"`
+    CountryReference *CountryReference `xml:"wd:Country_Reference,omitempty"`
+    CountryRegionReference *CountryRegionReference `xml:"wd:Country_Region_Reference,omitempty"`
+    CountryRegionDescriptor *CountryRegionDescriptor `xml:"wd:Country_Region_Descriptor,omitempty"`
+    AddressLineData *AddressLineData `xml:"wd:Address_Line_Data,omitempty"`
+    SubregionData *SubregionData `xml:"wd:Subregion_Data,omitempty"`
+    SubmunicipalityData *SubmunicipalityData `xml:"wd:Submunicipality_Data,omitempty"`
+    PostalCode *PostalCode `xml:"wd:Postal_Code,omitempty"`
+    Municipality *Municipality `xml:"wd:Municipality,omitempty"`
+    MunicipalityLocal *MunicipalityLocal `xml:"wd:Municipality_Local,omitempty"`
+    CountryCityReference *CountryCityReference `xml:"wd:Country_City_Reference,omitempty"`
+}
+
+type CountryReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type CountryRegionReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type CountryRegionDescriptor struct {
+    Value *string `xml:",chardata"`
+}
+
+type AddressLineData struct {
+    Value *string `xml:",chardata"`
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Type *string `xml:"wd:Type,attr,omitempty"`
+}
+
+type SubregionData struct {
+    Value *string `xml:",chardata"`
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Type *string `xml:"wd:Type,attr,omitempty"`
+}
+
+type SubmunicipalityData struct {
+    Value *string `xml:",chardata"`
+    AddressComponentName *string `xml:"wd:Address_Component_Name,attr,omitempty"`
+    Type *string `xml:"wd:Type,attr,omitempty"`
+}
+
+type PostalCode struct {
+    Value *string `xml:",chardata"`
+}
+
+type Municipality struct {
+    Value *string `xml:",chardata"`
+}
+
+type MunicipalityLocal struct {
+    Value *string `xml:",chardata"`
+}
+
+type CountryCityReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type UsageData struct {
+    Public *string `xml:"wd:Public,attr,omitempty"`
+    TypeData *TypeData `xml:"wd:Type_Data,omitempty"`
+    UseForReference *UseForReference `xml:"wd:Use_For_Reference,omitempty"`
+    UseForTenantedReference *UseForTenantedReference `xml:"wd:Use_For_Tenanted_Reference,omitempty"`
+    Comments *Comments `xml:"wd:Comments,omitempty"`
+}
+
+type TypeData struct {
+    Primary *string `xml:"wd:Primary,attr,omitempty"`
+    TypeReference *TypeReference `xml:"wd:Type_Reference,omitempty"`
+}
+
+type TypeReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type UseForReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type UseForTenantedReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type Comments struct {
+    Value *string `xml:",chardata"`
+}
+
+type NumberOfDays struct {
+    Value *string `xml:",chardata"`
+}
+
+type DaysOfTheWeekReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type AddressReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type AddressId struct {
+    Value *string `xml:",chardata"`
+}
+
+type PersonPhoneInformationData struct {
+    ReplaceAll *string `xml:"wd:Replace_All,attr,omitempty"`
+    PhoneInformationData *PhoneInformationData `xml:"wd:Phone_Information_Data,omitempty"`
+}
+
+type PhoneInformationData struct {
+    Delete *string `xml:"wd:Delete,attr,omitempty"`
+    PhoneData *PhoneData `xml:"wd:Phone_Data,omitempty"`
+    UsageData *UsageData `xml:"wd:Usage_Data,omitempty"`
+    PhoneReference *PhoneReference `xml:"wd:Phone_Reference,omitempty"`
+    PhoneId *PhoneId `xml:"wd:Phone_ID,omitempty"`
+}
+
+type PhoneData struct {
+    FormattedPhone *string `xml:"wd:Formatted_Phone,attr,omitempty"`
+    DeviceTypeReference *DeviceTypeReference `xml:"wd:Device_Type_Reference,omitempty"`
+    CountryCodeReference *CountryCodeReference `xml:"wd:Country_Code_Reference,omitempty"`
+    CompletePhoneNumber *CompletePhoneNumber `xml:"wd:Complete_Phone_Number,omitempty"`
+    Extension *Extension `xml:"wd:Extension,omitempty"`
+}
+
+type DeviceTypeReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type CountryCodeReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type CompletePhoneNumber struct {
+    Value *string `xml:",chardata"`
+}
+
+type Extension struct {
+    Value *string `xml:",chardata"`
+}
+
+type PhoneReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type PhoneId struct {
+    Value *string `xml:",chardata"`
+}
+
+type PersonEmailInformationData struct {
+    ReplaceAll *string `xml:"wd:Replace_All,attr,omitempty"`
+    EmailInformationData *EmailInformationData `xml:"wd:Email_Information_Data,omitempty"`
+}
+
+type EmailInformationData struct {
+    Delete *string `xml:"wd:Delete,attr,omitempty"`
+    EmailData *EmailData `xml:"wd:Email_Data,omitempty"`
+    UsageData *UsageData `xml:"wd:Usage_Data,omitempty"`
+    EmailReference *EmailReference `xml:"wd:Email_Reference,omitempty"`
+    EmailId *EmailId `xml:"wd:Email_ID,omitempty"`
+}
+
+type EmailData struct {
+    EmailAddress *EmailAddress `xml:"wd:Email_Address,omitempty"`
+    EmailComment *EmailComment `xml:"wd:Email_Comment,omitempty"`
+}
+
+type EmailAddress struct {
+    Value *string `xml:",chardata"`
+}
+
+type EmailComment struct {
+    Value *string `xml:",chardata"`
+}
+
+type EmailReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type EmailId struct {
+    Value *string `xml:",chardata"`
+}
+
+type PersonInstantMessengerInformationData struct {
+    ReplaceAll *string `xml:"wd:Replace_All,attr,omitempty"`
+    PersonInstantMessengerData *PersonInstantMessengerData `xml:"wd:Person_Instant_Messenger_Data,omitempty"`
+}
+
+type PersonInstantMessengerData struct {
+    Delete *string `xml:"wd:Delete,attr,omitempty"`
+    InstantMessengerData *InstantMessengerData `xml:"wd:Instant_Messenger_Data,omitempty"`
+    UsageData *UsageData `xml:"wd:Usage_Data,omitempty"`
+    InstantMessengerReference *InstantMessengerReference `xml:"wd:Instant_Messenger_Reference,omitempty"`
+    InstantMessengerId *InstantMessengerId `xml:"wd:Instant_Messenger_ID,omitempty"`
+}
+
+type InstantMessengerData struct {
+    InstantMessengerTypeReference *InstantMessengerTypeReference `xml:"wd:Instant_Messenger_Type_Reference,omitempty"`
+    InstantMessengerAddress *InstantMessengerAddress `xml:"wd:Instant_Messenger_Address,omitempty"`
+    InstantMessengerComment *InstantMessengerComment `xml:"wd:Instant_Messenger_Comment,omitempty"`
+}
+
+type InstantMessengerTypeReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type InstantMessengerAddress struct {
+    Value *string `xml:",chardata"`
+}
+
+type InstantMessengerComment struct {
+    Value *string `xml:",chardata"`
+}
+
+type InstantMessengerReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type InstantMessengerId struct {
+    Value *string `xml:",chardata"`
+}
+
+type PersonWebAddressInformationData struct {
+    ReplaceAll *string `xml:"wd:Replace_All,attr,omitempty"`
+    PersonWebAddressData *PersonWebAddressData `xml:"wd:Person_Web_Address_Data,omitempty"`
+}
+
+type PersonWebAddressData struct {
+    Delete *string `xml:"wd:Delete,attr,omitempty"`
+    WebAddressData *WebAddressData `xml:"wd:Web_Address_Data,omitempty"`
+    UsageData *UsageData `xml:"wd:Usage_Data,omitempty"`
+    WebAddressReference *WebAddressReference `xml:"wd:Web_Address_Reference,omitempty"`
+    WebAddressId *WebAddressId `xml:"wd:Web_Address_ID,omitempty"`
+}
+
+type WebAddressData struct {
+    WebAddress *WebAddress `xml:"wd:Web_Address,omitempty"`
+    WebAddressComment *WebAddressComment `xml:"wd:Web_Address_Comment,omitempty"`
+}
+
+type WebAddress struct {
+    Value *string `xml:",chardata"`
+}
+
+type WebAddressComment struct {
+    Value *string `xml:",chardata"`
+}
+
+type WebAddressReference struct {
+    Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+    Id *Id `xml:"wd:ID,omitempty"`
+}
+
+type WebAddressId struct {
+    Value *string `xml:",chardata"`
+}
+

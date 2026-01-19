@@ -1,0 +1,21 @@
+// Generated from ../model/change_home_contact_information_response/change_home_contact_information_response.go
+package change_home_contact_information_response
+
+import "encoding/xml"
+
+type ChangeHomeContactInformationResponse struct {
+    XMLName xml.Name `xml:"Change_Home_Contact_Information_Response"`
+    Version *string `xml:"version,attr,omitempty"`
+    ChangeHomeContactInformationEventReference *ChangeHomeContactInformationEventReference `xml:"Change_Home_Contact_Information_Event_Reference,omitempty"`
+}
+
+type ChangeHomeContactInformationEventReference struct {
+    Descriptor *string `xml:"Descriptor,attr,omitempty"`
+    Id *Id `xml:"ID,omitempty"`
+}
+
+type Id struct {
+    Value *string `xml:",chardata"`
+    Type *string `xml:"type,attr,omitempty"`
+}
+

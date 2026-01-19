@@ -1,0 +1,21 @@
+// Generated from ../model/change_legal_name_response/change_legal_name_response.go
+package change_legal_name_response
+
+import "encoding/xml"
+
+type ChangeLegalNameResponse struct {
+    XMLName xml.Name `xml:"Change_Legal_Name_Response"`
+    Version *string `xml:"version,attr,omitempty"`
+    LegalNameChangeEventReference *LegalNameChangeEventReference `xml:"Legal_Name_Change_Event_Reference,omitempty"`
+}
+
+type LegalNameChangeEventReference struct {
+    Descriptor *string `xml:"Descriptor,attr,omitempty"`
+    Id *Id `xml:"ID,omitempty"`
+}
+
+type Id struct {
+    Value *string `xml:",chardata"`
+    Type *string `xml:"type,attr,omitempty"`
+}
+

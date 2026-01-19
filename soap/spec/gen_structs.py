@@ -25,19 +25,22 @@ def parse_element(elem: ET.Element, namespace: str, structs: dict, is_root: bool
     if elem.text is not None and elem.text.strip():
         fields['Value'] = ('*string', 'xml:",chardata"')
 
+    namespace_prefix = namespace + ':' if namespace else ''
+
     if is_root:
-        fields['XMLName'] = ('xml.Name', f'xml:"{namespace}:{xml_name}"')
-        fields['XMLNamespace'] = ('*string', f'xml:"xmlns:{namespace},attr,omitempty"')
+        fields['XMLName'] = ('xml.Name', f'xml:"{namespace_prefix}{xml_name}"')
+        if namespace:
+            fields['XMLNamespace'] = ('*string', f'xml:"xmlns:{namespace},attr,omitempty"')
 
     # Add attributes for this element
     for _, (name, _) in enumerate(elem.attrib.items()):
         go_field, xml_name = go_name(name)
-        fields[go_field] = ('*string', f'xml:"{namespace}:{xml_name},attr,omitempty"')
+        fields[go_field] = ('*string', f'xml:"{namespace_prefix}{xml_name},attr,omitempty"')
 
     # Add child fields
     for child in elem:
         go_field, xml_name = go_name(child.tag)
-        fields[go_field] = (f'*{go_field}', f'xml:"{namespace}:{xml_name},omitempty"')
+        fields[go_field] = (f'*{go_field}', f'xml:"{namespace_prefix}{xml_name},omitempty"')
         parse_element(child, namespace, structs, False)
 
 def gen_struct(name, fields):
@@ -49,6 +52,10 @@ def gen_struct(name, fields):
     return lines
 
 def write_file(filename, package, structs):
+    # Create the file and its directories if they don't exist
+    import os
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+
     with open(filename, 'w') as f:
         f.write(f'// Generated from {filename}\n')
         f.write(f'package {package}\n\n')
@@ -64,7 +71,8 @@ def main(xml_path, namespace):
         tree = ET.parse(file)
         structs = OrderedDict()
         parse_element(tree.getroot(), namespace, structs, True)
-        _, package_name = go_name(tree.getroot().tag).lower()
+        _, package_name = go_name(tree.getroot().tag)
+        package_name = package_name.lower()
         file_name = f'../model/{package_name}/{package_name}.go'
         write_file(file_name, package_name, structs)
 
