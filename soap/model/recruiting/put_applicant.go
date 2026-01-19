@@ -45,538 +45,486 @@ type PutApplicantResponse struct {
 }
 
 type ApplicantData struct {
-	ApplicantID               *string                      `xml:"wd:Applicant_ID,omitempty"`
-	PersonalData              *PersonalData                `xml:"wd:Personal_Data,omitempty"`
-	QualificationData         *QualificationData           `xml:"wd:Qualification_Data,omitempty"`
-	RecruitingData            *RecruitingData              `xml:"wd:Recruiting_Data,omitempty"`
-	ResumeData                *ResumeData                  `xml:"wd:Resume_Data,omitempty"`
-	BackgroundCheckData       []*BackgroundCheckData       `xml:"wd:Background_Check_Data,omitempty"`
-	ExternalIntegrationIDData []*ExternalIntegrationIDData `xml:"wd:External_Integration_ID_Data,omitempty"`
-	DocumentFieldResultData   []*DocumentFieldResultData   `xml:"wd:Document_Field_Result_Data,omitempty"`
-}
-
-type PersonalData struct {
-	UniversalID             *string                    `xml:"wd:Universal_ID,omitempty"`
-	NameData                *NameData                  `xml:"wd:Name_Data,omitempty"`
-	PersonalInformationData []*PersonalInformationData `xml:"wd:Personal_Information_Data,omitempty"`
-	IdentificationData      *IdentificationData        `xml:"wd:Identification_Data,omitempty"`
-	ContactData             *ContactData               `xml:"wd:Contact_Data,omitempty"`
-	TobaccoUse              *bool                      `xml:"wd:Tobacco_Use,omitempty"`
-}
-
-type NameData struct {
-	LegalNameData      *LegalNameData        `xml:"wd:Legal_Name_Data,omitempty"`
-	PreferredNameData  *PreferredNameData    `xml:"wd:Preferred_Name_Data,omitempty"`
-	AdditionalNameData []*AdditionalNameData `xml:"wd:Additional_Name_Data,omitempty"`
-}
-
-type LegalNameData struct {
-	NameDetailData *NameDetailData `xml:"wd:Name_Detail_Data,omitempty"`
-}
-
-type PreferredNameData struct {
-	NameDetailData *NameDetailData `xml:"wd:Name_Detail_Data,omitempty"`
-}
-
-type AdditionalNameData struct {
-	NameDetailData    *NameDetailData    `xml:"wd:Name_Detail_Data,omitempty"`
-	NameTypeReference *NameTypeReference `xml:"wd:Name_Type_Reference,omitempty"`
-}
-
-type NameDetailData struct {
-	FormattedName *string `xml:"wd:Formatted_Name,omitempty"`
-	ReportingName *string `xml:"wd:Reporting_Name,omitempty"`
-}
-
-type NameTypeReference struct {
-	Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
-}
-
-type PersonalInformationData struct {
-	PersonalInformationForCountryData []*PersonalInformationForCountryData `xml:"wd:Personal_Information_For_Country_Data,omitempty"`
-	BirthDate                         *string                              `xml:"wd:Birth_Date,omitempty"`
-	DateOfDeath                       *string                              `xml:"wd:Date_of_Death,omitempty"`
-	CountryOfBirthReference           *CountryReference                    `xml:"wd:Country_of_Birth_Reference,omitempty"`
-	CountryRegionOfBirthReference     *CountryRegionReference              `xml:"wd:Country_Region_of_Birth_Reference,omitempty"`
-	RegionOfBirthDescriptor           *string                              `xml:"wd:Region_of_Birth_Descriptor,omitempty"`
-	CityOfBirth                       *string                              `xml:"wd:City_of_Birth,omitempty"`
-	CityOfBirthReference              *CityReference                       `xml:"wd:City_of_Birth_Reference,omitempty"`
-	CitizenshipStatusReference        []*CitizenshipStatusReference        `xml:"wd:Citizenship_Status_Reference,omitempty"`
-	PrimaryNationalityReference       *NationalityReference                `xml:"wd:Primary_Nationality_Reference,omitempty"`
-	AdditionalNationalitiesReference  []*NationalityReference              `xml:"wd:Additional_Nationalities_Reference,omitempty"`
-	LastMedicalExamValidTo            *string                              `xml:"wd:Last_Medical_Exam_Valid_To,omitempty"`
-	LastMedicalExamDate               *string                              `xml:"wd:Last_Medical_Exam_Date,omitempty"`
-	MedicalExamNotes                  *string                              `xml:"wd:Medical_Exam_Notes,omitempty"`
-	BloodTypeReference                *BloodTypeReference                  `xml:"wd:Blood_Type_Reference,omitempty"`
-	MilitaryServiceData               []*MilitaryServiceData               `xml:"wd:Military_Service_Data,omitempty"`
-	SexualOrientationReference        []*SexualOrientationReference        `xml:"wd:Sexual_Orientation_Reference,omitempty"`
-	GenderIdentityReference           []*GenderIdentityReference           `xml:"wd:Gender_Identity_Reference,omitempty"`
-	PronounReference                  []*PronounReference                  `xml:"wd:Pronoun_Reference,omitempty"`
-	NonCountrySpecificSectionData     *NonCountrySpecificSectionData       `xml:"wd:Non_Country_Specific_Section_Data,omitempty"`
-}
-
-// --- Begin full XML struct descent ---
-type PersonalInformationForCountryData struct {
-	CountryReference               *CountryReference                 `xml:"wd:Country_Reference,omitempty"`
-	CountryPersonalInformationData []*CountryPersonalInformationData `xml:"wd:Country_Personal_Information_Data,omitempty"`
-}
-
-type CountryReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type CountryPersonalInformationData struct {
-	// Add all relevant fields as needed
-}
-
-type CountryRegionReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type CityReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type CitizenshipStatusReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type NationalityReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type BloodTypeReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type MilitaryServiceData struct {
-	StatusReference                *StatusReference                `xml:"wd:Status_Reference,omitempty"`
-	DischargeDate                  *string                         `xml:"wd:Discharge_Date,omitempty"`
-	StatusBeginDate                *string                         `xml:"wd:Status_Begin_Date,omitempty"`
-	MilitaryServiceTypeReference   *MilitaryServiceTypeReference   `xml:"wd:Military_Service_Type_Reference,omitempty"`
-	MilitaryRankReference          *MilitaryRankReference          `xml:"wd:Military_Rank_Reference,omitempty"`
-	Notes                          *string                         `xml:"wd:Notes,omitempty"`
-	MilitaryServiceReference       *MilitaryServiceReference       `xml:"wd:Military_Service_Reference,omitempty"`
-	MilitaryDischargeTypeReference *MilitaryDischargeTypeReference `xml:"wd:Military_Discharge_Type_Reference,omitempty"`
-}
-
-type StatusReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type MilitaryServiceTypeReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type MilitaryRankReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type MilitaryServiceReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type MilitaryDischargeTypeReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type SexualOrientationReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type GenderIdentityReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type PronounReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type NonCountrySpecificSectionData struct {
-	NonCountrySpecificSection1Data *NonCountrySpecificSection1Data `xml:"wd:Non_Country_Specific_Section_1_Data,omitempty"`
-	NonCountrySpecificSection2Data *NonCountrySpecificSection2Data `xml:"wd:Non_Country_Specific_Section_2_Data,omitempty"`
-	NonCountrySpecificSection3Data *NonCountrySpecificSection3Data `xml:"wd:Non_Country_Specific_Section_3_Data,omitempty"`
-}
-
-type NonCountrySpecificSection1Data struct {
-	// Add all relevant fields as needed
-}
-
-type NonCountrySpecificSection2Data struct {
-	// Add all relevant fields as needed
-}
-
-type NonCountrySpecificSection3Data struct {
-	// Add all relevant fields as needed
-}
-
-type NationalID struct {
-	Delete              *bool                `xml:"wd:Delete,attr,omitempty"`
-	NationalIDReference *NationalIDReference `xml:"wd:National_ID_Reference,omitempty"`
-	NationalIDData      *NationalIDData      `xml:"wd:National_ID_Data,omitempty"`
-}
-
-type NationalIDReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type NationalIDData struct {
-	// Add all relevant fields as needed
-}
-
-type GovernmentID struct {
-	Delete *bool `xml:"wd:Delete,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type VisaID struct {
-	Delete *bool `xml:"wd:Delete,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type PassportID struct {
-	Delete *bool `xml:"wd:Delete,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type LicenseID struct {
-	Delete *bool `xml:"wd:Delete,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type CustomID struct {
-	Delete *bool `xml:"wd:Delete,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type AddressData struct {
-	FormattedAddress             *string `xml:"wd:Formatted_Address,omitempty"`
-	AddressFormatType            *string `xml:"wd:Address_Format_Type,omitempty"`
-	DefaultedBusinessSiteAddress *bool   `xml:"wd:Defaulted_Business_Site_Address,omitempty"`
-	Delete                       *bool   `xml:"wd:Delete,attr,omitempty"`
-	DoNotReplaceAll              *bool   `xml:"wd:Do_Not_Replace_All,attr,omitempty"`
-	EffectiveDate                *string `xml:"wd:Effective_Date,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type PhoneData struct {
-	AreaCode                         *string `xml:"wd:Area_Code,omitempty"`
-	TenantFormattedPhone             *string `xml:"wd:Tenant_Formatted_Phone,omitempty"`
-	InternationalFormattedPhone      *string `xml:"wd:International_Formatted_Phone,omitempty"`
-	PhoneNumberWithoutAreaCode       *string `xml:"wd:Phone_Number_Without_Area_Code,omitempty"`
-	NationalFormattedPhone           *string `xml:"wd:National_Formatted_Phone,omitempty"`
-	E164FormattedPhone               *string `xml:"wd:E164_Formatted_Phone,omitempty"`
-	WorkdayTraditionalFormattedPhone *string `xml:"wd:Workday_Traditional_Formatted_Phone,omitempty"`
-	Delete                           *bool   `xml:"wd:Delete,attr,omitempty"`
-	DoNotReplaceAll                  *bool   `xml:"wd:Do_Not_Replace_All,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type EmailAddressData struct {
-	Delete          *bool `xml:"wd:Delete,attr,omitempty"`
-	DoNotReplaceAll *bool `xml:"wd:Do_Not_Replace_All,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type InstantMessengerData struct {
-	Delete          *bool `xml:"wd:Delete,attr,omitempty"`
-	DoNotReplaceAll *bool `xml:"wd:Do_Not_Replace_All,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type WebAddressData struct {
-	Delete          *bool `xml:"wd:Delete,attr,omitempty"`
-	DoNotReplaceAll *bool `xml:"wd:Do_Not_Replace_All,attr,omitempty"`
-	// Add all relevant fields as needed
-}
-
-type ExternalJobHistory struct {
-	JobHistoryReference *JobHistoryReference `xml:"wd:Job_History_Reference,omitempty"`
-	JobHistoryData      []*JobHistoryData    `xml:"wd:Job_History_Data,omitempty"`
-}
-
-type JobHistoryReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type JobHistoryData struct {
-	// Add all relevant fields as needed
-}
-
-type Competency struct {
-	CompetencyLevelBehaviorReference  *CompetencyLevelBehaviorReference `xml:"wd:Competency_Level_Behavior_Reference,omitempty"`
-	CompetencyLevelBehaviorDescriptor *string                           `xml:"wd:Competency_Level_Behavior_Descriptor,omitempty"`
-	AssessmentComment                 *string                           `xml:"wd:Assessment_Comment,omitempty"`
-	AssessedOn                        *string                           `xml:"wd:Assessed_On,omitempty"`
-	AssessedByPersonReference         *AssessedByPersonReference        `xml:"wd:Assessed_By_Person_Reference,omitempty"`
-	AssessedByWorkerDescriptor        *string                           `xml:"wd:Assessed_By_Worker_Descriptor,omitempty"`
-	CompetencyReference               *CompetencyReference              `xml:"wd:Competency_Reference,omitempty"`
-	CompetencyDescriptor              *string                           `xml:"wd:Competency_Descriptor,omitempty"`
-}
-
-type CompetencyLevelBehaviorReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type AssessedByPersonReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type CompetencyReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type Certification struct {
-	CertificationReference *CertificationReference `xml:"wd:Certification_Reference,omitempty"`
-	CertificationData      []*CertificationData    `xml:"wd:Certification_Data,omitempty"`
-}
-
-type CertificationReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type CertificationData struct {
-	// Add all relevant fields as needed
-}
-
-type Training struct {
-	TrainingReference *TrainingReference `xml:"wd:Training_Reference,omitempty"`
-	TrainingData      []*TrainingData    `xml:"wd:Training_Data,omitempty"`
-}
-
-type TrainingReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type TrainingData struct {
-	// Add all relevant fields as needed
-}
-
-type AwardAndActivity struct {
-	AwardAndActivityReference *AwardAndActivityReference `xml:"wd:Award_and_Activity_Reference,omitempty"`
-	AwardAndActivityData      *AwardAndActivityData      `xml:"wd:Award_and_Activity_Data,omitempty"`
-}
-
-type AwardAndActivityReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type AwardAndActivityData struct {
-	// Add all relevant fields as needed
-}
-
-type OrganizationMembership struct {
-	OrganizationProfessionalAffiliationReference *OrganizationProfessionalAffiliationReference `xml:"wd:Organization_Professional_Affiliation_Reference,omitempty"`
-	OrganizationProfessionalAffiliationData      []*OrganizationProfessionalAffiliationData    `xml:"wd:Organization_Professional_Affiliation_Data,omitempty"`
-}
-
-type OrganizationProfessionalAffiliationReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type OrganizationProfessionalAffiliationData struct {
-	// Add all relevant fields as needed
-}
-
-type Education struct {
-	EducationReference *EducationReference `xml:"wd:Education_Reference,omitempty"`
-	EducationData      []*EducationData    `xml:"wd:Education_Data,omitempty"`
-}
-
-type EducationReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type EducationData struct {
-	// Add all relevant fields as needed
-}
-
-type WorkExperience struct {
-	ExperienceReference       *ExperienceReference       `xml:"wd:Experience_Reference,omitempty"`
-	RemoveExperience          *bool                      `xml:"wd:Remove_Experience,omitempty"`
-	ExperienceRatingReference *ExperienceRatingReference `xml:"wd:Experience_Rating_Reference,omitempty"`
-	ExperienceComment         *string                    `xml:"wd:Experience_Comment,omitempty"`
-}
-
-type ExperienceReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type ExperienceRatingReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type Language struct {
-	LanguageReference         *LanguageReference         `xml:"wd:Language_Reference,omitempty"`
-	RemoveLanguage            *bool                      `xml:"wd:Remove_Language,omitempty"`
-	NativeLanguage            *bool                      `xml:"wd:Native_Language,omitempty"`
-	LanguageAbility           []*LanguageAbility         `xml:"wd:Language_Ability,omitempty"`
-	AssessedOn                *string                    `xml:"wd:Assessed_On,omitempty"`
-	Note                      *string                    `xml:"wd:Note,omitempty"`
-	AssessedByWorkerReference *AssessedByWorkerReference `xml:"wd:Assessed_by_Worker_Reference,omitempty"`
-}
-
-type LanguageReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type LanguageAbility struct {
-	// Add all relevant fields as needed
-}
-
-type AssessedByWorkerReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type InternalProjectExperience struct {
-	InternalProjectExperienceReference *InternalProjectExperienceReference `xml:"wd:Internal_Project_Experience_Reference,omitempty"`
-	InternalProjectExperienceData      []*InternalProjectExperienceData    `xml:"wd:Internal_Project_Experience_Data,omitempty"`
-}
-
-type InternalProjectExperienceReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type InternalProjectExperienceData struct {
-	// Add all relevant fields as needed
-}
-
-type EligibleForHireReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type ApplicantHasMarkedAsNoShowReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type ApplicantSourceReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type ReferredByWorkerReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type PositionsConsideredForReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type QualificationData struct {
-	ExternalJobHistory        []*ExternalJobHistory        `xml:"wd:External_Job_History,omitempty"`
-	Competency                []*Competency                `xml:"wd:Competency,omitempty"`
-	Certification             []*Certification             `xml:"wd:Certification,omitempty"`
-	Training                  []*Training                  `xml:"wd:Training,omitempty"`
-	AwardAndActivity          []*AwardAndActivity          `xml:"wd:Award_and_Activity,omitempty"`
-	OrganizationMembership    []*OrganizationMembership    `xml:"wd:Organization_Membership,omitempty"`
-	Education                 []*Education                 `xml:"wd:Education,omitempty"`
-	WorkExperience            []*WorkExperience            `xml:"wd:Work_Experience,omitempty"`
-	Language                  []*Language                  `xml:"wd:Language,omitempty"`
-	InternalProjectExperience []*InternalProjectExperience `xml:"wd:Internal_Project_Experience,omitempty"`
-}
-
-type RecruitingData struct {
-	ApplicantEnteredDate                *string                              `xml:"wd:Applicant_Entered_Date,omitempty"`
-	ApplicantComments                   *string                              `xml:"wd:Applicant_Comments,omitempty"`
-	EligibleForHireReference            *EligibleForHireReference            `xml:"wd:Eligible_For_Hire_Reference,omitempty"`
-	EligibleForRehireComments           *string                              `xml:"wd:Eligible_for_Rehire_Comments,omitempty"`
-	ApplicantHasMarkedAsNoShowReference *ApplicantHasMarkedAsNoShowReference `xml:"wd:Applicant_Has_Marked_as_No_Show_Reference,omitempty"`
-	ApplicantSourceReference            *ApplicantSourceReference            `xml:"wd:Applicant_Source_Reference,omitempty"`
-	ReferredByWorkerReference           []*ReferredByWorkerReference         `xml:"wd:Referred_by_Worker_Reference,omitempty"`
-	PositionsConsideredForReference     []*PositionsConsideredForReference   `xml:"wd:Positions_Considered_for_Reference,omitempty"`
-}
-
-type ResumeData struct {
-	Resume []*Resume `xml:"wd:Resume,omitempty"`
-}
-
-type Resume struct {
-	ResumeReference *ResumeReference  `xml:"wd:Resume_Reference,omitempty"`
-	ResumeData      *ResumeDataDetail `xml:"wd:Resume_Data,omitempty"`
-}
-
-type ResumeReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type ResumeDataDetail struct {
-	// Add all relevant fields as needed
+	ApplicantID               ApplicantID             `json:"Applicant_ID"`
+	PersonalData              PersonalData            `json:"Personal_Data"`
+	QualificationData         QualificationData       `json:"Qualification_Data"`
+	RecruitingData            RecruitingData          `json:"Recruiting_Data"`
+	ResumeData                ApplicantDataResumeData `json:"Resume_Data"`
+	BackgroundCheckData       BackgroundCheckData     `json:"Background_Check_Data"`
+	ExternalIntegrationIDData ApplicantReference      `json:"External_Integration_ID_Data"`
+	DocumentFieldResultData   DocumentFieldResultData `json:"Document_Field_Result_Data"`
 }
 
 type BackgroundCheckData struct {
-	StatusDate      *string          `xml:"wd:Status_Date,omitempty"`
-	StatusReference *StatusReference `xml:"wd:Status_Reference,omitempty"`
-	StatusComment   *string          `xml:"wd:Status_Comment,omitempty"`
-}
-
-type ExternalIntegrationIDData struct {
-	ID []*ID `xml:"wd:ID,omitempty"`
-}
-
-type ID struct {
-	SystemID *string `xml:"wd:System_ID,attr,omitempty"`
-	Value    *string `xml:",chardata"`
+	StatusDate      string             `json:"Status_Date"`
+	StatusReference ApplicantReference `json:"Status_Reference"`
+	StatusComment   ApplicantID        `json:"Status_Comment"`
 }
 
 type DocumentFieldResultData struct {
-	FieldReference *FieldReference `xml:"wd:Field_Reference,omitempty"`
-	Value          *string         `xml:"wd:Value,omitempty"`
+	FieldReference ApplicantReference `json:"Field_Reference"`
+	Value          ApplicantID        `json:"Value"`
 }
 
-type FieldReference struct {
-	Descriptor *string                  `xml:"wd:Descriptor,attr,omitempty"`
-	References []*model.WorkdayObjectID `xml:"wd:ID,omitempty"`
-}
-
-type IdentificationData struct {
-	NationalID   []*NationalID   `xml:"wd:National_ID,omitempty"`
-	GovernmentID []*GovernmentID `xml:"wd:Government_ID,omitempty"`
-	VisaID       []*VisaID       `xml:"wd:Visa_ID,omitempty"`
-	PassportID   []*PassportID   `xml:"wd:Passport_ID,omitempty"`
-	LicenseID    []*LicenseID    `xml:"wd:License_ID,omitempty"`
-	CustomID     []*CustomID     `xml:"wd:Custom_ID,omitempty"`
+type PersonalData struct {
+	UniversalID             ApplicantID        `json:"Universal_ID"`
+	NameData                NameData           `json:"Name_Data"`
+	PersonalInformationData string             `json:"Personal_Information_Data"`
+	IdentificationData      IdentificationData `json:"Identification_Data"`
+	ContactData             ContactData        `json:"Contact_Data"`
+	TobaccoUse              bool               `json:"Tobacco_Use"`
 }
 
 type ContactData struct {
-	AddressData          []*AddressData          `xml:"wd:Address_Data,omitempty"`
-	PhoneData            []*PhoneData            `xml:"wd:Phone_Data,omitempty"`
-	EmailAddressData     []*EmailAddressData     `xml:"wd:Email_Address_Data,omitempty"`
-	InstantMessengerData []*InstantMessengerData `xml:"wd:Instant_Messenger_Data,omitempty"`
-	WebAddressData       []*WebAddressData       `xml:"wd:Web_Address_Data,omitempty"`
+	AddressData          AddressData          `json:"Address_Data"`
+	PhoneData            PhoneData            `json:"Phone_Data"`
+	EmailAddressData     EmailAddressData     `json:"Email_Address_Data"`
+	InstantMessengerData InstantMessengerData `json:"Instant_Messenger_Data"`
+	WebAddressData       WebAddressData       `json:"Web_Address_Data"`
 }
 
-// --- End full XML struct descent ---
+type AddressData struct {
+	CountryReference        ApplicantReference `json:"Country_Reference"`
+	LastModified            string             `json:"Last_Modified"`
+	AddressLineData         ApplicantID        `json:"Address_Line_Data"`
+	Municipality            ApplicantID        `json:"Municipality"`
+	CountryCityReference    ApplicantReference `json:"Country_City_Reference"`
+	SubmunicipalityData     ApplicantID        `json:"Submunicipality_Data"`
+	CountryRegionReference  ApplicantReference `json:"Country_Region_Reference"`
+	CountryRegionDescriptor ApplicantID        `json:"Country_Region_Descriptor"`
+	SubregionData           ApplicantID        `json:"Subregion_Data"`
+	PostalCode              ApplicantID        `json:"Postal_Code"`
+	UsageData               UsageData          `json:"Usage_Data"`
+	NumberOfDays            int64              `json:"Number_of_Days"`
+	MunicipalityLocal       ApplicantID        `json:"Municipality_Local"`
+	AddressReference        ApplicantReference `json:"Address_Reference"`
+	AddressID               ApplicantID        `json:"Address_ID"`
+}
+
+type UsageData struct {
+	TypeData                TypeData           `json:"Type_Data"`
+	UseForReference         ApplicantReference `json:"Use_For_Reference"`
+	UseForTenantedReference ApplicantReference `json:"Use_For_Tenanted_Reference"`
+	Comments                ApplicantID        `json:"Comments"`
+}
+
+type TypeData struct {
+	TypeReference ApplicantReference `json:"Type_Reference"`
+}
+
+type EmailAddressData struct {
+	EmailAddress   ApplicantID        `json:"Email_Address"`
+	EmailComment   ApplicantID        `json:"Email_Comment"`
+	UsageData      UsageData          `json:"Usage_Data"`
+	EmailReference ApplicantReference `json:"Email_Reference"`
+	ID             ApplicantID        `json:"ID"`
+}
+
+type InstantMessengerData struct {
+	InstantMessengerAddress       ApplicantID        `json:"Instant_Messenger_Address"`
+	InstantMessengerTypeReference ApplicantReference `json:"Instant_Messenger_Type_Reference"`
+	InstantMessengerComment       ApplicantID        `json:"Instant_Messenger_Comment"`
+	UsageData                     UsageData          `json:"Usage_Data"`
+	InstantMessengerReference     ApplicantReference `json:"Instant_Messenger_Reference"`
+	ID                            ApplicantID        `json:"ID"`
+}
+
+type PhoneData struct {
+	CountryISOCode           string             `json:"Country_ISO_Code"`
+	InternationalPhoneCode   ApplicantID        `json:"International_Phone_Code"`
+	PhoneNumber              ApplicantID        `json:"Phone_Number"`
+	PhoneExtension           ApplicantID        `json:"Phone_Extension"`
+	PhoneDeviceTypeReference ApplicantReference `json:"Phone_Device_Type_Reference"`
+	UsageData                UsageData          `json:"Usage_Data"`
+	PhoneReference           ApplicantReference `json:"Phone_Reference"`
+	ID                       ApplicantID        `json:"ID"`
+}
+
+type WebAddressData struct {
+	WebAddress          ApplicantID        `json:"Web_Address"`
+	WebAddressComment   ApplicantID        `json:"Web_Address_Comment"`
+	UsageData           UsageData          `json:"Usage_Data"`
+	WebAddressReference ApplicantReference `json:"Web_Address_Reference"`
+	ID                  ApplicantID        `json:"ID"`
+}
+
+type IdentificationData struct {
+	NationalID   NationalID   `json:"National_ID"`
+	GovernmentID GovernmentID `json:"Government_ID"`
+	VisaID       VisaID       `json:"Visa_ID"`
+	PassportID   PassportID   `json:"Passport_ID"`
+	LicenseID    LicenseID    `json:"License_ID"`
+	CustomID     CustomID     `json:"Custom_ID"`
+}
+
+type CustomID struct {
+	CustomIDReference       ApplicantReference `json:"Custom_ID_Reference"`
+	CustomIDData            CustomIDData       `json:"Custom_ID_Data"`
+	CustomIDSharedReference ApplicantReference `json:"Custom_ID_Shared_Reference"`
+}
+
+type CustomIDData struct {
+	ID                      ApplicantID        `json:"ID"`
+	IDTypeReference         ApplicantReference `json:"ID_Type_Reference"`
+	IssuedDate              string             `json:"Issued_Date"`
+	ExpirationDate          string             `json:"Expiration_Date"`
+	OrganizationIDReference ApplicantReference `json:"Organization_ID_Reference"`
+	CustomDescription       ApplicantID        `json:"Custom_Description"`
+}
+
+type GovernmentID struct {
+	GovernmentIDReference       ApplicantReference `json:"Government_ID_Reference"`
+	GovernmentIDData            TIDData            `json:"Government_ID_Data"`
+	GovernmentIDSharedReference ApplicantReference `json:"Government_ID_Shared_Reference"`
+}
+
+type TIDData struct {
+	ID                         ApplicantID         `json:"ID"`
+	IDTypeReference            ApplicantReference  `json:"ID_Type_Reference"`
+	CountryReference           ApplicantReference  `json:"Country_Reference"`
+	IssuedDate                 string              `json:"Issued_Date"`
+	ExpirationDate             string              `json:"Expiration_Date"`
+	VerificationDate           string              `json:"Verification_Date"`
+	TIDDataVerifiedByReference *ApplicantReference `json:"Verified_by_Reference,omitempty"`
+	VerifiedByReference        *ApplicantReference `json:"Verified_By_Reference,omitempty"`
+}
+
+type LicenseID struct {
+	LicenseIDReference       ApplicantReference `json:"License_ID_Reference"`
+	LicenseIDData            LicenseIDData      `json:"License_ID_Data"`
+	LicenseIDSharedReference ApplicantReference `json:"License_ID_Shared_Reference"`
+}
+
+type LicenseIDData struct {
+	ID                      ApplicantID        `json:"ID"`
+	IDTypeReference         ApplicantReference `json:"ID_Type_Reference"`
+	CountryReference        ApplicantReference `json:"Country_Reference"`
+	CountryRegionReference  ApplicantReference `json:"Country_Region_Reference"`
+	CountryRegionDescriptor ApplicantID        `json:"Country_Region_Descriptor"`
+	AuthorityReference      ApplicantReference `json:"Authority_Reference"`
+	LicenseClass            ApplicantID        `json:"License_Class"`
+	IssuedDate              string             `json:"Issued_Date"`
+	ExpirationDate          string             `json:"Expiration_Date"`
+	VerificationDate        string             `json:"Verification_Date"`
+	VerifiedByReference     ApplicantReference `json:"Verified_By_Reference"`
+}
+
+type NationalID struct {
+	NationalIDReference       ApplicantReference `json:"National_ID_Reference"`
+	NationalIDData            IDData             `json:"National_ID_Data"`
+	NationalIDSharedReference ApplicantReference `json:"National_ID_Shared_Reference"`
+}
+
+type IDData struct {
+	ID                  ApplicantID        `json:"ID"`
+	IDTypeReference     ApplicantReference `json:"ID_Type_Reference"`
+	CountryReference    ApplicantReference `json:"Country_Reference"`
+	IssuedDate          string             `json:"Issued_Date"`
+	ExpirationDate      string             `json:"Expiration_Date"`
+	VerificationDate    string             `json:"Verification_Date"`
+	Series              *ApplicantID       `json:"Series,omitempty"`
+	IssuingAgency       *ApplicantID       `json:"Issuing_Agency,omitempty"`
+	VerifiedByReference ApplicantReference `json:"Verified_By_Reference"`
+}
+
+type PassportID struct {
+	PassportIDReference       ApplicantReference `json:"Passport_ID_Reference"`
+	PassportIDData            TIDData            `json:"Passport_ID_Data"`
+	PassportIDSharedReference ApplicantReference `json:"Passport_ID_Shared_Reference"`
+}
+
+type VisaID struct {
+	VisaIDReference       ApplicantReference `json:"Visa_ID_Reference"`
+	VisaIDData            IDData             `json:"Visa_ID_Data"`
+	VisaIDSharedReference ApplicantReference `json:"Visa_ID_Shared_Reference"`
+}
+
+type NameData struct {
+	LegalNameData      LegalNameData      `json:"Legal_Name_Data"`
+	PreferredNameData  PreferredNameData  `json:"Preferred_Name_Data"`
+	AdditionalNameData AdditionalNameData `json:"Additional_Name_Data"`
+}
+
+type AdditionalNameData struct {
+	NameDetailData    NameDetailData     `json:"Name_Detail_Data"`
+	NameTypeReference ApplicantReference `json:"Name_Type_Reference"`
+}
+
+type NameDetailData struct {
+	CountryReference                ApplicantReference  `json:"Country_Reference"`
+	PrefixData                      PrefixData          `json:"Prefix_Data"`
+	FirstName                       ApplicantID         `json:"First_Name"`
+	MiddleName                      ApplicantID         `json:"Middle_Name"`
+	LastName                        ApplicantID         `json:"Last_Name"`
+	SecondaryLastName               ApplicantID         `json:"Secondary_Last_Name"`
+	TertiaryLastName                ApplicantID         `json:"Tertiary_Last_Name"`
+	LocalNameDetailData             LocalNameDetailData `json:"Local_Name_Detail_Data"`
+	SuffixData                      SuffixData          `json:"Suffix_Data"`
+	FullNameForSingaporeAndMalaysia ApplicantID         `json:"Full_Name_for_Singapore_and_Malaysia"`
+}
+
+type LocalNameDetailData struct {
+	FirstName          ApplicantID `json:"First_Name"`
+	MiddleName         ApplicantID `json:"Middle_Name"`
+	LastName           ApplicantID `json:"Last_Name"`
+	SecondaryLastName  ApplicantID `json:"Secondary_Last_Name"`
+	FirstName2         ApplicantID `json:"First_Name_2"`
+	MiddleName2        ApplicantID `json:"Middle_Name_2"`
+	LastName2          ApplicantID `json:"Last_Name_2"`
+	SecondaryLastName2 ApplicantID `json:"Secondary_Last_Name_2"`
+}
+
+type PrefixData struct {
+	TitleReference      ApplicantReference `json:"Title_Reference"`
+	TitleDescriptor     ApplicantID        `json:"Title_Descriptor"`
+	SalutationReference ApplicantReference `json:"Salutation_Reference"`
+}
+
+type SuffixData struct {
+	SocialSuffixReference       ApplicantReference `json:"Social_Suffix_Reference"`
+	SocialSuffixDescriptor      ApplicantID        `json:"Social_Suffix_Descriptor"`
+	AcademicSuffixReference     ApplicantReference `json:"Academic_Suffix_Reference"`
+	HereditarySuffixReference   ApplicantReference `json:"Hereditary_Suffix_Reference"`
+	HonorarySuffixReference     ApplicantReference `json:"Honorary_Suffix_Reference"`
+	ProfessionalSuffixReference ApplicantReference `json:"Professional_Suffix_Reference"`
+	ReligiousSuffixReference    ApplicantReference `json:"Religious_Suffix_Reference"`
+	RoyalSuffixReference        ApplicantReference `json:"Royal_Suffix_Reference"`
+}
+
+type LegalNameData struct {
+	NameDetailData string `json:"Name_Detail_Data"`
+}
+
+type PreferredNameData struct {
+	NameDetailData NameDetailData `json:"Name_Detail_Data"`
+}
+
+type QualificationData struct {
+	ExternalJobHistory        ExternalJobHistory        `json:"External_Job_History"`
+	Competency                Competency                `json:"Competency"`
+	Certification             Certification             `json:"Certification"`
+	Training                  Training                  `json:"Training"`
+	AwardAndActivity          AwardAndActivity          `json:"Award_and_Activity"`
+	OrganizationMembership    OrganizationMembership    `json:"Organization_Membership"`
+	Education                 Education                 `json:"Education"`
+	WorkExperience            WorkExperience            `json:"Work_Experience"`
+	Language                  Language                  `json:"Language"`
+	InternalProjectExperience InternalProjectExperience `json:"Internal_Project_Experience"`
+}
+
+type AwardAndActivity struct {
+	AwardAndActivityReference ApplicantReference   `json:"Award_and_Activity_Reference"`
+	AwardAndActivityData      AwardAndActivityData `json:"Award_and_Activity_Data"`
+}
+
+type AwardAndActivityData struct {
+	AwardAndActivityID            ApplicantID        `json:"Award_and_Activity_ID"`
+	RemoveAwardAndActivity        bool               `json:"Remove_Award_and_Activity"`
+	AwardAndActivityTypeReference ApplicantReference `json:"Award_and_Activity_Type_Reference"`
+	Title                         ApplicantID        `json:"Title"`
+	SponsorIssuer                 ApplicantID        `json:"Sponsor_Issuer"`
+	StartDate                     string             `json:"Start_Date"`
+	EndDate                       string             `json:"End_Date"`
+	Description                   ApplicantID        `json:"Description"`
+	URL                           ApplicantID        `json:"URL"`
+	RelatedPositionReference      ApplicantReference `json:"Related_Position_Reference"`
+}
+
+type Certification struct {
+	CertificationReference ApplicantReference `json:"Certification_Reference"`
+	CertificationData      CertificationData  `json:"Certification_Data"`
+}
+
+type CertificationData struct {
+	CertificationID          ApplicantID              `json:"Certification_ID"`
+	RemoveCertification      bool                     `json:"Remove_Certification"`
+	CertificationReference   ApplicantReference       `json:"Certification_Reference"`
+	CountryReference         ApplicantReference       `json:"Country_Reference"`
+	CertificationName        ApplicantID              `json:"Certification_Name"`
+	Issuer                   ApplicantID              `json:"Issuer"`
+	CertificationNumber      ApplicantID              `json:"Certification_Number"`
+	IssuedDate               string                   `json:"Issued_Date"`
+	ExpirationDate           string                   `json:"Expiration_Date"`
+	ExaminationScore         ApplicantID              `json:"Examination_Score"`
+	ExaminationDate          string                   `json:"Examination_Date"`
+	SpecialtyAchievementData SpecialtyAchievementData `json:"Specialty_Achievement_Data"`
+	WorkerDocumentData       MentData                 `json:"Worker_Document_Data"`
+}
+
+type SpecialtyAchievementData struct {
+	SpecialtyReference    ApplicantReference `json:"Specialty_Reference"`
+	StartDate             string             `json:"Start_Date"`
+	EndDate               string             `json:"End_Date"`
+	SubspecialtyReference ApplicantReference `json:"Subspecialty_Reference"`
+}
+
+type MentData struct {
+	FileName                  ApplicantID        `json:"File_Name"`
+	Comment                   ApplicantID        `json:"Comment"`
+	File                      string             `json:"File"`
+	DocumentCategoryReference ApplicantReference `json:"Document_Category_Reference"`
+	ContentType               *ApplicantID       `json:"Content_Type,omitempty"`
+}
+
+type Competency struct {
+	CompetencyLevelBehaviorReference  ApplicantReference `json:"Competency_Level_Behavior_Reference"`
+	CompetencyLevelBehaviorDescriptor ApplicantID        `json:"Competency_Level_Behavior_Descriptor"`
+	AssessmentComment                 ApplicantID        `json:"Assessment_Comment"`
+	AssessedOn                        string             `json:"Assessed_On"`
+	AssessedByPersonReference         ApplicantReference `json:"Assessed_By_Person_Reference"`
+	AssessedByWorkerDescriptor        ApplicantID        `json:"Assessed_By_Worker_Descriptor"`
+	CompetencyReference               ApplicantReference `json:"Competency_Reference"`
+	CompetencyDescriptor              ApplicantID        `json:"Competency_Descriptor"`
+}
+
+type Education struct {
+	EducationReference ApplicantReference `json:"Education_Reference"`
+	EducationData      EducationData      `json:"Education_Data"`
+}
+
+type EducationData struct {
+	EducationID               ApplicantID        `json:"Education_ID"`
+	RemoveEducation           bool               `json:"Remove_Education"`
+	CountryReference          ApplicantReference `json:"Country_Reference"`
+	SchoolReference           ApplicantReference `json:"School_Reference"`
+	SchoolName                ApplicantID        `json:"School_Name"`
+	SchoolTypeReference       ApplicantReference `json:"School_Type_Reference"`
+	Location                  ApplicantID        `json:"Location"`
+	DegreeReference           ApplicantReference `json:"Degree_Reference"`
+	DegreeCompletedReference  ApplicantReference `json:"Degree_Completed_Reference"`
+	DateDegreeReceived        string             `json:"Date_Degree_Received"`
+	FieldOfStudyReference     ApplicantReference `json:"Field_Of_Study_Reference"`
+	GradeAverage              ApplicantID        `json:"Grade_Average"`
+	FirstYearAttended         string             `json:"First_Year_Attended"`
+	LastYearAttended          string             `json:"Last_Year_Attended"`
+	IsHighestLevelOfEducation bool               `json:"Is_Highest_Level_of_Education"`
+	FirstDayAttended          string             `json:"First_Day_Attended"`
+	LastDayAttended           string             `json:"Last_Day_Attended"`
+	EducationAttachmentData   MentData           `json:"Education_Attachment_Data"`
+}
+
+type ExternalJobHistory struct {
+	JobHistoryReference ApplicantReference `json:"Job_History_Reference"`
+	JobHistoryData      JobHistoryData     `json:"Job_History_Data"`
+}
+
+type JobHistoryData struct {
+	JobHistoryID                    ApplicantID        `json:"Job_History_ID"`
+	RemoveJobHistory                bool               `json:"Remove_Job_History"`
+	JobTitle                        ApplicantID        `json:"Job_Title"`
+	Company                         ApplicantID        `json:"Company"`
+	JobHistoryCompanyReference      ApplicantReference `json:"Job_History_Company_Reference"`
+	StartDate                       string             `json:"Start_Date"`
+	EndDate                         string             `json:"End_Date"`
+	ResponsibilitiesAndAchievements ApplicantID        `json:"Responsibilities_and_Achievements"`
+	Location                        ApplicantID        `json:"Location"`
+	JobReference                    ApplicantID        `json:"Job_Reference"`
+	Contact                         ApplicantID        `json:"Contact"`
+}
+
+type InternalProjectExperience struct {
+	InternalProjectExperienceReference ApplicantReference            `json:"Internal_Project_Experience_Reference"`
+	InternalProjectExperienceData      InternalProjectExperienceData `json:"Internal_Project_Experience_Data"`
+}
+
+type InternalProjectExperienceData struct {
+	InternalProjectExperienceID     ApplicantID `json:"Internal_Project_Experience_ID"`
+	RemoveInternalProjectExperience bool        `json:"Remove_Internal_Project_Experience"`
+	InternalProject                 ApplicantID `json:"Internal_Project"`
+	Description                     ApplicantID `json:"Description"`
+	StartDate                       string      `json:"Start_Date"`
+	EndDate                         string      `json:"End_Date"`
+	ProjectLeader                   ApplicantID `json:"Project_Leader"`
+}
+
+type Language struct {
+	LanguageReference         ApplicantReference `json:"Language_Reference"`
+	RemoveLanguage            bool               `json:"Remove_Language"`
+	NativeLanguage            bool               `json:"Native_Language"`
+	LanguageAbility           LanguageAbility    `json:"Language_Ability"`
+	AssessedOn                string             `json:"Assessed_On"`
+	Note                      ApplicantID        `json:"Note"`
+	AssessedByWorkerReference ApplicantReference `json:"Assessed_by_Worker_Reference"`
+}
+
+type LanguageAbility struct {
+	LanguageAbilityData LanguageAbilityData `json:"Language_Ability_Data"`
+}
+
+type LanguageAbilityData struct {
+	LanguageProficiencyReference ApplicantReference `json:"Language_Proficiency_Reference"`
+	LanguageAbilityTypeReference ApplicantReference `json:"Language_Ability_Type_Reference"`
+}
+
+type OrganizationMembership struct {
+	OrganizationProfessionalAffiliationReference ApplicantReference                      `json:"Organization_Professional_Affiliation_Reference"`
+	OrganizationProfessionalAffiliationData      OrganizationProfessionalAffiliationData `json:"Organization_Professional_Affiliation_Data"`
+}
+
+type OrganizationProfessionalAffiliationData struct {
+	ProfessionalAffiliationID                        ApplicantID        `json:"Professional_Affiliation_ID"`
+	RemoveProfessionalAffiliation                    bool               `json:"Remove_Professional_Affiliation"`
+	ProfessionalAffiliationReference                 ApplicantReference `json:"Professional_Affiliation_Reference"`
+	ProfessionalAffiliation                          ApplicantID        `json:"Professional_Affiliation"`
+	ProfessionalAffiliationTypeReference             ApplicantReference `json:"Professional_Affiliation_Type_Reference"`
+	Affiliation                                      ApplicantID        `json:"Affiliation"`
+	ProfessionalAffiliationRelationshipTypeReference ApplicantReference `json:"Professional_Affiliation_Relationship_Type_Reference"`
+	BeginDate                                        string             `json:"Begin_Date"`
+	EndDate                                          string             `json:"End_Date"`
+	ContactInformationData                           ContactData        `json:"Contact_Information_Data"`
+}
+
+type Training struct {
+	TrainingReference ApplicantReference `json:"Training_Reference"`
+	TrainingData      TrainingData       `json:"Training_Data"`
+}
+
+type TrainingData struct {
+	TrainingID            ApplicantID        `json:"Training_ID"`
+	RemoveTraining        bool               `json:"Remove_Training"`
+	Training              ApplicantID        `json:"Training"`
+	Description           ApplicantID        `json:"Description"`
+	TrainingTypeReference ApplicantReference `json:"Training_Type_Reference"`
+	CompletionDate        string             `json:"Completion_Date"`
+	TrainingDuration      ApplicantID        `json:"Training_Duration"`
+}
+
+type WorkExperience struct {
+	ExperienceReference       ApplicantReference `json:"Experience_Reference"`
+	RemoveExperience          bool               `json:"Remove_Experience"`
+	ExperienceRatingReference ApplicantReference `json:"Experience_Rating_Reference"`
+	ExperienceComment         ApplicantID        `json:"Experience_Comment"`
+}
+
+type RecruitingData struct {
+	ApplicantEnteredDate                string             `json:"Applicant_Entered_Date"`
+	ApplicantComments                   ApplicantID        `json:"Applicant_Comments"`
+	EligibleForHireReference            ApplicantReference `json:"Eligible_For_Hire_Reference"`
+	EligibleForRehireComments           ApplicantID        `json:"Eligible_for_Rehire_Comments"`
+	ApplicantHasMarkedAsNoShowReference ApplicantReference `json:"Applicant_Has_Marked_as_No_Show_Reference"`
+	ApplicantSourceReference            ApplicantReference `json:"Applicant_Source_Reference"`
+	ReferredByWorkerReference           ApplicantReference `json:"Referred_by_Worker_Reference"`
+	PositionsConsideredForReference     ApplicantReference `json:"Positions_Considered_for_Reference"`
+}
+
+type ApplicantDataResumeData struct {
+	Resume Resume `json:"Resume"`
+}
+
+type Resume struct {
+	ResumeReference ApplicantReference `json:"Resume_Reference"`
+	ResumeData      ResumeResumeData   `json:"Resume_Data"`
+}
+
+type ResumeResumeData struct {
+	FileID   ApplicantID `json:"File_ID"`
+	File     string      `json:"File"`
+	FileName ApplicantID `json:"FileName"`
+	Comments ApplicantID `json:"Comments"`
+}
+
+type ApplicantID string
+
+const (
+	String ApplicantID = "string"
+)
