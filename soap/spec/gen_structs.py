@@ -48,22 +48,28 @@ def gen_struct(name, fields):
     lines.append('}')
     return lines
 
-def main(xml_path, package):
+def write_file(filename, package, structs):
+    with open(filename, 'w') as f:
+        f.write(f'// Generated from {filename}\n')
+        f.write(f'package {package}\n\n')
+        f.write('import "encoding/xml"\n\n')
+        for _, (name, fields) in enumerate(structs.items()):
+            for line in gen_struct(name, fields):
+                f.write(line + '\n')
+            f.write('\n')
+
+def main(xml_path, namespace):
     files = glob.glob(xml_path)
-    structs = OrderedDict()
     for file in files:
         tree = ET.parse(file)
-        parse_element(tree.getroot(), 'wd', structs, True)
-
-    print(f'// Generated from {file}')
-    print(f'package {package}\n')
-    print('import "encoding/xml"\n')
-    for _, (name, fields) in enumerate(structs.items()):
-        print('\n'.join(gen_struct(name, fields)))
-        print()
+        structs = OrderedDict()
+        parse_element(tree.getroot(), namespace, structs, True)
+        _, package_name = go_name(tree.getroot().tag).lower()
+        file_name = f'../model/{package_name}/{package_name}.go'
+        write_file(file_name, package_name, structs)
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print("Usage: python generate_go_structs.py <xml_file_glob> <package>")
+        print("Usage: python generate_go_structs.py <xml_file_glob> <namespace>")
         sys.exit(1)
     main(sys.argv[1], sys.argv[2])

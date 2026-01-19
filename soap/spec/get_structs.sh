@@ -35,7 +35,7 @@ curl -o 'Change_Personal_Information_Request.xml' \
 curl -o 'Change_Personal_Information_Response.xml' \
     'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Change_Personal_Information_Response.xml'
 
-curl -o 'Change_Work_Contact_Information_Request.xml' \
-    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Change_Work_Contact_Information_Request.xml'
-curl -o 'Change_Work_Contact_Information_Response.xml' \
-    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human
+curl -o 'Change_Home_Contact_Information_Request.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Change_Home_Contact_Information_Request.xml'
+curl -o 'Change_Home_Contact_Information_Response.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Change_Home_Contact_Information_Response.xml'

@@ -1,0 +1,7 @@
+<bsvc:Change_Home_Contact_Information_Response bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Change_Home_Contact_Information_Event_Reference bsvc:Descriptor="string">
+    <!--Zero or more repetitions:-->
+    <bsvc:ID bsvc:type="string">string</bsvc:ID>
+  </bsvc:Change_Home_Contact_Information_Event_Reference>
+</bsvc:Change_Home_Contact_Information_Response>

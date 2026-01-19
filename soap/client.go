@@ -15,6 +15,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"time"
 	"workday/client"
 
 	"github.com/google/uuid"
@@ -106,7 +107,7 @@ type AnyXML struct {
 func (s *Client) GetCandidate(workdayID string) {
 	request := GetCandidatesRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
-		Version: lo.ToPtr(WorkdayAPIVersion),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
 		RequestReferences: &RequestReferences{
 			CandidateReference: &CandidateReference{
 				Id: &Id{
@@ -129,10 +130,10 @@ func (s *Client) GetCandidate(workdayID string) {
 	}
 }
 
-func (s *Client) GetApplicant(workdayID string) {
+func (s *Client) GetApplicant(workdayID string) *GetApplicantsResponse {
 	request := GetApplicantsRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
-		Version: lo.ToPtr(WorkdayAPIVersion),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
 		RequestReferences: &RequestReferences{
 			ApplicantReference: &ApplicantReference{
 				Id: &Id{
@@ -148,17 +149,19 @@ func (s *Client) GetApplicant(workdayID string) {
 		},
 	}
 
-	var response AnyXML
+	var response GetApplicantsResponse
 	if call := s.call("Recruiting/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
-		return
+		return nil
 	}
+
+	return &response
 }
 
 func (s *Client) GetWorker(workdayID string) {
 	request := GetWorkersRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
-		Version: lo.ToPtr(WorkdayAPIVersion),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
 		RequestReferences: &RequestReferences{
 			WorkerReference: &WorkerReference{
 				Id: &Id{
@@ -181,14 +184,149 @@ func (s *Client) GetWorker(workdayID string) {
 	}
 }
 
-func (s *Client) UpdateWorker(workdayID string) {
-	// TODO
+func (s *Client) UpdateWorkerName(workdayID, firstName, middleName, lastName string) {
+	request := ChangeLegalNameRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
+		ChangeLegalNameData: &ChangeLegalNameData{
+			PersonReference: &PersonReference{
+				Id: &Id{
+					Type: lo.ToPtr("WID"),
+					Value: lo.ToPtr(workdayID),
+				},
+			},
+			NameData: &NameData{
+				FirstName: &FirstName{
+					Value: lo.ToPtr(firstName),
+				},
+				MiddleName: &MiddleName{
+					Value: lo.ToPtr(middleName),
+				},
+				LastName: &LastName{
+					Value: lo.ToPtr(lastName),
+				},
+			},
+			EffectiveDate: &EffectiveDate{
+				Value: lo.ToPtr(time.Now().Format("2006-01-02")),
+			},
+		},
+	}
+
+	var response AnyXML
+	if call := s.call("Human_Resources/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
+		fmt.Printf("SOAP request error: %v\n", call.Error)
+		return
+	}
 }
 
-func (s *Client) UpdateCandidate(workdayID string) {
-	// TODO
+func (s *Client) UpdateWorkerAddress(workdayID string) {
+	request := &ChangeHomeContactInformationRequest{
+
+	}
+
+	var response AnyXML
+	if call := s.call("Human_Resources/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
+		fmt.Printf("SOAP request error: %v\n", call.Error)
+		return
+	}
 }
 
-func (s *Client) UpdateApplicant(workdayID string) {
-	// TODO
+func (s *Client) UpdateCandidateName(workdayID, firstName, middleName, lastName string) {
+	request := PutCandidateRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
+		CandidateReference: &CandidateReference{
+			Id: &Id{
+				Type:  lo.ToPtr("WID"),
+				Value: lo.ToPtr(workdayID),
+			},
+		},
+		CandidateData: &CandidateData{
+			NameData: &NameData{
+				LegalName: &LegalName{
+					NameDetailData: &NameDetailData{
+						FirstName: &FirstName{
+							Value: lo.ToPtr(firstName),
+						},
+						// MiddleName: &MiddleName{
+						// 	Value:lo.ToPtr(middleName),
+						// They don;t accept middle names :shrug:....if configured
+						LastName: &LastName{
+							Value: lo.ToPtr(lastName),
+						},
+					},
+				},
+			},
+			// Can't do these...at least not without a ridiculous amount of tomfoolery.
+			// ContactData: &ContactData{
+			// 	LocationData: &LocationData{
+			// 		AddressLine1: &AddressLine1{
+			// 			Value: lo.ToPtr("hello street"),
+			// 		},
+			// 	},
+			// },
+			// JobApplicationData: &JobApplicationData{
+			// 	JobAppliedToData: &JobAppliedToData{
+			// 		GlobalPersonalInformationData: &GlobalPersonalInformationData{
+			// 			DateOfBirth: &DateOfBirth{
+			// 				Value: lo.ToPtr("1990-02-12"),
+			// 			},
+			// 		},
+			// 	},
+			// },
+		},
+	}
+
+	var response AnyXML
+	if call := s.call("Recruiting/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
+		fmt.Printf("SOAP request error: %v\n", call.Error)
+		return
+	}
+}
+
+func (s *Client) UpdateApplicant(workdayID, firstName, middleName, lastName string) {
+	applicant := s.GetApplicant(workdayID)
+	if applicant == nil {
+		fmt.Printf("Could not find applicant with Workday ID: %s\n", workdayID)
+		return
+	}
+	
+	fmt.Println("got applicant: " +
+		lo.FromPtr(applicant.ResponseData.Applicant.ApplicantData.PersonalData.NameData.LegalNameData.NameDetailData.FirstName.Value))
+
+	request := &PutApplicantRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
+		ApplicantReference: &ApplicantReference{
+			Id: &Id{
+				Type: lo.ToPtr("WID"),
+				Value: lo.ToPtr(workdayID),
+			},
+		},
+		ApplicantData: &ApplicantData{
+			PersonalData: &PersonalData{
+				NameData: &NameData{
+					LegalNameData: &LegalNameData{
+						NameDetailData: &NameDetailData{
+							FirstName: &FirstName{
+								Value: lo.ToPtr(firstName),
+							},
+							MiddleName: &MiddleName{
+								Value: lo.ToPtr(middleName),
+							},
+							LastName: &LastName{
+								Value: lo.ToPtr(lastName),
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	var response AnyXML
+	if call := s.call("Recruiting/"+WorkdayAPIVersion, request, &response); call.Error != nil {
+		fmt.Printf("SOAP request error: %v\n", call.Error)
+		return
+	}
 }

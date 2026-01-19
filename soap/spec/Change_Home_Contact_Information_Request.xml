@@ -1,4 +1,4 @@
-<bsvc:Change_Work_Contact_Information_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+<bsvc:Change_Home_Contact_Information_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
   <!--Optional:-->
   <bsvc:Business_Process_Parameters>
     <!--Optional:-->
@@ -33,7 +33,7 @@
       <bsvc:Content_Type>string</bsvc:Content_Type>
     </bsvc:Business_Process_Attachment_Data>
   </bsvc:Business_Process_Parameters>
-  <bsvc:Change_Work_Contact_Information_Data>
+  <bsvc:Change_Home_Contact_Information_Data>
     <!--Optional:-->
     <bsvc:Person_Reference bsvc:Descriptor="string">
       <!--Zero or more repetitions:-->
@@ -299,5 +299,5 @@
         </bsvc:Person_Web_Address_Data>
       </bsvc:Person_Web_Address_Information_Data>
     </bsvc:Person_Contact_Information_Data>
-  </bsvc:Change_Work_Contact_Information_Data>
-</bsvc:Change_Work_Contact_Information_Request>
+  </bsvc:Change_Home_Contact_Information_Data>
+</bsvc:Change_Home_Contact_Information_Request>
