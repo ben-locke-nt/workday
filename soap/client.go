@@ -15,6 +15,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/hooklift/gowsdl/soap"
@@ -126,4 +127,16 @@ func (s *Client) GetWorker(workdayID string) {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}
+}
+
+func (s *Client) UpdateWorker(workdayID string) {
+	// TODO
+}
+
+func (s *Client) UpdateCandidate(workdayID string) {
+	// TODO
+}
+
+func (s *Client) UpdateApplicant(workdayID string) {
+	// TODO
 }

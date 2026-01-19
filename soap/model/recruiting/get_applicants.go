@@ -22,11 +22,6 @@ type GetApplicantsRequest struct {
 	Pagination *model.PaginationFilter
 }
 
-type ApplicantReference struct {
-	XMLName   xml.Name `xml:"wd:Applicant_Reference,omitempty"`
-	Reference *model.WorkdayObjectID
-}
-
 func NewGetApplicantsRequest() *GetApplicantsRequest {
 	return &GetApplicantsRequest{
 		XMLTopLevel: model.NewXMLTopLevel(RecruitingServiceVersion),

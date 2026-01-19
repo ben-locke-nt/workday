@@ -42,9 +42,11 @@ func SerializeWithXMLHeader(v any) ([]byte, error) {
 }
 
 type WorkdayObjectID struct {
-	XMLName string `xml:"wd:ID"`
-	Type    string `xml:"wd:type,attr,omitempty"`
-	Value   string `xml:",chardata"`
+	XMLName    string `xml:"wd:ID"`
+	Type       string `xml:"wd:type,attr,omitempty"`
+	Value      string `xml:",chardata"`
+	ParentID   string `xml:"wd:parent_id,attr,omitempty"`
+	ParentType string `xml:"wd:parent_type,attr,omitempty"`
 }
 
 func NewWorkdayObjectID(workdayID string) *WorkdayObjectID {
