@@ -1,7 +1,0 @@
-<bsvc:Employee_Personal_Info_Get bsvc:As_Of_Date="2008-09-29" bsvc:As_Of_Moment="2014-09-18T23:18:33" bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
-  <bsvc:Employee_Reference>
-    <bsvc:Integration_ID_Reference bsvc:Descriptor="string">
-      <bsvc:ID bsvc:System_ID="string">string</bsvc:ID>
-    </bsvc:Integration_ID_Reference>
-  </bsvc:Employee_Reference>
-</bsvc:Employee_Personal_Info_Get>

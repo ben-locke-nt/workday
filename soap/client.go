@@ -15,14 +15,11 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"time"
+	"workday/client"
 
 	"github.com/google/uuid"
 	"github.com/hooklift/gowsdl/soap"
-
-	workday "github.com/nametaginc/nt/server/workday/client/.dev/client"
-	"github.com/nametaginc/nt/server/workday/client/.dev/soap/model/human_resources"
-	"github.com/nametaginc/nt/server/workday/client/.dev/soap/model/recruiting"
+	"github.com/samber/lo"
 )
 
 type Client struct {
@@ -33,7 +30,7 @@ type Client struct {
 func New() (*Client, error) {
 	apiURL := os.Getenv("WORKDAY_SOAP_API_URL")
 
-	oauth2Client, err := workday.NewOAUTH2Client()
+	oauth2Client, err := client.NewOAUTH2Client()
 	if err != nil {
 		return nil, err
 	}
@@ -102,28 +99,83 @@ func (s *callResponse) Success() bool {
 	return s.Error == nil && s.HTTPStatusCode == 200
 }
 
+type AnyXML struct {
+	Content string `xml:",innerxml"`
+}
+
 func (s *Client) GetCandidate(workdayID string) {
-	request := recruiting.NewGetCandidateByWorkdayIDRequest(workdayID)
-	var response recruiting.GetCandidatesResponse
-	if call := s.call("Recruiting/v46.0", request, &response); call.Error != nil {
+	request := GetCandidatesRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version: lo.ToPtr(WorkdayAPIVersion),
+		RequestReferences: &RequestReferences{
+			CandidateReference: &CandidateReference{
+				Id: &Id{
+					Type:  lo.ToPtr("WID"),
+					Value: lo.ToPtr(workdayID),
+				},
+			},
+		},
+		ResponseFilter: &ResponseFilter{
+			Count: &Count{
+				Value: lo.ToPtr("1"),
+			},
+		},
+	}
+
+	var response AnyXML
+	if call := s.call("Recruiting/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}
 }
 
 func (s *Client) GetApplicant(workdayID string) {
-	request := recruiting.NewGetApplicantByWorkdayIDRequest(workdayID)
-	var response recruiting.GetApplicantsResponse
-	if call := s.call("Recruiting/v46.0", request, &response); call.Error != nil {
+	request := GetApplicantsRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version: lo.ToPtr(WorkdayAPIVersion),
+		RequestReferences: &RequestReferences{
+			ApplicantReference: &ApplicantReference{
+				Id: &Id{
+					Type:  lo.ToPtr("WID"),
+					Value: lo.ToPtr(workdayID),
+				},
+			},
+		},
+		ResponseFilter: &ResponseFilter{
+			Count: &Count{
+				Value: lo.ToPtr("1"),
+			},
+		},
+	}
+
+	var response AnyXML
+	if call := s.call("Recruiting/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}
 }
 
 func (s *Client) GetWorker(workdayID string) {
-	request := human_resources.NewGetWorkerByWorkdayIDRequest(workdayID)
-	var response human_resources.GetWorkersResponse
-	if call := s.call("Human_Resources/v46.0", request, &response); call.Error != nil {
+	request := GetWorkersRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version: lo.ToPtr(WorkdayAPIVersion),
+		RequestReferences: &RequestReferences{
+			WorkerReference: &WorkerReference{
+				Id: &Id{
+					Type:  lo.ToPtr("WID"),
+					Value: lo.ToPtr(workdayID),
+				},
+			},
+		},
+		ResponseFilter: &ResponseFilter{
+			Count: &Count{
+				Value: lo.ToPtr("1"),
+			},
+		},
+	}
+
+	var response AnyXML
+	if call := s.call("Human_Resources/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}

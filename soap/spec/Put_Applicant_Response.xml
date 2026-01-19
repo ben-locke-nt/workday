@@ -1,0 +1,20 @@
+<bsvc:Put_Applicant_Response bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Applicant_Reference bsvc:Descriptor="string">
+    <!--Zero or more repetitions:-->
+    <bsvc:ID bsvc:type="string">string</bsvc:ID>
+  </bsvc:Applicant_Reference>
+  <!--Zero or more repetitions:-->
+  <bsvc:Exceptions_Response_Data>
+    <!--Zero or more repetitions:-->
+    <bsvc:Exceptions_Data>
+      <!--Zero or more repetitions:-->
+      <bsvc:Exception_Data>
+        <!--Optional:-->
+        <bsvc:Classification>string</bsvc:Classification>
+        <!--Optional:-->
+        <bsvc:Message>string</bsvc:Message>
+      </bsvc:Exception_Data>
+    </bsvc:Exceptions_Data>
+  </bsvc:Exceptions_Response_Data>
+</bsvc:Put_Applicant_Response>

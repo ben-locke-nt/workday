@@ -22,6 +22,7 @@
         <!--Optional:-->
         <bsvc:Effective_Through>2017-05-15T06:41:13</bsvc:Effective_Through>
       </bsvc:Transaction_Date_Range_Data>
+      <!--You have a CHOICE of the next 2 items at this level-->
       <!--Optional:-->
       <bsvc:Transaction_Type_References>
         <!--Zero or more repetitions:-->
@@ -2340,11 +2341,67 @@
                 <bsvc:Stillbirth_Baby_Deceased>false</bsvc:Stillbirth_Baby_Deceased>
                 <!--Optional:-->
                 <bsvc:Date_Baby_Arrived_Home_From_Hospital>2001-02-22</bsvc:Date_Baby_Arrived_Home_From_Hospital>
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Optional:-->
+                <!--Zero or more repetitions:-->
               </bsvc:Leave_Request_Additional_Fields>
             </bsvc:Leave_Status_Data>
+            <!--Zero or more repetitions:-->
+            <!--Optional:-->
+            <!--Optional:-->
           </bsvc:Worker_Status_Data>
+          <!--Optional:-->
         </bsvc:Employment_Data>
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Zero or more repetitions:-->
+        <!--Optional:-->
+        <!--Zero or more repetitions:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Optional:-->
+        <!--Zero or more repetitions:-->
+        <!--Zero or more repetitions:-->
       </bsvc:Worker_Data>
     </bsvc:Worker>
   </bsvc:Response_Data>
+  <!--Zero or more repetitions:-->
 </bsvc:Get_Workers_Response>

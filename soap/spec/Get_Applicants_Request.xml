@@ -1,0 +1,63 @@
+<bsvc:Get_Applicants_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Request_References>
+    <!--1 or more repetitions:-->
+    <bsvc:Applicant_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Applicant_Reference>
+  </bsvc:Request_References>
+  <!--Optional:-->
+  <bsvc:Request_Criteria>
+    <!--Optional:-->
+    <bsvc:Worker_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Worker_Reference>
+    <!--Optional:-->
+    <bsvc:Former_Worker_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Former_Worker_Reference>
+    <!--Optional:-->
+    <bsvc:Email_Address>string</bsvc:Email_Address>
+    <!--Optional:-->
+    <bsvc:Field_And_Parameter_Criteria_Data>
+      <!--1 or more repetitions:-->
+      <bsvc:Provider_Reference bsvc:Descriptor="string">
+        <!--Zero or more repetitions:-->
+        <bsvc:ID bsvc:type="string">string</bsvc:ID>
+      </bsvc:Provider_Reference>
+    </bsvc:Field_And_Parameter_Criteria_Data>
+  </bsvc:Request_Criteria>
+  <!--Optional:-->
+  <bsvc:Response_Filter>
+    <!--Optional:-->
+    <bsvc:As_Of_Effective_Date>2008-09-29</bsvc:As_Of_Effective_Date>
+    <!--Optional:-->
+    <bsvc:As_Of_Entry_DateTime>2014-09-18T23:18:33</bsvc:As_Of_Entry_DateTime>
+    <!--Optional:-->
+    <bsvc:Page>1000.00</bsvc:Page>
+    <!--Optional:-->
+    <bsvc:Count>1000.00</bsvc:Count>
+  </bsvc:Response_Filter>
+  <!--Optional:-->
+  <bsvc:Response_Group>
+    <!--Optional:-->
+    <bsvc:Include_Reference>true</bsvc:Include_Reference>
+    <!--Optional:-->
+    <bsvc:Include_Personal_Information>false</bsvc:Include_Personal_Information>
+    <!--Optional:-->
+    <bsvc:Show_All_Personal_Information>false</bsvc:Show_All_Personal_Information>
+    <!--Optional:-->
+    <bsvc:Include_Recruiting_Information>false</bsvc:Include_Recruiting_Information>
+    <!--Optional:-->
+    <bsvc:Include_Qualification_Profile>true</bsvc:Include_Qualification_Profile>
+    <!--Optional:-->
+    <bsvc:Include_Resume>true</bsvc:Include_Resume>
+    <!--Optional:-->
+    <bsvc:Include_Background_Check>false</bsvc:Include_Background_Check>
+    <!--Optional:-->
+    <bsvc:Include_External_Integration_ID_Data>true</bsvc:Include_External_Integration_ID_Data>
+  </bsvc:Response_Group>
+</bsvc:Get_Applicants_Request>

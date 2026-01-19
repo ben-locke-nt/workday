@@ -1,0 +1,20 @@
+<bsvc:Put_Candidate_Response bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Candidate_Reference bsvc:Descriptor="string">
+    <!--Zero or more repetitions:-->
+    <bsvc:ID bsvc:type="string">string</bsvc:ID>
+  </bsvc:Candidate_Reference>
+  <!--Zero or more repetitions:-->
+  <bsvc:Candidate_Job_Application_Data>
+    <!--Optional:-->
+    <bsvc:Job_Application_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Job_Application_Reference>
+    <!--Optional:-->
+    <bsvc:Job_Requisition_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Job_Requisition_Reference>
+  </bsvc:Candidate_Job_Application_Data>
+</bsvc:Put_Candidate_Response>

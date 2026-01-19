@@ -11,10 +11,9 @@ package main
 
 import (
 	"log"
+	"workday/soap"
 
 	"github.com/joho/godotenv"
-
-	"github.com/nametaginc/nt/server/workday/client/.dev/soap"
 )
 
 func main() {

@@ -1,1 +1,0 @@
-VerifiedByReference: duplicate type name

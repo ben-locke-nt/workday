@@ -1,0 +1,303 @@
+<bsvc:Change_Work_Contact_Information_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Business_Process_Parameters>
+    <!--Optional:-->
+    <bsvc:Auto_Complete>false</bsvc:Auto_Complete>
+    <!--Optional:-->
+    <bsvc:Run_Now>true</bsvc:Run_Now>
+    <!--Optional:-->
+    <bsvc:Discard_On_Exit_Validation_Error>true</bsvc:Discard_On_Exit_Validation_Error>
+    <!--Optional:-->
+    <bsvc:Comment_Data>
+      <!--Optional:-->
+      <bsvc:Comment>string</bsvc:Comment>
+      <!--Optional:-->
+      <bsvc:Worker_Reference bsvc:Descriptor="string">
+        <!--Zero or more repetitions:-->
+        <bsvc:ID bsvc:type="string">string</bsvc:ID>
+      </bsvc:Worker_Reference>
+    </bsvc:Comment_Data>
+    <!--Zero or more repetitions:-->
+    <bsvc:Business_Process_Attachment_Data>
+      <bsvc:File_Name>string</bsvc:File_Name>
+      <!--Optional:-->
+      <bsvc:Event_Attachment_Description>string</bsvc:Event_Attachment_Description>
+      <!--Optional:-->
+      <bsvc:Event_Attachment_Category_Reference bsvc:Descriptor="string">
+        <!--Zero or more repetitions:-->
+        <bsvc:ID bsvc:type="string">string</bsvc:ID>
+      </bsvc:Event_Attachment_Category_Reference>
+      <!--Optional:-->
+      <bsvc:File>c29ub3Jhcw==</bsvc:File>
+      <!--Optional:-->
+      <bsvc:Content_Type>string</bsvc:Content_Type>
+    </bsvc:Business_Process_Attachment_Data>
+  </bsvc:Business_Process_Parameters>
+  <bsvc:Change_Work_Contact_Information_Data>
+    <!--Optional:-->
+    <bsvc:Person_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Person_Reference>
+    <!--Optional:-->
+    <bsvc:Universal_ID_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Universal_ID_Reference>
+    <!--Optional:-->
+    <bsvc:Event_Effective_Date>2004-02-14</bsvc:Event_Effective_Date>
+    <bsvc:Person_Contact_Information_Data>
+      <!--Optional:-->
+      <bsvc:Person_Address_Information_Data bsvc:Replace_All="false">
+        <!--Zero or more repetitions:-->
+        <bsvc:Address_Information_Data bsvc:Address_Format_Type="string" bsvc:Delete="false" bsvc:Effective_Date="2009-05-16">
+          <!--Zero or more repetitions:-->
+          <bsvc:Address_Data bsvc:Formatted_Address="string" bsvc:Default_Address="false">
+            <!--Optional:-->
+            <bsvc:Country_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Country_Reference>
+            <!--Optional:-->
+            <bsvc:Country_Region_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Country_Region_Reference>
+            <!--Optional:-->
+            <bsvc:Country_Region_Descriptor>string</bsvc:Country_Region_Descriptor>
+            <!--Zero or more repetitions:-->
+            <bsvc:Address_Line_Data bsvc:Descriptor="string" bsvc:Type="string">string</bsvc:Address_Line_Data>
+            <!--Zero or more repetitions:-->
+            <bsvc:Subregion_Data bsvc:Descriptor="string" bsvc:Type="string">string</bsvc:Subregion_Data>
+            <!--Zero or more repetitions:-->
+            <bsvc:Submunicipality_Data bsvc:Address_Component_Name="string" bsvc:Type="string">string</bsvc:Submunicipality_Data>
+            <!--Optional:-->
+            <bsvc:Postal_Code>string</bsvc:Postal_Code>
+            <!--Optional:-->
+            <bsvc:Municipality>string</bsvc:Municipality>
+            <!--Optional:-->
+            <bsvc:Municipality_Local>string</bsvc:Municipality_Local>
+            <!--Optional:-->
+            <bsvc:Country_City_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string" bsvc:parent_id="string" bsvc:parent_type="string">string</bsvc:ID>
+            </bsvc:Country_City_Reference>
+          </bsvc:Address_Data>
+          <!--Zero or more repetitions:-->
+          <bsvc:Usage_Data bsvc:Public="true">
+            <!--1 or more repetitions:-->
+            <bsvc:Type_Data bsvc:Primary="false">
+              <bsvc:Type_Reference bsvc:Descriptor="string">
+                <!--Zero or more repetitions:-->
+                <bsvc:ID bsvc:type="string">string</bsvc:ID>
+              </bsvc:Type_Reference>
+            </bsvc:Type_Data>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Reference>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Tenanted_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Tenanted_Reference>
+            <!--Optional:-->
+            <bsvc:Comments>string</bsvc:Comments>
+          </bsvc:Usage_Data>
+          <!--Optional:-->
+          <bsvc:Number_of_Days>1000.00</bsvc:Number_of_Days>
+          <!--Zero or more repetitions:-->
+          <bsvc:Days_of_the_Week_Reference bsvc:Descriptor="string">
+            <!--Zero or more repetitions:-->
+            <bsvc:ID bsvc:type="string">string</bsvc:ID>
+          </bsvc:Days_of_the_Week_Reference>
+          <!--Optional:-->
+          <bsvc:Address_Reference bsvc:Descriptor="string">
+            <!--Zero or more repetitions:-->
+            <bsvc:ID bsvc:type="string">string</bsvc:ID>
+          </bsvc:Address_Reference>
+          <!--Optional:-->
+          <bsvc:Address_ID>string</bsvc:Address_ID>
+        </bsvc:Address_Information_Data>
+      </bsvc:Person_Address_Information_Data>
+      <!--Optional:-->
+      <bsvc:Person_Phone_Information_Data bsvc:Replace_All="false">
+        <!--Zero or more repetitions:-->
+        <bsvc:Phone_Information_Data bsvc:Delete="false">
+          <!--Zero or more repetitions:-->
+          <bsvc:Phone_Data bsvc:Formatted_Phone="string">
+            <bsvc:Device_Type_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Device_Type_Reference>
+            <!--Optional:-->
+            <bsvc:Country_Code_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Country_Code_Reference>
+            <bsvc:Complete_Phone_Number>string</bsvc:Complete_Phone_Number>
+            <!--Optional:-->
+            <bsvc:Extension>string</bsvc:Extension>
+          </bsvc:Phone_Data>
+          <!--Zero or more repetitions:-->
+          <bsvc:Usage_Data bsvc:Public="false">
+            <!--1 or more repetitions:-->
+            <bsvc:Type_Data bsvc:Primary="false">
+              <bsvc:Type_Reference bsvc:Descriptor="string">
+                <!--Zero or more repetitions:-->
+                <bsvc:ID bsvc:type="string">string</bsvc:ID>
+              </bsvc:Type_Reference>
+            </bsvc:Type_Data>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Reference>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Tenanted_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Tenanted_Reference>
+            <!--Optional:-->
+            <bsvc:Comments>string</bsvc:Comments>
+          </bsvc:Usage_Data>
+          <!--Optional:-->
+          <bsvc:Phone_Reference bsvc:Descriptor="string">
+            <!--Zero or more repetitions:-->
+            <bsvc:ID bsvc:type="string">string</bsvc:ID>
+          </bsvc:Phone_Reference>
+          <!--Optional:-->
+          <bsvc:Phone_ID>string</bsvc:Phone_ID>
+        </bsvc:Phone_Information_Data>
+      </bsvc:Person_Phone_Information_Data>
+      <!--Optional:-->
+      <bsvc:Person_Email_Information_Data bsvc:Replace_All="true">
+        <!--Zero or more repetitions:-->
+        <bsvc:Email_Information_Data bsvc:Delete="true">
+          <!--Zero or more repetitions:-->
+          <bsvc:Email_Data>
+            <bsvc:Email_Address>string</bsvc:Email_Address>
+            <!--Optional:-->
+            <bsvc:Email_Comment>string</bsvc:Email_Comment>
+          </bsvc:Email_Data>
+          <!--Zero or more repetitions:-->
+          <bsvc:Usage_Data bsvc:Public="false">
+            <!--1 or more repetitions:-->
+            <bsvc:Type_Data bsvc:Primary="true">
+              <bsvc:Type_Reference bsvc:Descriptor="string">
+                <!--Zero or more repetitions:-->
+                <bsvc:ID bsvc:type="string">string</bsvc:ID>
+              </bsvc:Type_Reference>
+            </bsvc:Type_Data>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Reference>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Tenanted_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Tenanted_Reference>
+            <!--Optional:-->
+            <bsvc:Comments>string</bsvc:Comments>
+          </bsvc:Usage_Data>
+          <!--Optional:-->
+          <bsvc:Email_Reference bsvc:Descriptor="string">
+            <!--Zero or more repetitions:-->
+            <bsvc:ID bsvc:type="string">string</bsvc:ID>
+          </bsvc:Email_Reference>
+          <!--Optional:-->
+          <bsvc:Email_ID>string</bsvc:Email_ID>
+        </bsvc:Email_Information_Data>
+      </bsvc:Person_Email_Information_Data>
+      <!--Optional:-->
+      <bsvc:Person_Instant_Messenger_Information_Data bsvc:Replace_All="true">
+        <!--Zero or more repetitions:-->
+        <bsvc:Person_Instant_Messenger_Data bsvc:Delete="true">
+          <!--Optional:-->
+          <bsvc:Instant_Messenger_Data>
+            <bsvc:Instant_Messenger_Type_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Instant_Messenger_Type_Reference>
+            <bsvc:Instant_Messenger_Address>string</bsvc:Instant_Messenger_Address>
+            <!--Optional:-->
+            <bsvc:Instant_Messenger_Comment>string</bsvc:Instant_Messenger_Comment>
+          </bsvc:Instant_Messenger_Data>
+          <!--Optional:-->
+          <bsvc:Usage_Data bsvc:Public="true">
+            <!--1 or more repetitions:-->
+            <bsvc:Type_Data bsvc:Primary="false">
+              <bsvc:Type_Reference bsvc:Descriptor="string">
+                <!--Zero or more repetitions:-->
+                <bsvc:ID bsvc:type="string">string</bsvc:ID>
+              </bsvc:Type_Reference>
+            </bsvc:Type_Data>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Reference>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Tenanted_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Tenanted_Reference>
+            <!--Optional:-->
+            <bsvc:Comments>string</bsvc:Comments>
+          </bsvc:Usage_Data>
+          <!--Optional:-->
+          <bsvc:Instant_Messenger_Reference bsvc:Descriptor="string">
+            <!--Zero or more repetitions:-->
+            <bsvc:ID bsvc:type="string">string</bsvc:ID>
+          </bsvc:Instant_Messenger_Reference>
+          <!--Optional:-->
+          <bsvc:Instant_Messenger_ID>string</bsvc:Instant_Messenger_ID>
+        </bsvc:Person_Instant_Messenger_Data>
+      </bsvc:Person_Instant_Messenger_Information_Data>
+      <!--Optional:-->
+      <bsvc:Person_Web_Address_Information_Data bsvc:Replace_All="false">
+        <!--Zero or more repetitions:-->
+        <bsvc:Person_Web_Address_Data bsvc:Delete="true">
+          <!--Optional:-->
+          <bsvc:Web_Address_Data>
+            <bsvc:Web_Address>string</bsvc:Web_Address>
+            <!--Optional:-->
+            <bsvc:Web_Address_Comment>string</bsvc:Web_Address_Comment>
+          </bsvc:Web_Address_Data>
+          <!--Optional:-->
+          <bsvc:Usage_Data bsvc:Public="false">
+            <!--1 or more repetitions:-->
+            <bsvc:Type_Data bsvc:Primary="false">
+              <bsvc:Type_Reference bsvc:Descriptor="string">
+                <!--Zero or more repetitions:-->
+                <bsvc:ID bsvc:type="string">string</bsvc:ID>
+              </bsvc:Type_Reference>
+            </bsvc:Type_Data>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Reference>
+            <!--Zero or more repetitions:-->
+            <bsvc:Use_For_Tenanted_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Use_For_Tenanted_Reference>
+            <!--Optional:-->
+            <bsvc:Comments>string</bsvc:Comments>
+          </bsvc:Usage_Data>
+          <!--Optional:-->
+          <bsvc:Web_Address_Reference bsvc:Descriptor="string">
+            <!--Zero or more repetitions:-->
+            <bsvc:ID bsvc:type="string">string</bsvc:ID>
+          </bsvc:Web_Address_Reference>
+          <!--Optional:-->
+          <bsvc:Web_Address_ID>string</bsvc:Web_Address_ID>
+        </bsvc:Person_Web_Address_Data>
+      </bsvc:Person_Web_Address_Information_Data>
+    </bsvc:Person_Contact_Information_Data>
+  </bsvc:Change_Work_Contact_Information_Data>
+</bsvc:Change_Work_Contact_Information_Request>

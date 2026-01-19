@@ -1,9 +1,11 @@
 import sys
+import glob
 from xml.etree import ElementTree as ET
 from collections import OrderedDict
 
 def go_name(s: str):
     no_namespace = s.split('}')[-1] if '}' in s else s
+    no_namespace = no_namespace.replace('-', '_')
     parts = no_namespace.split('_')
     go_field = ''.join(part.capitalize() for part in parts)
     # Check if the go_field starts with an unallowed golang variable character
@@ -21,11 +23,11 @@ def parse_element(elem: ET.Element, namespace: str, structs: dict, is_root: bool
         structs[go_field] = fields
 
     if elem.text is not None and elem.text.strip():
-        fields['Value'] = ('string', 'xml:",chardata,omitempty"')
+        fields['Value'] = ('*string', 'xml:",chardata"')
 
     if is_root:
         fields['XMLName'] = ('xml.Name', f'xml:"{namespace}:{xml_name}"')
-        fields['XMLNamespace'] = ('string', 'xml:"xmlns,attr,omitempty"')
+        fields['XMLNamespace'] = ('*string', f'xml:"xmlns:{namespace},attr,omitempty"')
 
     # Add attributes for this element
     for _, (name, _) in enumerate(elem.attrib.items()):
@@ -36,7 +38,7 @@ def parse_element(elem: ET.Element, namespace: str, structs: dict, is_root: bool
     for child in elem:
         go_field, xml_name = go_name(child.tag)
         fields[go_field] = (f'*{go_field}', f'xml:"{namespace}:{xml_name},omitempty"')
-        parse_element(child, namespace, structs)
+        parse_element(child, namespace, structs, False)
 
 def gen_struct(name, fields):
     lines = []
@@ -46,11 +48,14 @@ def gen_struct(name, fields):
     lines.append('}')
     return lines
 
-def main(xml_path, namespace, package):
-    tree = ET.parse(xml_path)
+def main(xml_path, package):
+    files = glob.glob(xml_path)
     structs = OrderedDict()
-    parse_element(tree.getroot(), namespace, structs, True)
+    for file in files:
+        tree = ET.parse(file)
+        parse_element(tree.getroot(), 'wd', structs, True)
 
+    print(f'// Generated from {file}')
     print(f'package {package}\n')
     print('import "encoding/xml"\n')
     for _, (name, fields) in enumerate(structs.items()):
@@ -58,7 +63,7 @@ def main(xml_path, namespace, package):
         print()
 
 if __name__ == '__main__':
-    if len(sys.argv) != 4:
-        print("Usage: python generate_go_structs.py <xml_file> <namespace> <package>")
+    if len(sys.argv) != 3:
+        print("Usage: python generate_go_structs.py <xml_file_glob> <package>")
         sys.exit(1)
-    main(sys.argv[1], sys.argv[2], sys.argv[3])
+    main(sys.argv[1], sys.argv[2])

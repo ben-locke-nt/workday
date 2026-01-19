@@ -1,0 +1,116 @@
+<bsvc:Get_Candidates_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--You have a CHOICE of the next 2 items at this level-->
+  <!--Optional:-->
+  <bsvc:Request_References bsvc:Skip_Non_Existing_Instances="false">
+    <!--1 or more repetitions:-->
+    <bsvc:Candidate_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Candidate_Reference>
+  </bsvc:Request_References>
+  <!--Optional:-->
+  <bsvc:Request_Criteria>
+    <!--Zero or more repetitions:-->
+    <bsvc:Transaction_Log_Criteria_Data>
+      <!--Optional:-->
+      <bsvc:Transaction_Date_Range_Data>
+        <!--Optional:-->
+        <bsvc:Updated_From>2007-10-26T06:36:28</bsvc:Updated_From>
+        <!--Optional:-->
+        <bsvc:Updated_Through>2004-02-14T18:44:14</bsvc:Updated_Through>
+        <!--Optional:-->
+        <bsvc:Effective_From>2018-11-01T05:36:46+00:00</bsvc:Effective_From>
+        <!--Optional:-->
+        <bsvc:Effective_Through>2013-05-22T01:02:49+00:00</bsvc:Effective_Through>
+      </bsvc:Transaction_Date_Range_Data>
+      <!--You have a CHOICE of the next 2 items at this level-->
+      <!--Optional:-->
+      <bsvc:Transaction_Type_References>
+        <!--Zero or more repetitions:-->
+        <bsvc:Transaction_Type_Reference bsvc:Descriptor="string">
+          <!--Zero or more repetitions:-->
+          <bsvc:ID bsvc:type="string">string</bsvc:ID>
+        </bsvc:Transaction_Type_Reference>
+      </bsvc:Transaction_Type_References>
+      <!--Optional:-->
+      <bsvc:Subscriber_Reference bsvc:Descriptor="string">
+        <!--Zero or more repetitions:-->
+        <bsvc:ID bsvc:type="string">string</bsvc:ID>
+      </bsvc:Subscriber_Reference>
+    </bsvc:Transaction_Log_Criteria_Data>
+    <!--Optional:-->
+    <bsvc:First_Name>string</bsvc:First_Name>
+    <!--Optional:-->
+    <bsvc:Last_Name>string</bsvc:Last_Name>
+    <!--Optional:-->
+    <bsvc:Candidate_Email_Address>string</bsvc:Candidate_Email_Address>
+    <!--Zero or more repetitions:-->
+    <bsvc:Pre-Hire_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Pre-Hire_Reference>
+    <!--Zero or more repetitions:-->
+    <bsvc:Worker_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Worker_Reference>
+    <!--Zero or more repetitions:-->
+    <bsvc:Job_Requisition_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Job_Requisition_Reference>
+    <!--Zero or more repetitions:-->
+    <bsvc:Recruiting_Stage_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Recruiting_Stage_Reference>
+    <!--Zero or more repetitions:-->
+    <bsvc:Applicant_Source_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Applicant_Source_Reference>
+    <!--Zero or more repetitions:-->
+    <bsvc:Candidate_Tag_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Candidate_Tag_Reference>
+    <!--Optional:-->
+    <bsvc:Applied_From>2002-11-05T08:01:03+00:00</bsvc:Applied_From>
+    <!--Optional:-->
+    <bsvc:Applied_Through>2002-06-24T15:46:32+00:00</bsvc:Applied_Through>
+    <!--Optional:-->
+    <bsvc:Internal_Workers_Only>true</bsvc:Internal_Workers_Only>
+    <!--Optional:-->
+    <bsvc:Created_From>2012-01-07T19:42:56</bsvc:Created_From>
+    <!--Optional:-->
+    <bsvc:Created_Through>2014-10-27T09:44:59</bsvc:Created_Through>
+    <!--Zero or more repetitions:-->
+    <bsvc:Criteria_Match_Score_Category_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Criteria_Match_Score_Category_Reference>
+    <!--Optional:-->
+    <bsvc:Static_Candidate_Pool_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Static_Candidate_Pool_Reference>
+  </bsvc:Request_Criteria>
+  <!--Optional:-->
+  <bsvc:Response_Filter>
+    <!--Optional:-->
+    <bsvc:As_Of_Effective_Date>2013-06-17</bsvc:As_Of_Effective_Date>
+    <!--Optional:-->
+    <bsvc:As_Of_Entry_DateTime>2005-09-12T08:55:02+00:00</bsvc:As_Of_Entry_DateTime>
+    <!--Optional:-->
+    <bsvc:Page>1000.00</bsvc:Page>
+    <!--Optional:-->
+    <bsvc:Count>1000.00</bsvc:Count>
+  </bsvc:Response_Filter>
+  <!--Optional:-->
+  <bsvc:Response_Group>
+    <!--Optional:-->
+    <bsvc:Include_Reference>false</bsvc:Include_Reference>
+    <!--Optional:-->
+    <bsvc:Exclude_All_Attachments>true</bsvc:Exclude_All_Attachments>
+  </bsvc:Response_Group>
+</bsvc:Get_Candidates_Request>

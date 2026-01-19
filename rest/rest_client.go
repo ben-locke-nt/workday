@@ -18,11 +18,10 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"workday/client"
 
 	"github.com/gofrs/uuid"
 	"github.com/samber/lo"
-
-	workday "github.com/nametaginc/nt/server/workday/client/.dev/client"
 )
 
 type RESTClient struct {
@@ -36,7 +35,7 @@ func NewRESTClient() (*RESTClient, error) {
 	hostName := os.Getenv("WORKDAY_REST_API_HOSTNAME")
 	apiBaseURL := fmt.Sprintf("https://%s/api", hostName)
 
-	oauth2Client, err := workday.NewOAUTH2Client()
+	oauth2Client, err := client.NewOAUTH2Client()
 	if err != nil {
 		return nil, err
 	}
@@ -109,7 +108,7 @@ func (c *RESTClient) GetAProspect(workdayID string) {
 	report(res, body)
 }
 
-func (c *RESTClient) CreateWorkerCustomObject(customObject *workday.NametagWorkerIDVCustomObject) {
+func (c *RESTClient) CreateWorkerCustomObject(customObject *client.NametagWorkerIDVCustomObject) {
 	newObjectNametagID, err := uuid.NewV4()
 	if err != nil {
 		log.Printf("failed to generate UUID for custom object: %v", err)

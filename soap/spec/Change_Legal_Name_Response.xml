@@ -1,0 +1,7 @@
+<bsvc:Change_Legal_Name_Response bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Legal_Name_Change_Event_Reference bsvc:Descriptor="string">
+    <!--Zero or more repetitions:-->
+    <bsvc:ID bsvc:type="string">string</bsvc:ID>
+  </bsvc:Legal_Name_Change_Event_Reference>
+</bsvc:Change_Legal_Name_Response>

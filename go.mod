@@ -1,9 +1,8 @@
-module github.com/nametaginc/nt/server/workday/client/.dev
+module workday
 
 go 1.25.5
 
 require (
-	github.com/fiorix/wsdl2go v1.4.7
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/google/uuid v1.6.0
 	github.com/hooklift/gowsdl v0.5.0
@@ -12,7 +11,4 @@ require (
 	golang.org/x/oauth2 v0.34.0
 )
 
-require (
-	golang.org/x/net v0.49.0 // indirect
-	golang.org/x/text v0.33.0 // indirect
-)
+require golang.org/x/text v0.33.0 // indirect
