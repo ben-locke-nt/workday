@@ -52,11 +52,11 @@ func main() {
 
 	//soapClient.UpdateWorkerName(&permissionReport, "b3c518ac84321001c1c8ed9c98790000", "Benjamin", "Billy", "Locke")
 	//soapClient.UpdateWorkerAddress(&permissionReport, "b3c518ac84321001c1c8ed9c98790000")
-	soapClient.UpdateWorkerBirthDate(&permissionReport, "b3c518ac84321001c1c8ed9c98790000")
+	//soapClient.UpdateWorkerBirthDate(&permissionReport, "b3c518ac84321001c1c8ed9c98790000")
 
 	//soapClient.UpdateCandidateName(&permissionReport, "fd9e9f710bc881556faa7574ac0fd306", "Sabriña", "Marie", "Valdez")
 
-	//soapClient.UpdateApplicant(&permissionReport, "7687e33f159501842af83fedc4564407", "Amanda", "Willy", "Lockehart")
+	soapClient.UpdateApplicant(&permissionReport, "7687e33f159501842af83fedc4564407", "Amañda", "Willy", "Lockenhart")
 
 	// fmt.Println("Permissions report:")
 	// permReport, err := json.MarshalIndent(permissionReport, "", "  ")

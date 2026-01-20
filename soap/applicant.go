@@ -82,45 +82,46 @@ func (s *Client) UpdateApplicant(permissionReport *model.PermissionCheck, workda
 						},
 					},
 				},
-				// ContactData: &put_applicant_request.ContactData{
-				// 	AddressData: &put_applicant_request.AddressData{
-				// 		Add
-				// 	},
-				// },
 				// PersonalInformationData: &put_applicant_request.PersonalInformationData{
-				// 	BirthDate: lo.ToPtr(time.Now().AddDate(-5, 0, 0).Format("2006-01-02")),
+				// 	// Error received:
+				// 	// The field Date of Birth is not tracked for the specified Location Context.
+				// 	// The Location Context is derived from the Country of the Location for the Position.
+				// 	//BirthDate: lo.ToPtr("2000-04-01"),
 				// },
+				ContactData: &put_applicant_request.ContactData{
+					AddressData: &put_applicant_request.AddressData{
+						DoNotReplaceAll: lo.ToPtr("true"),
+						Delete: lo.ToPtr("false"),
+						CountryReference: &put_applicant_request.CountryReference{
+							Id: &put_applicant_request.Id{
+								Type: applicant.PersonalData.ContactData.AddressData.CountryReference.Id.Type,
+								Value: applicant.PersonalData.ContactData.AddressData.CountryReference.Id.Value,
+							},
+						},
+						Municipality: applicant.PersonalData.ContactData.AddressData.Municipality,
+						AddressLineData: &put_applicant_request.AddressLineData{
+							Descriptor: applicant.PersonalData.ContactData.AddressData.AddressLineData.Descriptor,
+							Type: applicant.PersonalData.ContactData.AddressData.AddressLineData.Type,
+							Value: lo.ToPtr("1234 Saint James Place"),
+						},
+						PostalCode: applicant.PersonalData.ContactData.AddressData.PostalCode,
+						UsageData: &put_applicant_request.UsageData{
+							Public: lo.ToPtr("0"),
+							TypeData: &put_applicant_request.TypeData{
+								Primary: lo.ToPtr("1"),
+								TypeReference: &put_applicant_request.TypeReference{
+									Id: &put_applicant_request.Id{
+										Type: lo.ToPtr("Communication_Usage_Type_ID"),
+										Value: lo.ToPtr("HOME"),
+									},
+								},
+							},
+						},
+					},
+				},
 			},
 		},
 	}
-
-	request.ApplicantData.PersonalData.NameData.LegalNameData.NameDetailData.FirstName = lo.ToPtr(firstName)
-	request.ApplicantData.PersonalData.NameData.LegalNameData.NameDetailData.MiddleName = lo.ToPtr(middleName)
-	request.ApplicantData.PersonalData.NameData.LegalNameData.NameDetailData.LastName = lo.ToPtr(lastName)
-
-	// request := &put_applicant_request.PutApplicantRequest{
-	// 	XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
-	// 	Version:      lo.ToPtr(WorkdayAPIVersion),
-	// 	ApplicantReference: &put_applicant_request.ApplicantReference{
-	// 		Id: &put_applicant_request.Id{
-	// 			Type:  lo.ToPtr("WID"),
-	// 			Value: lo.ToPtr(workdayID),
-	// 		},
-	// 	},
-	// 	ApplicantData: &put_applicant_request.ApplicantData{
-	// 		PersonalData: &put_applicant_request.PersonalData{
-	// 			NameData: &put_applicant_request.NameData{
-	// 				LegalNameData: &put_applicant_request.LegalNameData{
-	// 					NameDetailData: &put_applicant_request.NameDetailData{
-	// 						FirstName:  lo.ToPtr(firstName),
-	// 						MiddleName: lo.ToPtr(middleName),
-	// 						LastName:   lo.ToPtr(lastName),
-	// 					},
-	// 				},
-	// 			},
-	// 		},
-	// 	},
-	// }
 
 	var response AnyXML
 	if call := s.call("Recruiting/"+WorkdayAPIVersion, request, &response); call.Error != nil {
