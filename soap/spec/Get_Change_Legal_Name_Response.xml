@@ -1,0 +1,155 @@
+<bsvc:Get_Change_Legal_Name_Response bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Request_References>
+    <!--Zero or more repetitions:-->
+    <bsvc:Person_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Person_Reference>
+    <!--Zero or more repetitions:-->
+    <bsvc:Universal_ID_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Universal_ID_Reference>
+  </bsvc:Request_References>
+  <!--Optional:-->
+  <bsvc:Response_Filter>
+    <!--Optional:-->
+    <bsvc:As_Of_Effective_Date>2008-09-29</bsvc:As_Of_Effective_Date>
+    <!--Optional:-->
+    <bsvc:As_Of_Entry_DateTime>2014-09-18T23:18:33</bsvc:As_Of_Entry_DateTime>
+    <!--Optional:-->
+    <bsvc:Page>1000.00</bsvc:Page>
+    <!--Optional:-->
+    <bsvc:Count>1000.00</bsvc:Count>
+  </bsvc:Response_Filter>
+  <!--Optional:-->
+  <bsvc:Response_Results>
+    <!--Optional:-->
+    <bsvc:Total_Results>1000.00</bsvc:Total_Results>
+    <!--Optional:-->
+    <bsvc:Total_Pages>1000.00</bsvc:Total_Pages>
+    <!--Optional:-->
+    <bsvc:Page_Results>1000.00</bsvc:Page_Results>
+    <!--Optional:-->
+    <bsvc:Page>1000.00</bsvc:Page>
+  </bsvc:Response_Results>
+  <!--Optional:-->
+  <bsvc:Response_Data>
+    <!--Zero or more repetitions:-->
+    <bsvc:Change_Legal_Name>
+      <!--Optional:-->
+      <bsvc:Person_Reference bsvc:Descriptor="string">
+        <!--Zero or more repetitions:-->
+        <bsvc:ID bsvc:type="string">string</bsvc:ID>
+      </bsvc:Person_Reference>
+      <!--Optional:-->
+      <bsvc:Change_Legal_Name_Data>
+        <!--Optional:-->
+        <bsvc:Person_Reference bsvc:Descriptor="string">
+          <!--Zero or more repetitions:-->
+          <bsvc:ID bsvc:type="string">string</bsvc:ID>
+        </bsvc:Person_Reference>
+        <!--Optional:-->
+        <bsvc:Universal_ID_Reference bsvc:Descriptor="string">
+          <!--Zero or more repetitions:-->
+          <bsvc:ID bsvc:type="string">string</bsvc:ID>
+        </bsvc:Universal_ID_Reference>
+        <!--Optional:-->
+        <bsvc:Effective_Date>2006-08-19+00:00</bsvc:Effective_Date>
+        <bsvc:Name_Data bsvc:Formatted_Name="string" bsvc:Reporting_Name="string">
+          <bsvc:Country_Reference bsvc:Descriptor="string">
+            <!--Zero or more repetitions:-->
+            <bsvc:ID bsvc:type="string">string</bsvc:ID>
+          </bsvc:Country_Reference>
+          <!--Optional:-->
+          <bsvc:Prefix_Data>
+            <!--Optional:-->
+            <bsvc:Title_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Title_Reference>
+            <!--Optional:-->
+            <bsvc:Title_Descriptor>string</bsvc:Title_Descriptor>
+            <!--Optional:-->
+            <bsvc:Salutation_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Salutation_Reference>
+          </bsvc:Prefix_Data>
+          <!--Optional:-->
+          <bsvc:First_Name>string</bsvc:First_Name>
+          <!--Optional:-->
+          <bsvc:Middle_Name>string</bsvc:Middle_Name>
+          <!--Optional:-->
+          <bsvc:Last_Name>string</bsvc:Last_Name>
+          <!--Optional:-->
+          <bsvc:Secondary_Last_Name>string</bsvc:Secondary_Last_Name>
+          <!--Optional:-->
+          <bsvc:Tertiary_Last_Name>string</bsvc:Tertiary_Last_Name>
+          <!--Optional:-->
+          <bsvc:Local_Name_Detail_Data bsvc:Local_Name="string" bsvc:Local_Script="string">
+            <!--Optional:-->
+            <bsvc:First_Name>string</bsvc:First_Name>
+            <!--Optional:-->
+            <bsvc:Middle_Name>string</bsvc:Middle_Name>
+            <!--Optional:-->
+            <bsvc:Last_Name>string</bsvc:Last_Name>
+            <!--Optional:-->
+            <bsvc:Secondary_Last_Name>string</bsvc:Secondary_Last_Name>
+            <!--Optional:-->
+            <bsvc:First_Name_2>string</bsvc:First_Name_2>
+            <!--Optional:-->
+            <bsvc:Middle_Name_2>string</bsvc:Middle_Name_2>
+            <!--Optional:-->
+            <bsvc:Last_Name_2>string</bsvc:Last_Name_2>
+            <!--Optional:-->
+            <bsvc:Secondary_Last_Name_2>string</bsvc:Secondary_Last_Name_2>
+          </bsvc:Local_Name_Detail_Data>
+          <!--Optional:-->
+          <bsvc:Suffix_Data>
+            <!--Optional:-->
+            <bsvc:Social_Suffix_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Social_Suffix_Reference>
+            <!--Optional:-->
+            <bsvc:Social_Suffix_Descriptor>string</bsvc:Social_Suffix_Descriptor>
+            <!--Optional:-->
+            <bsvc:Academic_Suffix_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Academic_Suffix_Reference>
+            <!--Optional:-->
+            <bsvc:Hereditary_Suffix_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Hereditary_Suffix_Reference>
+            <!--Optional:-->
+            <bsvc:Honorary_Suffix_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Honorary_Suffix_Reference>
+            <!--Optional:-->
+            <bsvc:Professional_Suffix_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Professional_Suffix_Reference>
+            <!--Optional:-->
+            <bsvc:Religious_Suffix_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Religious_Suffix_Reference>
+            <!--Optional:-->
+            <bsvc:Royal_Suffix_Reference bsvc:Descriptor="string">
+              <!--Zero or more repetitions:-->
+              <bsvc:ID bsvc:type="string">string</bsvc:ID>
+            </bsvc:Royal_Suffix_Reference>
+          </bsvc:Suffix_Data>
+          <!--Optional:-->
+          <bsvc:Full_Name_for_Singapore_and_Malaysia>string</bsvc:Full_Name_for_Singapore_and_Malaysia>
+        </bsvc:Name_Data>
+      </bsvc:Change_Legal_Name_Data>
+    </bsvc:Change_Legal_Name>
+  </bsvc:Response_Data>
+</bsvc:Get_Change_Legal_Name_Response>

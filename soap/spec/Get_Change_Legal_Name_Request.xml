@@ -1,0 +1,44 @@
+<bsvc:Get_Change_Legal_Name_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--Optional:-->
+  <bsvc:Request_References>
+    <!--Zero or more repetitions:-->
+    <bsvc:Person_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Person_Reference>
+    <!--Zero or more repetitions:-->
+    <bsvc:Universal_ID_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Universal_ID_Reference>
+  </bsvc:Request_References>
+  <!--Optional:-->
+  <bsvc:Response_Filter>
+    <!--Optional:-->
+    <bsvc:As_Of_Effective_Date>2008-09-29</bsvc:As_Of_Effective_Date>
+    <!--Optional:-->
+    <bsvc:As_Of_Entry_DateTime>2014-09-18T23:18:33</bsvc:As_Of_Entry_DateTime>
+    <!--Optional:-->
+    <bsvc:Page>1000.00</bsvc:Page>
+    <!--Optional:-->
+    <bsvc:Count>1000.00</bsvc:Count>
+  </bsvc:Response_Filter>
+  <!--Optional:-->
+  <bsvc:Request_Criteria_Data>
+    <!--Optional:-->
+    <bsvc:Person_Type_Criteria_Data>
+      <!--Optional:-->
+      <bsvc:Include_Academic_Affiliates>true</bsvc:Include_Academic_Affiliates>
+      <!--Optional:-->
+      <bsvc:Include_External_Committee_Members>false</bsvc:Include_External_Committee_Members>
+      <!--Optional:-->
+      <bsvc:Include_External_Student_Records>false</bsvc:Include_External_Student_Records>
+      <!--Optional:-->
+      <bsvc:Include_Student_Prospect_Records>false</bsvc:Include_Student_Prospect_Records>
+      <!--Optional:-->
+      <bsvc:Include_Student_Records>true</bsvc:Include_Student_Records>
+      <!--Optional:-->
+      <bsvc:Include_Workers>true</bsvc:Include_Workers>
+    </bsvc:Person_Type_Criteria_Data>
+  </bsvc:Request_Criteria_Data>
+</bsvc:Get_Change_Legal_Name_Request>

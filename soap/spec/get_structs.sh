@@ -44,3 +44,18 @@ curl -o 'Get_Employee_Personal_Info_Request.xml' \
     'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Employee_Personal_Info_Get.xml'
 curl -o 'Get_Employee_Personal_Info_Response.xml' \
     'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Employee_Personal_Info.xml'
+
+curl -o 'Get_Change_Legal_Name_Request.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Legal_Name_Request.xml'
+curl -o 'Get_Change_Legal_Name_Response.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Legal_Name_Response.xml'
+
+curl -o 'Get_Change_Personal_Information_Request.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Personal_Information_Request.xml'
+curl -o 'Get_Change_Personal_Information_Response.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Personal_Information_Response.xml'
+
+curl -o 'Get_Change_Home_Contact_Information_Request.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Home_Contact_Information_Request.xml'
+curl -o 'Get_Change_Home_Contact_Information_Response.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Home_Contact_Information_Response.xml'

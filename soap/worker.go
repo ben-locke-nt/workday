@@ -10,6 +10,12 @@ import (
 	"workday/soap/model/change_personal_information_response"
 	"workday/soap/model/employee_personal_info"
 	"workday/soap/model/employee_personal_info_get"
+	"workday/soap/model/get_change_home_contact_information_request"
+	"workday/soap/model/get_change_home_contact_information_response"
+	"workday/soap/model/get_change_legal_name_request"
+	"workday/soap/model/get_change_legal_name_response"
+	"workday/soap/model/get_change_personal_information_request"
+	"workday/soap/model/get_change_personal_information_response"
 	"workday/soap/model/get_workers_request"
 	"workday/soap/model/get_workers_response"
 
@@ -135,7 +141,36 @@ func (s *Client) GetWorker(permissionReport *model.PermissionCheck, workdayID st
 	return response.ResponseData.Worker.WorkerData, nil
 }
 
+func (s *Client) getChangeLegalNameRequest(workdayID string) (*get_change_legal_name_response.GetChangeLegalNameResponse, error) {
+	request := get_change_legal_name_request.GetChangeLegalNameRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
+		RequestReferences: &get_change_legal_name_request.RequestReferences{
+			PersonReference: &get_change_legal_name_request.PersonReference{
+				Id: &get_change_legal_name_request.Id{
+					Type: lo.ToPtr("WID"),
+					Value: lo.ToPtr(workdayID),
+				},
+			},
+		},
+	}
+
+	var response get_change_legal_name_response.GetChangeLegalNameResponse
+	if call := s.call("Human_Resources/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
+		fmt.Printf("SOAP request error: %v\n", call.Error)
+		return nil, fmt.Errorf("call SOAP service: %w", call.Error)
+	}
+
+	return &response, nil
+}
+
 func (s *Client) UpdateWorkerName(permissionReport *model.PermissionCheck, workdayID, firstName, middleName, lastName string) {
+	// getReq, err := s.getChangeLegalNameRequest(workdayID)
+	// if err != nil {
+	// 	fmt.Printf("Error getting change legal name request: %v\n", err)
+	// 	return
+	// }
+
 	request := change_legal_name_request.ChangeLegalNameRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -147,6 +182,12 @@ func (s *Client) UpdateWorkerName(permissionReport *model.PermissionCheck, workd
 				},
 			},
 			NameData: &change_legal_name_request.NameData{
+				CountryReference: &change_legal_name_request.CountryReference{
+					// Id: &change_legal_name_request.Id{
+					// 	Type: getReq.ResponseData.ChangeLegalName.ChangeLegalNameData.NameData.CountryReference.Id.Type,
+					// 	Value: getReq.ResponseData.ChangeLegalName.ChangeLegalNameData.NameData.CountryReference.Id.Value,
+					// },
+				},
 				FirstName:  lo.ToPtr(firstName),
 				MiddleName: lo.ToPtr(middleName),
 				LastName:   lo.ToPtr(lastName),
@@ -162,7 +203,36 @@ func (s *Client) UpdateWorkerName(permissionReport *model.PermissionCheck, workd
 	}
 }
 
+func (s *Client) getChangeHomeContactInformationRequest(workdayID string) (*get_change_home_contact_information_response.GetChangeHomeContactInformationResponse, error) {
+	request := get_change_home_contact_information_request.GetChangeHomeContactInformationRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
+		RequestReferences: &get_change_home_contact_information_request.RequestReferences{
+			PersonReference: &get_change_home_contact_information_request.PersonReference{
+				Id: &get_change_home_contact_information_request.Id{
+					Type:  lo.ToPtr("WID"),
+					Value: lo.ToPtr(workdayID),
+				},
+			},
+		},
+	}
+
+	var response get_change_home_contact_information_response.GetChangeHomeContactInformationResponse
+	if call := s.call("Human_Resources/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
+		fmt.Printf("SOAP request error: %v\n", call.Error)
+		return nil, fmt.Errorf("call SOAP service: %w", call.Error)
+	}
+
+	return &response, nil
+}
+
 func (s *Client) UpdateWorkerAddress(permissionReport *model.PermissionCheck, workdayID string) {
+	getReq, err := s.getChangeHomeContactInformationRequest(workdayID)
+	if err != nil {
+		fmt.Printf("Error getting change home contact information request: %v\n", err)
+		return
+	}
+
 	request := &change_home_contact_information_request.ChangeHomeContactInformationRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -178,7 +248,14 @@ func (s *Client) UpdateWorkerAddress(permissionReport *model.PermissionCheck, wo
 					ReplaceAll: lo.ToPtr("false"),
 					AddressInformationData: &change_home_contact_information_request.AddressInformationData{
 						Delete:        lo.ToPtr("false"),
-						AddressData:   &change_home_contact_information_request.AddressData{},
+						AddressData:   &change_home_contact_information_request.AddressData{
+							CountryRegionReference: &change_home_contact_information_request.CountryRegionReference{
+								Id: &change_home_contact_information_request.Id{
+									Type: getReq.ResponseData.ChangeHomeContactInformation.ChangeHomeContactInformationData.PersonContactInformationData.PersonAddressInformationData.AddressInformationData.AddressData.CountryRegionReference.Id.Type,
+									Value: getReq.ResponseData.ChangeHomeContactInformation.ChangeHomeContactInformationData.PersonContactInformationData.PersonAddressInformationData.AddressInformationData.AddressData.CountryRegionReference.Id.Value,
+								},
+							},
+						},
 						EffectiveDate: lo.ToPtr(time.Now().Format("2006-01-02")),
 					},
 				},
@@ -193,7 +270,36 @@ func (s *Client) UpdateWorkerAddress(permissionReport *model.PermissionCheck, wo
 	}
 }
 
+func (s *Client) getChangePersonalInformation(permissionReport *model.PermissionCheck, workdayID string) (*get_change_personal_information_response.GetChangePersonalInformationResponse, error) {
+	request := get_change_personal_information_request.GetChangePersonalInformationRequest{
+		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
+		Version:      lo.ToPtr(WorkdayAPIVersion),
+		RequestReferences: &get_change_personal_information_request.RequestReferences{
+			PersonReference: &get_change_personal_information_request.PersonReference{
+				Id: &get_change_personal_information_request.Id{
+					Type:  lo.ToPtr("WID"),
+					Value: lo.ToPtr(workdayID),
+				},
+			},
+		},
+	}
+
+	var response get_change_personal_information_response.GetChangePersonalInformationResponse
+	if call := s.call("Human_Resources/"+WorkdayAPIVersion, &request, &response); call.Error != nil {
+		fmt.Printf("SOAP request error: %v\n", call.Error)
+		return nil, fmt.Errorf("call SOAP service: %w", call.Error)
+	}
+
+	return &response, nil
+}
+
 func (s *Client) UpdateWorkerBirthDate(permissionReport *model.PermissionCheck, workdayID string) {
+	getReq, err := s.getChangePersonalInformation(permissionReport, workdayID)
+	if err != nil {
+		fmt.Printf("Error getting change personal information request: %v\n", err)
+		return
+	}
+
 	request := &change_personal_information_request.ChangePersonalInformationRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
 		Version:      lo.ToPtr(WorkdayAPIVersion),
@@ -204,7 +310,19 @@ func (s *Client) UpdateWorkerBirthDate(permissionReport *model.PermissionCheck, 
 					Value: lo.ToPtr(workdayID),
 				},
 			},
+			CountryReference: &change_personal_information_request.CountryReference{
+				Id: &change_personal_information_request.Id{
+					Type: getReq.ResponseData.ChangePersonalInformation.ChangePersonalInformationData.CountryReference.Id.Type,
+					Value: getReq.ResponseData.ChangePersonalInformation.ChangePersonalInformationData.CountryReference.Id.Value,
+				},
+			},
 			PersonalInformationData: &change_personal_information_request.PersonalInformationData{
+				// BirthCountryReference: &change_personal_information_request.BirthCountryReference{
+				// 	Id: &change_personal_information_request.Id{
+				// 		Type: getReq.ResponseData.ChangePersonalInformation.ChangePersonalInformationData.PersonalInformationData.BirthCountryReference.Id.Type,
+				// 		Value: getReq.ResponseData.ChangePersonalInformation.ChangePersonalInformationData.PersonalInformationData.BirthCountryReference.Id.Value,
+				// 	},
+				// },
 				DateOfBirth: lo.ToPtr("1990-03-03"),
 			},
 		},
