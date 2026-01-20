@@ -10,8 +10,6 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
 	"log"
 	"workday/soap"
 	"workday/soap/model"
@@ -40,15 +38,17 @@ func main() {
 
 	// Get_Workers security:
 	// https://doc.workday.com/admin-guide/en-us/integrations/workday-web-services-and-integration-ids/workday-soap-api-guidelines-and-troubleshooting/get-workers-wws.html#:~:text=Title%3A%20Get%20Workers%20Product%20Area(s)%3A%20Integration%20Get%20Workers%20The%20Get_Workers%20web%20service%20is%20used%20to%20retrieve%20worker%20details%20from%20Workday%2C%20and%20supports%20granular%20transaction%20detection%20through%20the%20use%20of%20the%20%3Cwd%3ATransaction_Log_Criteria_Data%3E%20section.
-	soapClient.GetWorker(&permissionReport, "b3c518ac84321001c1c8ed9c98790000")
+	//soapClient.GetWorker(&permissionReport, "b3c518ac84321001c1c8ed9c98790000")
+	soapClient.GetEmployee(&permissionReport, "b3c518ac84321001c1c8ed9c98790000")
+	//soapClient.UpdateWorkerBirthDate(&permissionReport, "b3c518ac84321001c1c8ed9c98790000")
 
 	// Get_Candidates security:
 	// https://doc.workday.com/admin-guide/en-us/integrations/workday-web-services-and-integration-ids/workday-soap-api-guidelines-and-troubleshooting/get-candidate-wws.html?toc=17.8.6
-	soapClient.GetCandidate(&permissionReport, "fd9e9f710bc881556faa7574ac0fd306")
-	
+	//soapClient.GetCandidate(&permissionReport, "8828a848962481e3ab0edd62f8549c57")
+
 	// Get_Applicants security:
 	// 
-	soapClient.GetApplicant(&permissionReport, "7687e33f159501842af83fedc4564407")
+	//soapClient.GetApplicant(&permissionReport, "4c952fc67fa747ce8ef83a8f9803ae82")
 
 	//soapClient.UpdateWorkerName(&permissionReport, "b3c518ac84321001c1c8ed9c98790000", "Benjamin", "Billy", "Locke")
 
@@ -56,12 +56,12 @@ func main() {
 
 	//soapClient.UpdateApplicant(&permissionReport, "7687e33f159501842af83fedc4564407", "Amanda", "Willy", "Lockehart")
 
-	fmt.Println("Permissions report:")
-	permReport, err := json.MarshalIndent(permissionReport, "", "  ")
-	if err != nil {
-		log.Fatalf("Error marshaling permission report: %v", err)
-	}
-	fmt.Println(string(permReport))
+	// fmt.Println("Permissions report:")
+	// permReport, err := json.MarshalIndent(permissionReport, "", "  ")
+	// if err != nil {
+	// 	log.Fatalf("Error marshaling permission report: %v", err)
+	// }
+	// fmt.Println(string(permReport))
 }
 
 
