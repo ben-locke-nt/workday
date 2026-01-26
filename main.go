@@ -71,7 +71,9 @@ func main() {
 	//soapClient.GetCandidate(&permissionReport, "7687e33f1595814629e414a2d3562415")
 	//soapClient.CustomObjectDefinitions(context.Background())
 	//soapClient.GetJobApplicationAdditionalData(&permissionReport, "d075731b289190089e8abc5882ac0000", "CAND-1245")
-	soapClient.RESTPutJobApplicationAdditionalData("d075731b289190089e8abc5882ac0000", "tests")
+	//soapClient.RESTPutJobApplicationAdditionalData("d075731b289190089e8abc5882ac0000", "tests")
+
+	soapClient.RESTPostJobApplicationAdditionalData("d075731b289190089e8abc5882ac0000")
 
 	// fmt.Println("Permissions report:")
 	// permReport, err := json.MarshalIndent(permissionReport, "", "  ")

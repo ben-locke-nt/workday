@@ -2,6 +2,7 @@ package soap
 
 import (
 	"bytes"
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"io"
@@ -14,6 +15,7 @@ import (
 	"workday/soap/model/get_job_application_additional_data_request"
 	"workday/soap/model/put_candidate_request"
 
+	"github.com/google/uuid"
 	"github.com/samber/lo"
 )
 
@@ -148,28 +150,28 @@ func (s *Client) GetJobApplicationAdditionalData(permissionReport *model.Permiss
 // Matches what you see in `soap/test.xml`.
 const WorkdayNametagCustomNamespace = "urn:com.workday/tenants/nametag_dpt1/data/custom"
 
-// NametagIdvJobApplication builds XML like:
+// NametagIdvCustomObject builds XML like:
 // <custom:nametagIdvJobApplication xmlns:custom="..." wd:Descriptor="..."> ... </custom:nametagIdvJobApplication>
-type NametagIdvJobApplication struct {
-	XMLName xml.Name `xml:"custom:nametagIdvJobApplication"`
+type NametagIdvCustomObject struct {
+	XMLName xml.Name `xml:"custom:nametagIdvJobApplication" json:"-"`
 
 	// Ensure nested `custom:` elements/attrs serialize with the same prefix.
-	XMLNSCustom string `xml:"xmlns:custom,attr,omitempty"`
+	XMLNSCustom string `xml:"xmlns:custom,attr,omitempty" json:"-"`
 
 	// Workday uses `wd:` attrs on custom objects.
-	Descriptor *string `xml:"wd:Descriptor,attr,omitempty"`
+	Descriptor *string `xml:"wd:Descriptor,attr,omitempty" json:"-"`
 
-	NametagIdvJobApplicationReference *NametagIdvJobApplicationReference `xml:"custom:nametagIdvJobApplicationReference,omitempty"`
+	NametagIdvJobApplicationReference *NametagIdvJobApplicationReference `xml:"custom:nametagIdvJobApplicationReference,omitempty" json:"-"`
 
-	VerifiedName      *string `xml:"custom:verifiedName,omitempty"`
-	Status            *string `xml:"custom:status,omitempty"`
-	RequestedAt       *string `xml:"custom:requestedAt,omitempty"`
-	SourceDocument    *string `xml:"custom:sourceDocument,omitempty"`
-	LastUpdatedAt     *string `xml:"custom:lastUpdatedAt,omitempty"`
-	VerifiedAt        *string `xml:"custom:verifiedAt,omitempty"`
-	VerifiedAddress   *string `xml:"custom:verifiedAddress,omitempty"`
-	VerifiedBirthDate *string `xml:"custom:verifiedBirthDate,omitempty"`
-	NametagIdvId      *string `xml:"custom:nametagIdvId,omitempty"`
+	VerifiedName      *string `xml:"custom:verifiedName,omitempty" json:"verifiedName,omitempty"`
+	Status            *string `xml:"custom:status,omitempty" json:"status,omitempty"`
+	RequestedAt       *string `xml:"custom:requestedAt,omitempty" json:"requestedAt,omitempty"`
+	SourceDocument    *string `xml:"custom:sourceDocument,omitempty" json:"sourceDocument,omitempty"`
+	LastUpdatedAt     *string `xml:"custom:lastUpdatedAt,omitempty" json:"lastUpdatedAt,omitempty"`
+	VerifiedAt        *string `xml:"custom:verifiedAt,omitempty" json:"verifiedAt,omitempty"`
+	VerifiedAddress   *string `xml:"custom:verifiedAddress,omitempty" json:"verifiedAddress,omitempty"`
+	VerifiedBirthDate *string `xml:"custom:verifiedBirthDate,omitempty" json:"verifiedBirthDate,omitempty"`
+	NametagIdvId      *string `xml:"custom:nametagIdvId,omitempty" json:"nametagIdvId,omitempty"`
 }
 
 type NametagIdvJobApplicationReference struct {
@@ -226,7 +228,7 @@ func marshalInnerXML(elems ...any) (string, error) {
 
 // PutJobApplicationAdditionalData sets `Business_Object_Additional_Data` to one-or-more custom objects,
 // exactly like the `custom:nametagIdvJobApplication` entries in `soap/test.xml`.
-func (s *Client) PutJobApplicationAdditionalData(permissionReport *model.PermissionCheck, jobApplicationWID string, customObjects ...NametagIdvJobApplication) error {
+func (s *Client) PutJobApplicationAdditionalData(permissionReport *model.PermissionCheck, jobApplicationWID string, customObjects ...NametagIdvCustomObject) error {
 	// Default the namespace so callers don't have to remember it.
 	for i := range customObjects {
 		if customObjects[i].XMLNSCustom == "" {
@@ -282,6 +284,110 @@ func (s *Client) RESTPutJobApplicationAdditionalData(jobApplicationWID string, c
 	}`
 
 	req, err := http.NewRequest(http.MethodPut, url, bytes.NewReader([]byte(body)))
+	if err != nil {
+		return fmt.Errorf("new request: %w", err)
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+
+	fmt.Println(url)
+
+	resp, err := s.credentialedClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("do request: %w", err)
+	}
+
+	fmt.Println(resp.StatusCode)
+
+	defer resp.Body.Close()
+
+	bodyBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("read body: %w", err)
+	}
+
+	fmt.Printf("body: %s\n", string(bodyBytes))
+
+	return nil
+}
+
+
+func (s *Client) RESTPropspects(id string) error {
+
+	// Nope :(
+
+
+	path := fmt.Sprintf("/prospects/%s", id)
+	
+	url := "https://impl-services1.wd12.myworkday.com/ccx/api/v1/nametag_dpt1" + path
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return fmt.Errorf("new request: %w", err)
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+
+	fmt.Println(url)
+
+	resp, err := s.credentialedClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("do request: %w", err)
+	}
+
+	fmt.Println(resp.StatusCode)
+
+	defer resp.Body.Close()
+
+	bodyBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("read body: %w", err)
+	}
+
+	fmt.Printf("body: %s\n", string(bodyBytes))
+
+	return nil
+}
+
+type WID struct {
+	ID string `json:"id,omitempty"`
+}
+
+type NametagIdvCustomObjectJobApplication struct {
+	ID *WID `json:"jobApplication,omitempty"`
+	NametagIdvCustomObject
+}
+
+func (s *Client) RESTPostJobApplicationAdditionalData(jobApplicationWID string) error {
+
+	path := fmt.Sprintf("/customObjects/%s/%s", "nametagIdvJobApplication", jobApplicationWID)
+	url := "https://impl-services1.wd12.myworkday.com/ccx/api/v1/nametag_dpt1" + path
+
+	idv := NametagIdvCustomObjectJobApplication{
+		ID: &WID{
+			ID: jobApplicationWID,
+		},
+		NametagIdvCustomObject: NametagIdvCustomObject{
+			VerifiedName: lo.ToPtr("testymctestface"),
+			Status: lo.ToPtr("test"),
+			RequestedAt: lo.ToPtr("2021-01-01"),
+			SourceDocument: lo.ToPtr("test"),
+			LastUpdatedAt: lo.ToPtr("2021-01-01"),
+			VerifiedAt: lo.ToPtr("2021-01-01"),
+			VerifiedAddress: lo.ToPtr("test"),
+			VerifiedBirthDate: lo.ToPtr("1999-01-01"),
+			NametagIdvId: lo.ToPtr(uuid.New().String()[:8]),
+		},
+	}
+
+	body, err := json.Marshal(idv)
+	if err != nil {
+		return fmt.Errorf("marshal idv: %w", err)
+	}
+
+	fmt.Printf("body: %s\n", string(body))
+
+	req, err := http.NewRequest(http.MethodPost, url, bytes.NewReader([]byte(body)))
 	if err != nil {
 		return fmt.Errorf("new request: %w", err)
 	}
