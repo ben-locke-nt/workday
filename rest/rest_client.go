@@ -10,6 +10,7 @@
 package rest
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -206,4 +207,23 @@ func (c *RESTClient) GetWorkerCustomObjects(workdayID string) {
 
 func report(res *http.Response, body []byte) {
 	fmt.Printf("[%d](%s) %+v %s : %s\n", res.StatusCode, res.Status, res.Request.Method, res.Request.URL, string(body))
+}
+
+func (c *RESTClient) CustomObjectDefinitions(ctx context.Context) error {
+	path := c.buildURL("customObjects", "definitions")
+
+	res, err := c.oauthClient.Get(path)
+	if err != nil {
+		return err
+	}
+	defer res.Body.Close()
+
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		return err
+	}
+
+	fmt.Printf("Custom Object Definitions: %s\n", string(body))
+
+	return nil
 }

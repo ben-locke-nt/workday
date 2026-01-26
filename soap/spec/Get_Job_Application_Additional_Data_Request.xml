@@ -1,0 +1,35 @@
+<bsvc:Get_Job_Application_Additional_Data_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <!--You have a CHOICE of the next 2 items at this level-->
+  <!--Optional:-->
+  <bsvc:Request_References>
+    <!--1 or more repetitions:-->
+    <bsvc:Job_Application_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Job_Application_Reference>
+  </bsvc:Request_References>
+  <!--Optional:-->
+  <bsvc:Request_Criteria>
+    <!--Optional:-->
+    <bsvc:Candidate_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Candidate_Reference>
+  </bsvc:Request_Criteria>
+  <!--Optional:-->
+  <bsvc:Response_Filter>
+    <!--Optional:-->
+    <bsvc:As_Of_Effective_Date>2008-09-29</bsvc:As_Of_Effective_Date>
+    <!--Optional:-->
+    <bsvc:As_Of_Entry_DateTime>2014-09-18T23:18:33</bsvc:As_Of_Entry_DateTime>
+    <!--Optional:-->
+    <bsvc:Page>1000.00</bsvc:Page>
+    <!--Optional:-->
+    <bsvc:Count>1000.00</bsvc:Count>
+  </bsvc:Response_Filter>
+  <!--Optional:-->
+  <bsvc:Response_Group>
+    <!--Optional:-->
+    <bsvc:Include_Reference>true</bsvc:Include_Reference>
+  </bsvc:Response_Group>
+</bsvc:Get_Job_Application_Additional_Data_Request>

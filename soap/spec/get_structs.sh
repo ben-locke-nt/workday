@@ -59,3 +59,8 @@ curl -o 'Get_Change_Home_Contact_Information_Request.xml' \
     'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Home_Contact_Information_Request.xml'
 curl -o 'Get_Change_Home_Contact_Information_Response.xml' \
     'https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v45.2/samples/Get_Change_Home_Contact_Information_Response.xml'
+
+curl -o 'Get_Job_Application_Additional_Data_Request.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v45.2/samples/Get_Job_Application_Additional_Data_Request.xml'
+curl -o 'Put_Job_Application_Additional_Data_Request.xml' \
+    'https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v45.2/samples/Put_Job_Application_Additional_Data_Request.xml'

@@ -1,0 +1,554 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>CAND-1958</wd:WorkdayID>
+                <wd:WorkdayObjType>Candidate</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>d075731b289190089e8abc5882ac0000</wd:WorkdayID>
+                <wd:WorkdayObjType>Candidate</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>d075731b289190089e8abc5882ac0000</wd:WorkdayID>
+                <wd:WorkdayObjType>Candidate</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>d075731b289190089e8abc5882ac0000</wd:WorkdayID>
+                <wd:candidate wd:Descriptor="Zoey Walker ‎- R-00225 Director, Technical Operations">
+                    <wd:ID wd:type="WID">d075731b289190089e8abc5882ac0000</wd:ID>
+                    <wd:ID wd:type="Job_Application_ID">JOB_APPLICATION-11-645</wd:ID>
+                </wd:candidate>
+                <wd:WorkdayObjType>JobApplication</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+ <?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>d075731b289190089e8abc5882ac0000</wd:WorkdayID>
+                <wd:Candidate_group>
+                    <wd:CandidateID>d075731b289190089e8abc5882ac0000</wd:CandidateID>
+                </wd:Candidate_group>
+                <wd:WorkdayObjType>JobApplication</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+ <?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>d075731b289190089e8abc5882ac0000</wd:WorkdayID>
+                <wd:WorkdayObjType>JobApplication</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+<wd:Get_Applicants_Request xmlns:wd="urn:com.workday/bsvc">
+    <wd:Request_References>
+        <wd:Applicant_Reference>%Applicant%</wd:Applicant_Reference>
+    </wd:Request_References>
+    <wd:Response_Filter>
+        <wd:As_Of_Effective_Date>%Effective Date%</wd:As_Of_Effective_Date>
+        <wd:Count>1</wd:Count>
+    </wd:Response_Filter>
+    <wd:Response_Group>
+        <wd:Include_Reference>true</wd:Include_Reference>
+        <wd:Include_Personal_Information>false</wd:Include_Personal_Information>
+        <wd:Show_All_Personal_Information>false</wd:Show_All_Personal_Information>
+        <wd:Include_Recruiting_Information>false</wd:Include_Recruiting_Information>
+        <wd:Include_Qualification_Profile>false</wd:Include_Qualification_Profile>
+        <wd:Include_Resume>false</wd:Include_Resume>
+        <wd:Include_Background_Check>false</wd:Include_Background_Check>
+        <wd:Include_External_Integration_ID_Data>false</wd:Include_External_Integration_ID_Data>
+    </wd:Response_Group>
+</wd:Get_Applicants_Request>
+
+
+<wd:Get_Candidates_Request xmlns:wd="urn:com.workday/bsvc">
+    <wd:Request_References>
+        <wd:Candidate_Reference>
+            <wd:ID wd:type="Candidate_ID">%Candidate_ID%</wd:ID>
+        </wd:Candidate_Reference>
+    </wd:Request_References>
+    <wd:Response_Filter>
+        <wd:Count>1</wd:Count>
+    </wd:Response_Filter>
+    <wd:Response_Group>
+        <wd:Include_Reference>true</wd:Include_Reference>
+        <wd:Exclude_All_Attachments>true</wd:Exclude_All_Attachments>
+    </wd:Response_Group>
+</wd:Get_Candidates_Request>
+
+
+
+
+
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Body>
+        <SOAP-ENV:Fault xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+            xmlns:wd="urn:com.workday/bsvc">
+            <faultcode>SOAP-ENV:Client.validationError</faultcode>
+            <faultstring>Validation error occurred. Invalid instance 8665$645 for
+                Candidate_Request_References_Secured_to_Job_Application_and_Prospects_with_Confidential_Check--IS
+                (15$426603)</faultstring>
+            <detail>
+                <wd:Validation_Fault>
+                    <wd:Validation_Error>
+                        <wd:Message>Invalid instance 8665$645 for
+                            Candidate_Request_References_Secured_to_Job_Application_and_Prospects_with_Confidential_Check--IS
+                            (15$426603)</wd:Message>
+                        <wd:Detail_Message>Invalid instance 8665$645 for
+                            Candidate_Request_References_Secured_to_Job_Application_and_Prospects_with_Confidential_Check--IS
+                            (15$426603)</wd:Detail_Message>
+                        <wd:Xpath>
+                            /wd:Get_Candidates_Request[1]/wd:Request_References[1]/wd:Candidate_Reference[1]</wd:Xpath>
+                    </wd:Validation_Error>
+                </wd:Validation_Fault>
+            </detail>
+        </SOAP-ENV:Fault>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+<wd:Get_Candidates_Request xmlns:wd="urn:com.workday/bsvc">
+    <wd:Request_References>
+        <wd:Applicant_Reference>
+            <wd:ID wd:type="Applicant_ID">%Applicant_ID%</wd:ID>
+        </wd:Applicant_Reference>
+    </wd:Request_References>
+    <wd:Response_Filter>
+        <wd:Count>1</wd:Count>
+    </wd:Response_Filter>
+    <wd:Response_Group>
+        <wd:Include_Reference>true</wd:Include_Reference>
+        <wd:Include_Personal_Information>false</wd:Include_Personal_Information>
+        <wd:Show_All_Personal_Information>false</wd:Show_All_Personal_Information>
+        <wd:Include_Recruiting_Information>false</wd:Include_Recruiting_Information>
+        <wd:Include_Qualification_Profile>false</wd:Include_Qualification_Profile>
+        <wd:Include_Resume>false</wd:Include_Resume>
+        <wd:Include_Background_Check>false</wd:Include_Background_Check>
+        <wd:Include_External_Integration_ID_Data>false</wd:Include_External_Integration_ID_Data>
+    </wd:Response_Group>
+</wd:Get_Candidates_Request>
+
+
+<!-- The trick is to *not* assign a user to the integration step :melting face: -->
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>d075731b289190089e8abc5882ac0000</wd:WorkdayID>
+                <wd:Job_Application_group>
+                    <wd:CandidateID>CAND-1958</wd:CandidateID>
+                </wd:Job_Application_group>
+                <wd:WorkdayObjType>JobApplication</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+<!---
+TestProsect One
+92c8bc0205e69001fbbff9b8f7f70000
+CAND-2000
+
+
+
+
+https://benlocke.nametagdev.com/api/integrations/workday/requests/test
+
+
+-->
+
+ <?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_EIB_Source_-_Pre-Hire">
+            <wd:Report_Entry>
+                <wd:WorkdayID>c85943b44db642d398b4fbd45194e8c1</wd:WorkdayID>
+                <wd:WorkdayObjType>PreHire</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_EIB_Source_-_Prospect">
+            <wd:Report_Entry>
+                <wd:WorkdayID>92c8bc0205e69001fbbff885a2a00000</wd:WorkdayID>
+                <wd:WorkdayObjType>Prospect</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>UpdateName</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_IDV_EIB_Source_-_Job_Application">
+            <wd:Report_Entry>
+                <wd:WorkdayID>d075731b289190089e8abc5882ac0000</wd:WorkdayID>
+                <wd:CandidateID>CAND-1958</wd:CandidateID>
+                <wd:WorkdayObjType>JobApplication</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+    <env:Body>
+        <wd:Report_Data xmlns:wd="urn:com.workday.report/Nametag_EIB_Source_-_Worker">
+            <wd:Report_Entry>
+                <wd:WorkdayID>3bb3dfb98eb3100364129df15ad60000</wd:WorkdayID>
+                <wd:WorkdayObjType>Worker</wd:WorkdayObjType>
+                <wd:NTIDVTemplate>WDTemplate1</wd:NTIDVTemplate>
+                <wd:DeliverEmail>true</wd:DeliverEmail>
+                <wd:UpdateName>true</wd:UpdateName>
+                <wd:UpdateBirthDate>true</wd:UpdateBirthDate>
+                <wd:UpdateAddress>true</wd:UpdateAddress>
+            </wd:Report_Entry>
+        </wd:Report_Data>
+    </env:Body>
+</env:Envelope>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header>
+        <wsse:Security
+            xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+            SOAP-ENV:mustUnderstand="1">
+            <wsse:UsernameToken>
+                <wsse:Username>WorkdayStudioServiceUser_BLocke@nametag_dpt1</wsse:Username>
+                <wsse:Password
+                    wsse:Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">
+                    D2FDgmkMe/Nw2XYsTRKJo9ZlKVZ0pww7j60S63mGxEdUywT9WDHPFtJF710WQSdWbbOw953n04utE84QK8b8Cfqsxb00cY+guAOHMFIkUR5FrEkH5ZwJ93OGgWntFEnCn62QCDWGnK+ZLPGrVTdlswseQhxpKgfSx3LF3nOx127fv1T15SwyE/mfiVLRYM9XhC4WwPVNIVRXgZfWuv8/6VJWHYvsdGHWbHPj86nXdFCzDCgbULrnUL05EfSdZXSr2kd+5G0M/sL3tc2sgHAfzQ9WnnPHk+J3ADUwXL15ko8iXHOvF3RAA7cxwCNDZ4cBjzLFTm+Xb6n+ZZLytJ3Y3A==</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+        <wd-header:additional xmlns:wd-header="urn:com.workday/bsvc" wd-header:OAuth2_Client_ID=""
+            wd-header:OAuth2_Client_Secret="" wd-header:OAuth2_Refresh_Token=""
+            wd-header:Routing="e2-custom"
+            wd-header:Strategy="AsyncPIEIntegration,FailIntegrationEventToggle,NoAutoCR,NoLogReferences,PriorityMedium"
+            wd-header:X-WD-REQUEST-ID="STUDIO|28734afa-b8b3-4925-b08d-6118c9489d3e" />
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <wd:Launch_Integration_Event_Data xmlns:wd="urn:com.workday/bsvc">
+            <wd:Integration_Event_Reference
+                wd:Descriptor="Integration ESB Invocation (Nametag Identity Verification - 01/24/2026, 7:45:43.824 PM (Processing))">
+                <wd:ID wd:type="WID">aee773e014931000446f9c6d0c950000</wd:ID>
+                <wd:ID wd:type="Background_Process_Instance_ID">INTEGRATION_ESB_INVOCATION-6-102101</wd:ID>
+            </wd:Integration_Event_Reference>
+            <wd:Integration_System_Reference wd:Descriptor="Nametag Identity Verification">
+                <wd:ID wd:type="WID">b6dc47390cec1001ab7cfd53e2e40000</wd:ID>
+                <wd:ID wd:type="Integration_System_ID">Nametag/IdentityVerification/StartHere</wd:ID>
+            </wd:Integration_System_Reference>
+            <wd:Integration_Service_Endpoint>Nametag/IdentityVerification/StartHere</wd:Integration_Service_Endpoint>
+            <wd:Document_ID>cc-cloud-repository/81a534de-a89d-49d0-b1a7-fa11d0c1699d</wd:Document_ID>
+            <wd:Event_Initialization_Documents_Data>
+                <wd:Get_Event_Configurations_Document_ID>
+                    aee773e014931000446f936a0d6d0000/f4427793-f06e-4b68-9893-b97205e88d82</wd:Get_Event_Configurations_Document_ID>
+                <wd:Get_Integration_Systems_Document_ID>
+                    aee773e014931000446f936a0d6d0000/924a656a-13bb-48ae-a535-3b54901460c9</wd:Get_Integration_Systems_Document_ID>
+            </wd:Event_Initialization_Documents_Data>
+            <wd:Integration_Template_Reference wd:Descriptor="Cloud Integration Template">
+                <wd:ID wd:type="WID">ce31b92bca0144ab8db330a07b0912fe</wd:ID>
+                <wd:ID wd:type="Integration_Template_Name">Cloud Integration Template</wd:ID>
+            </wd:Integration_Template_Reference>
+            <wd:Sent_On>2026-01-24T19:45:43.824-08:00</wd:Sent_On>
+            <wd:System_User_Reference wd:Descriptor="WorkdayStudioServiceUser_BLocke">
+                <wd:ID wd:type="WID">7bffb176c3d6100156242fa50f7c0000</wd:ID>
+                <wd:ID wd:type="System_User_ID">WorkdayStudioServiceUser_BLocke</wd:ID>
+                <wd:ID wd:type="WorkdayUserName">WorkdayStudioServiceUser_BLocke</wd:ID>
+            </wd:System_User_Reference>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Workday Object ID">Text</wd:Parameter_Name>
+                <wd:Text>dsafsda</wd:Text>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Workday Object Type">Text</wd:Parameter_Name>
+                <wd:Text>sdafdsafdsa</wd:Text>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Nametag API Key">Text</wd:Parameter_Name>
+                <wd:Text>asdfdsa</wd:Text>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Nametag Endpoint">Text</wd:Parameter_Name>
+                <wd:Text>https://benlocke.nametagdev.com/api/integrations/workday/requests/test</wd:Text>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Update Address">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Compare Address">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Collect Address">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Update Birth Date">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Compare Birth Date">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Collect Birth Date">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Update Legal Name">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Compare Legal Name">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Collect Legal Name">Boolean</wd:Parameter_Name>
+                <wd:Boolean>0</wd:Boolean>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Nametag Integration ID">Text</wd:Parameter_Name>
+                <wd:Text>sdafdsaf</wd:Text>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Integration_Runtime_Parameter_Data>
+                <wd:Launch_Configurable_Name>Nametag/IdentityVerification/StartHere</wd:Launch_Configurable_Name>
+                <wd:Parameter_Name wd:Label="Candidate ID">Text</wd:Parameter_Name>
+                <wd:Text>fdsafdsaf</wd:Text>
+            </wd:Integration_Runtime_Parameter_Data>
+            <wd:Parent_Event_Reference
+                wd:Descriptor="Integration: Nametag Identity Verification - 01/24/2026, 7:45:43.824 PM">
+                <wd:ID wd:type="WID">aee773e014931000446f9e3a3e840000</wd:ID>
+            </wd:Parent_Event_Reference>
+        </wd:Launch_Integration_Event_Data>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+
+<AnyXML>
+    <wd:Request_References>
+        <wd:Job_Application_Reference>
+            <wd:ID wd:type="WID">8828a848962481631711499bd5558e14</wd:ID>
+            <wd:ID wd:type="Job_Application_ID">JOB_APPLICATION-11-385</wd:ID>
+        </wd:Job_Application_Reference>
+    </wd:Request_References>
+    <wd:Response_Results>
+        <wd:Total_Results>1</wd:Total_Results>
+        <wd:Total_Pages>1</wd:Total_Pages>
+        <wd:Page_Results>1</wd:Page_Results>
+        <wd:Page>1</wd:Page>
+    </wd:Response_Results>
+    <wd:Response_Data>
+        <wd:Job_Application_Custom_Object_Data>
+            <wd:Job_Application_Reference>
+                <wd:ID wd:type="WID">8828a848962481631711499bd5558e14</wd:ID>
+                <wd:ID wd:type="Job_Application_ID">JOB_APPLICATION-11-385</wd:ID>
+            </wd:Job_Application_Reference>
+        </wd:Job_Application_Custom_Object_Data>
+    </wd:Response_Data>
+</AnyXML>
+
+
+<AnyXML>
+    <wd:Request_References>
+        <wd:Job_Application_Reference>
+            <wd:ID wd:type="WID">d075731b289190089e8abc5882ac0000</wd:ID>
+            <wd:ID wd:type="Job_Application_ID">JOB_APPLICATION-11-645</wd:ID>
+        </wd:Job_Application_Reference>
+    </wd:Request_References>
+    <wd:Response_Results>
+        <wd:Total_Results>1</wd:Total_Results>
+        <wd:Total_Pages>1</wd:Total_Pages>
+        <wd:Page_Results>1</wd:Page_Results>
+        <wd:Page>1</wd:Page>
+    </wd:Response_Results>
+    <wd:Response_Data>
+        <wd:Job_Application_Custom_Object_Data>
+            <wd:Job_Application_Reference>
+                <wd:ID wd:type="WID">d075731b289190089e8abc5882ac0000</wd:ID>
+                <wd:ID wd:type="Job_Application_ID">JOB_APPLICATION-11-645</wd:ID>
+            </wd:Job_Application_Reference>
+            <wd:Business_Object_Additional_Data>
+                <custom:nametagIdvJobApplication
+                    xmlns:custom="urn:com.workday/tenants/nametag_dpt1/data/custom"
+                    wd:Descriptor="tests">
+                    <custom:nametagIdvJobApplicationReference>
+                        <custom:ID custom:type="WID">a2de210b18143000bc804f5fafba0000</custom:ID>
+                        <custom:ID custom:type="nametagIdvId">tests</custom:ID>
+                    </custom:nametagIdvJobApplicationReference>
+                    <custom:verifiedName>test</custom:verifiedName>
+                    <custom:status>test</custom:status>
+                    <custom:requestedAt>test</custom:requestedAt>
+                    <custom:sourceDocument>test</custom:sourceDocument>
+                    <custom:lastUpdatedAt>test</custom:lastUpdatedAt>
+                    <custom:verifiedAt>test</custom:verifiedAt>
+                    <custom:verifiedAddress>test</custom:verifiedAddress>
+                    <custom:verifiedBirthDate>1999-01-01</custom:verifiedBirthDate>
+                    <custom:nametagIdvId>tests</custom:nametagIdvId>
+                </custom:nametagIdvJobApplication>
+                <custom:nametagIdvJobApplication
+                    xmlns:custom="urn:com.workday/tenants/nametag_dpt1/data/custom"
+                    wd:Descriptor="test2">
+                    <custom:nametagIdvJobApplicationReference>
+                        <custom:ID custom:type="WID">aee773e014933000c98d8d0a4a050000</custom:ID>
+                        <custom:ID custom:type="nametagIdvId">test2</custom:ID>
+                    </custom:nametagIdvJobApplicationReference>
+                    <custom:verifiedName>test2</custom:verifiedName>
+                    <custom:status>test2</custom:status>
+                    <custom:requestedAt>test2</custom:requestedAt>
+                    <custom:sourceDocument>test2</custom:sourceDocument>
+                    <custom:lastUpdatedAt>test2</custom:lastUpdatedAt>
+                    <custom:verifiedAt>test2</custom:verifiedAt>
+                    <custom:verifiedAddress>test2</custom:verifiedAddress>
+                    <custom:nametagIdvId>test2</custom:nametagIdvId>
+                </custom:nametagIdvJobApplication>
+            </wd:Business_Object_Additional_Data>
+        </wd:Job_Application_Custom_Object_Data>
+    </wd:Response_Data>
+</AnyXML>

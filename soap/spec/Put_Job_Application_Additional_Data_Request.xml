@@ -1,0 +1,12 @@
+<bsvc:Put_Job_Application_Additional_Data_Request bsvc:version="string" xmlns:bsvc="urn:com.workday/bsvc">
+  <bsvc:Job_Application_Custom_Object_Data>
+    <bsvc:Job_Application_Reference bsvc:Descriptor="string">
+      <!--Zero or more repetitions:-->
+      <bsvc:ID bsvc:type="string">string</bsvc:ID>
+    </bsvc:Job_Application_Reference>
+    <bsvc:Business_Object_Additional_Data>
+      <!--You may enter ANY elements at this point-->
+      <AnyElement/>
+    </bsvc:Business_Object_Additional_Data>
+  </bsvc:Job_Application_Custom_Object_Data>
+</bsvc:Put_Job_Application_Additional_Data_Request>

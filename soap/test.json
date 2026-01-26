@@ -1,0 +1,32 @@
+{
+    "integration_id": "testIntegrationID",
+    "workday_object_type": "Worker",
+    "workday_object_id": "b6dc47390cec1001ab7cfd53e2e40000",
+    "candidate_id_for_job_application": "testcandidateid",
+    "claims_to_update": "testclaimstoupdate",
+    "email": "testemail",
+    "email_subject": "testemailsubject",
+    "email_body": "testemailbody",
+    "claims_to_collect": "testclaimstocollect",
+    "phone": "testphone",
+    "whatsapp": "testwhatsapp",
+    "label": "testlabel"
+}
+
+
+
+
+
+{
+    "integration_id": "wdiuxxlatn",
+    "workday_object_type": "Worker",
+    "workday_object_id": "b6dc47390cec1001ab7cfd53e2e40000",
+    "claims_to_update": "testclaimstoupdate",
+    "email": "ben.locke@nametag.co",
+    "email_subject": "testemailsubject",
+    "email_body": "testemailbody",
+    "claims_to_collect": "testclaimstocollect",
+    "phone": "+12512146133",
+    "whatsapp": "testwhatsapp",
+    "label": "testlabel"
+}

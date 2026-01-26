@@ -10,9 +10,10 @@
 package main
 
 import (
+	"context"
 	"log"
+	"workday/rest"
 	"workday/soap"
-	"workday/soap/model"
 
 	"github.com/joho/godotenv"
 )
@@ -28,7 +29,15 @@ func main() {
 		log.Fatalf("Error creating SOAP client: %v", err)
 	}
 
-	permissionReport := model.PermissionCheck{}
+	//permissionReport := model.PermissionCheck{}
+
+
+	restClient, err := rest.NewRESTClient()
+	if err != nil {
+		log.Fatalf("Error creating REST client: %v", err)
+	}
+
+	restClient.CustomObjectDefinitions(context.Background())
 
 	// To get perms for the design doc:
 	// View Integration System Security Group (Unconstrained)
@@ -56,7 +65,13 @@ func main() {
 
 	//soapClient.UpdateCandidateName(&permissionReport, "fd9e9f710bc881556faa7574ac0fd306", "Sabriña", "Marie", "Valdez")
 
-	soapClient.UpdateApplicant(&permissionReport, "7687e33f159501842af83fedc4564407", "Amañda", "Willy", "Lockenhart")
+	//soapClient.UpdateApplicant(&permissionReport, "7687e33f159501842af83fedc4564407", "Amañda", "Willy", "Lockenhart")
+
+	//soapClient.GetCandidate(&permissionReport, "CAND-1958")
+	//soapClient.GetCandidate(&permissionReport, "7687e33f1595814629e414a2d3562415")
+	//soapClient.CustomObjectDefinitions(context.Background())
+	//soapClient.GetJobApplicationAdditionalData(&permissionReport, "d075731b289190089e8abc5882ac0000", "CAND-1245")
+	soapClient.RESTPutJobApplicationAdditionalData("d075731b289190089e8abc5882ac0000", "tests")
 
 	// fmt.Println("Permissions report:")
 	// permReport, err := json.MarshalIndent(permissionReport, "", "  ")
@@ -90,3 +105,8 @@ func main() {
 // Employee:  Ben Locke
 // Workday ID=b3c518ac84321001c1c8ed9c98790000; Employee_ID=21603
 // Existing nametagIdvForWorker: Workday ID=f5d0dde74ced30010bed10cec0a90000
+
+
+// Zoey Walker
+// WID=d075731b289190089e8abc5882ac0000 ; Job_Application_ID=JOB_APPLICATION-11-645
+// WID=d075731b289190089e7b03c40f7a0000 ; Candidate_ID=CAND-1958
