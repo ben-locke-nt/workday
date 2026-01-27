@@ -114,7 +114,6 @@ func (s *Client) UpdateCandidateName(permissionReport *model.PermissionCheck, wo
 	return nil
 }
 
-
 func (s *Client) GetJobApplicationAdditionalData(permissionReport *model.PermissionCheck, workdayID, candidateID string) error {
 	request := get_job_application_additional_data_request.GetJobApplicationAdditionalDataRequest{
 		XMLNamespace: lo.ToPtr(WorkdayXMLNamespace),
@@ -196,7 +195,7 @@ type putJobApplicationAdditionalDataRequest struct {
 }
 
 type putJobApplicationCustomObjectData struct {
-	JobApplicationReference      *jobApplicationReference        `xml:"wd:Job_Application_Reference,omitempty"`
+	JobApplicationReference      *jobApplicationReference         `xml:"wd:Job_Application_Reference,omitempty"`
 	BusinessObjectAdditionalData *businessObjectAdditionalDataAny `xml:"wd:Business_Object_Additional_Data,omitempty"`
 }
 
@@ -276,7 +275,7 @@ func (s *Client) PutJobApplicationAdditionalData(permissionReport *model.Permiss
 func (s *Client) RESTPutJobApplicationAdditionalData(jobApplicationWID string, customObjectID string) error {
 
 	path := fmt.Sprintf("/customObjects/%s/%s;nametagIdvId=%s", "nametagIdvJobApplication", jobApplicationWID, customObjectID)
-	
+
 	url := "https://impl-services1.wd12.myworkday.com/ccx/api/v1/nametag_dpt1" + path
 
 	body := `{
@@ -311,14 +310,12 @@ func (s *Client) RESTPutJobApplicationAdditionalData(jobApplicationWID string, c
 	return nil
 }
 
-
 func (s *Client) RESTPropspects(id string) error {
 
 	// Nope :(
 
-
 	path := fmt.Sprintf("/prospects/%s", id)
-	
+
 	url := "https://impl-services1.wd12.myworkday.com/ccx/api/v1/nametag_dpt1" + path
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)
@@ -368,15 +365,15 @@ func (s *Client) RESTPostJobApplicationAdditionalData(jobApplicationWID string) 
 			ID: jobApplicationWID,
 		},
 		NametagIdvCustomObject: NametagIdvCustomObject{
-			VerifiedName: lo.ToPtr("testymctestface"),
-			Status: lo.ToPtr("test"),
-			RequestedAt: lo.ToPtr("2021-01-01"),
-			SourceDocument: lo.ToPtr("test"),
-			LastUpdatedAt: lo.ToPtr("2021-01-01"),
-			VerifiedAt: lo.ToPtr("2021-01-01"),
-			VerifiedAddress: lo.ToPtr("test"),
+			VerifiedName:      lo.ToPtr("testymctestface"),
+			Status:            lo.ToPtr("test"),
+			RequestedAt:       lo.ToPtr("2021-01-01"),
+			SourceDocument:    lo.ToPtr("test"),
+			LastUpdatedAt:     lo.ToPtr("2021-01-01"),
+			VerifiedAt:        lo.ToPtr("2021-01-01"),
+			VerifiedAddress:   lo.ToPtr("test"),
 			VerifiedBirthDate: lo.ToPtr("1999-01-01"),
-			NametagIdvId: lo.ToPtr(uuid.New().String()[:8]),
+			NametagIdvId:      lo.ToPtr(uuid.New().String()[:8]),
 		},
 	}
 
@@ -393,6 +390,38 @@ func (s *Client) RESTPostJobApplicationAdditionalData(jobApplicationWID string) 
 	}
 
 	req.Header.Set("Content-Type", "application/json")
+
+	fmt.Println(url)
+
+	resp, err := s.credentialedClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("do request: %w", err)
+	}
+
+	fmt.Println(resp.StatusCode)
+
+	defer resp.Body.Close()
+
+	bodyBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("read body: %w", err)
+	}
+
+	fmt.Printf("body: %s\n", string(bodyBytes))
+
+	return nil
+}
+
+func (s *Client) RESTCustomObjectDefinitions() error {
+
+	// Nope
+
+	url := "https://impl-services1.wd12.myworkday.com/ccx/api/v1/nametag_dpt1/definitions"
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return fmt.Errorf("new request: %w", err)
+	}
 
 	fmt.Println(url)
 

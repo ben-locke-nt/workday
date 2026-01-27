@@ -73,7 +73,9 @@ func main() {
 	//soapClient.GetJobApplicationAdditionalData(&permissionReport, "d075731b289190089e8abc5882ac0000", "CAND-1245")
 	//soapClient.RESTPutJobApplicationAdditionalData("d075731b289190089e8abc5882ac0000", "tests")
 
-	soapClient.RESTPostJobApplicationAdditionalData("d075731b289190089e8abc5882ac0000")
+	//soapClient.RESTPostJobApplicationAdditionalData("d075731b289190089e8abc5882ac0000")
+	//soapClient.RESTCustomObjectDefinitions()
+	soapClient.RESTPostPreHireAdditionalData("15f2a56667111001018ed5dfd5160001")
 
 	// fmt.Println("Permissions report:")
 	// permReport, err := json.MarshalIndent(permissionReport, "", "  ")
@@ -112,3 +114,10 @@ func main() {
 // Zoey Walker
 // WID=d075731b289190089e8abc5882ac0000 ; Job_Application_ID=JOB_APPLICATION-11-645
 // WID=d075731b289190089e7b03c40f7a0000 ; Candidate_ID=CAND-1958
+
+
+// Carol Danvers - Pre-Hire with 2 job applications
+// pre-hire:           WID=15f2a56667111001018ed5dfd5160001 ; Applicant_ID=A01830
+// external candidate: WID=8828a848962481e63ee6de68f854d15a ; Candidate_ID=CAND-1315
+// job application:    WID=9d0378a8d6c390054cc56bc30c8a0000 ; Job_Application_ID=JOB_APPLICATION-11-662
+// job application:    WID=8828a8489624815cbcc1e068f854dd5a ; Job_Application_ID=JOB_APPLICATION-11-205

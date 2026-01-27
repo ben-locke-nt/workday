@@ -1,7 +1,10 @@
 package soap
 
 import (
+	"bytes"
 	"fmt"
+	"io"
+	"net/http"
 	"workday/soap/model"
 	"workday/soap/model/get_applicants_request"
 	"workday/soap/model/get_applicants_response"
@@ -128,4 +131,84 @@ func (s *Client) UpdateApplicant(permissionReport *model.PermissionCheck, workda
 		fmt.Printf("SOAP request error: %v\n", call.Error)
 		return
 	}
+}
+
+func (s *Client) RESTPostPreHireAdditionalData(prehireWID string) error {
+
+	path := fmt.Sprintf("/customObjects/%s", "nametagIdvForPrehire")
+
+	url := "https://impl-services1.wd12.myworkday.com/ccx/api/v1/nametag_dpt1" + path
+
+	body := `{
+		"applicant": {
+			"id": "15f2a56667111001018ed5dfd5160001"
+		},
+		"id": "testymctestface",
+		"status": "test",
+		"assertedName": "testymctestface",
+		"verifiedName": "testymctestface"
+	}`
+
+	req, err := http.NewRequest(http.MethodPost, url, bytes.NewReader([]byte(body)))
+	if err != nil {
+		return fmt.Errorf("new request: %w", err)
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+
+	fmt.Println(url)
+
+	resp, err := s.credentialedClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("do request: %w", err)
+	}
+
+	fmt.Println(resp.StatusCode)
+
+	defer resp.Body.Close()
+
+	bodyBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("read body: %w", err)
+	}
+
+	fmt.Printf("body: %s\n", string(bodyBytes))
+
+	return nil
+}
+
+
+func (s *Client) RESTGetPreHireAdditionalData(prehireWID string, id string) error {
+
+	path := fmt.Sprintf("/customObjects/%s/%s;%s=%s", "nametagIdvForPrehire", prehireWID, "id", id)
+
+	url := "https://impl-services1.wd12.myworkday.com/ccx/api/v1/nametag_dpt1" + path
+
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		return fmt.Errorf("new request: %w", err)
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+
+	fmt.Println(url)
+
+	resp, err := s.credentialedClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("do request: %w", err)
+	}
+
+	fmt.Println(resp.StatusCode)
+
+	defer resp.Body.Close()
+
+	bodyBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("read body: %w", err)
+	}
+
+	fmt.Printf("body: %s\n", string(bodyBytes))
+
+	return nil
 }
